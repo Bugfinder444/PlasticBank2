@@ -502,7 +502,7 @@
 							},
 							{
 								"key": "Origin",
-								"value": "https://qa-admin.cognitionfoundry.io"
+								"value": "https://qapb.cognitionfoundry.io"
 							},
 							{
 								"key": "Sec-Fetch-Site",
@@ -518,7 +518,7 @@
 							},
 							{
 								"key": "Referer",
-								"value": "https://qa-admin.cognitionfoundry.io/"
+								"value": "https://qapb.cognitionfoundry.io/"
 							},
 							{
 								"key": "Accept-Language",
@@ -592,7 +592,7 @@
 							},
 							{
 								"key": "Origin",
-								"value": "https://qa-admin.cognitionfoundry.io"
+								"value": "https://qapb.cognitionfoundry.io"
 							},
 							{
 								"key": "Sec-Fetch-Site",
@@ -608,7 +608,7 @@
 							},
 							{
 								"key": "Referer",
-								"value": "https://qa-admin.cognitionfoundry.io/"
+								"value": "https://qapb.cognitionfoundry.io/"
 							},
 							{
 								"key": "Accept-Language",
@@ -658,7 +658,7 @@
 							},
 							{
 								"key": "Referer",
-								"value": "https://qa-admin.cognitionfoundry.io/",
+								"value": "https://qapb.cognitionfoundry.io/",
 								"type": "text"
 							},
 							{

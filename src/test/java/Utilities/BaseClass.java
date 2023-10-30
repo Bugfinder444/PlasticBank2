@@ -3,6 +3,8 @@ package Utilities;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import io.qameta.allure.Allure;
@@ -12,6 +14,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -22,42 +26,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+@SuppressWarnings("deprecation")
 public class BaseClass {
-	
-	
-	
 		
-	 //@BeforeSuite
-	 public void dataCreation() throws IOException {
-			
-			Data pn = new Data();
-			pn.runNewman(); 
-			 
-		  }
 
-
-	public static String bonusName;
-	public static String password ="123456a"; 
-
-	public static String member_Name;
-	public static String member_Number;
-
-	public static String branch1_Name;
-	public static String branch1_Number;
-
-	public static String branch2_Name;
-	public static String branch2_Number;
-
-	public static String branch3_Name;
-	public static String branch3_Number;
-
-	public static String processor_Name;
-	public static String processor_Number;
-
-
-
-
-
+public static String password ="123456a"; 
 
 	public String memberBonus = "7";
 	public String branchBonus = "2";
@@ -141,18 +114,31 @@ public class BaseClass {
 	public String adminphoneNumber;
 	public String adminpassword;
 	public String branchName;
+	
+	public static String temp= "upgrade-admin.cognitionfoundry.io";
+	public static String actual = "qa-admin.cognitionfoundry.io";
 
-	@SuppressWarnings("deprecation")
+	//@SuppressWarnings("deprecation")
 	@BeforeClass
 
 	public void setup() throws IOException {
 
-		WebDriverManager.chromedriver().setup();
+//		WebDriverManager.chromedriver().setup();
 		alcDriver = new ChromeDriver();
 		alcDriver.manage().window().maximize();
 		alcDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		alcDriver.get("https://qa-admin.cognitionfoundry.io/#/login");
-
+		
+		try {
+			alcDriver.get("https://qa-admin.cognitionfoundry.io/#/login");
+		} catch (org.openqa.selenium.TimeoutException e) {
+			// Handle the timeout exception here
+			System.out.println("Navigation timed out. Retrying...");
+			alcDriver.navigate().refresh();
+		}
+		
+		
+		//alcDriver.get("https://qa-admin.cognitionfoundry.io/#/login");
+		//https://qa-admin.cognitionfoundry.io/#/login
 		DesiredCapabilities caps = new DesiredCapabilities();
 
 		caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
@@ -163,7 +149,7 @@ public class BaseClass {
 		caps.setCapability("newCommandTimeout", 9000);
 		caps.setCapability("appPackage", "org.plasticbank.app");
 		caps.setCapability("appActivity", "org.plasticbank.app.MainActivity");
-		URL url = new URL("http://0.0.0.0:4723/wd/hub");
+		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 
 		pbDriver = new AndroidDriver(url, caps);
 		
@@ -180,7 +166,18 @@ public class BaseClass {
 		 
 	}
 
-	
+	public void tap(int x, int y) throws InterruptedException {
+		Thread.sleep(4000);
+		PointerInput fingert = new PointerInput(PointerInput.Kind.TOUCH, "fingert");
+		  Sequence scrollt = new Sequence(fingert, 1);
+		  scrollt.addAction(fingert.createPointerMove(Duration.ofMillis(0),
+		      PointerInput.Origin.viewport(), x, y));
+		  scrollt.addAction(fingert.createPointerDown(0));
+		  scrollt.addAction(fingert.createPointerMove(Duration.ofMillis(100),
+		      PointerInput.Origin.viewport(), x, y));
+		  scrollt.addAction(fingert.createPointerUp(0));
+		  pbDriver.perform(Arrays.asList(scrollt));
+	}
 	
 	  @BeforeSuite 
 	  public void generateRandomNumber() { 

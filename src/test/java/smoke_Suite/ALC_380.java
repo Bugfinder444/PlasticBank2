@@ -65,7 +65,7 @@ public class ALC_380 extends BaseClass {
 		Members m1 = new Members(alcDriver);
 		Stores s1 =new Stores(alcDriver);
 		m1.clickMembersTab();
-		m1.searchAddedMemberByPhone(Data.member1_Number380);
+		m1.searchAddedMemberByPhone380(Data.member1_Number380);
 		m1.clickSpecificMember();
 		s1.verifyTokenInAlchemy();
 		

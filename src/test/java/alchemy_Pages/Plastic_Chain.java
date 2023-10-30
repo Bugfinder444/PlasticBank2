@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.BaseClass;
+import Utilities.Data;
 import io.qameta.allure.Allure;
 
 public class Plastic_Chain extends BaseClass {
@@ -77,11 +78,16 @@ public class Plastic_Chain extends BaseClass {
 	
 	
 	private void clickOrdersTab() throws InterruptedException {
+		
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
         Thread.sleep(3000);
         orders_tab.click();
     }
 
     private void clickBounsTab() throws InterruptedException {
+    	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.elementToBeClickable(ordersTab_bonus));
         Thread.sleep(2000);
         ordersTab_bonus.click();
     }
@@ -93,7 +99,7 @@ public class Plastic_Chain extends BaseClass {
         name_SearchBox.click();
         name_SearchBox.clear();
         name_SearchBox.sendKeys(name);
-        Thread.sleep(15000);
+        Thread.sleep(10000);
     }
 
     private void clickSpecificOrdersBonus() {
@@ -141,40 +147,40 @@ public class Plastic_Chain extends BaseClass {
     	
         
     	pcRow1exp.add("HDPE - 4.00KG");
-    	pcRow1exp.add(branch1_Name);
-    	pcRow1exp.add(branch2_Name);
-    	pcRow1exp.add(processor_Name);
+    	pcRow1exp.add(Data.branch1_Name);
+    	pcRow1exp.add(Data.branch2_Name);
+    	pcRow1exp.add(Data.processor_Name);
     	
     	pcRow2exp.add("HDPE - 1.00KG");
-    	pcRow2exp.add(branch1_Name);
-    	pcRow2exp.add(branch3_Name);
-    	pcRow2exp.add(processor_Name);
+    	pcRow2exp.add(Data.branch1_Name);
+    	pcRow2exp.add(Data.branch3_Name);
+    	pcRow2exp.add(Data.processor_Name);
     	
     	pcRow3exp.add("HDPE - 1.00KG");
-    	pcRow3exp.add(branch1_Name);
-    	pcRow3exp.add(branch3_Name);
+    	pcRow3exp.add(Data.branch1_Name);
+    	pcRow3exp.add(Data.branch3_Name);
     	
     	pcRow4exp.add("HDPE - 4.00KG");
-    	pcRow4exp.add(branch1_Name);
-    	pcRow4exp.add(branch2_Name);
+    	pcRow4exp.add(Data.branch1_Name);
+    	pcRow4exp.add(Data.branch2_Name);
     	
     	pcRow5exp.add("PET - 3.00KG");
-    	pcRow5exp.add(branch1_Name);
-    	pcRow5exp.add(branch2_Name);
-    	pcRow5exp.add(processor_Name);
+    	pcRow5exp.add(Data.branch1_Name);
+    	pcRow5exp.add(Data.branch2_Name);
+    	pcRow5exp.add(Data.processor_Name);
     	
     	pcRow6exp.add("PET - 4.00KG");
-    	pcRow6exp.add(branch1_Name);
-    	pcRow6exp.add(branch2_Name);
+    	pcRow6exp.add(Data.branch1_Name);
+    	pcRow6exp.add(Data.branch2_Name);
     	
     	pcRow7exp.add("PET - 1.00KG");
-    	pcRow7exp.add(branch1_Name);
-    	pcRow7exp.add(branch3_Name);
-    	pcRow7exp.add(processor_Name);
+    	pcRow7exp.add(Data.branch1_Name);
+    	pcRow7exp.add(Data.branch3_Name);
+    	pcRow7exp.add(Data.processor_Name);
     	
     	pcRow8exp.add("PET - 1.00KG");
-    	pcRow8exp.add(branch1_Name);
-    	pcRow8exp.add(branch3_Name);
+    	pcRow8exp.add(Data.branch1_Name);
+    	pcRow8exp.add(Data.branch3_Name);
     	
     	List<List<String>> expectedLists = new ArrayList<>();
     	

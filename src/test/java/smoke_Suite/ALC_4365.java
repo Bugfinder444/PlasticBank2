@@ -21,10 +21,6 @@ import plastic_Bank_Pages.PB_Transaction;
 @Listeners({AllureTestNg.class, ScreenshotListener.class})
 public class ALC_4365 extends BaseClass {
 	
-    public String branchPhoneNumber = Data.branch1_NumberMB;
-    public String phoneNumber = Data.member_NumberMB;
-    public String password = "123456a";
-
 
 	@Test(priority=0, description = "Bonus order should be  stopped")
     @Description("Login on alchemy and create new bonus")
@@ -50,9 +46,9 @@ public class ALC_4365 extends BaseClass {
 		PB_LoginPage pblogin = new PB_LoginPage(pbDriver);
 		PB_Transaction pbTransaction = new PB_Transaction(pbDriver);
 //		pblogin.permission();
-		pblogin.login(branchPhoneNumber,password);
+		pblogin.login(Data.branch1_NumberMB,password);
 		Thread.sleep(5000);
-		boolean bounus_text = pbTransaction.transactionBranchStopBonus(phoneNumber,"6");
+		boolean bounus_text = pbTransaction.transactionBranchStopBonus(Data.member_NumberMB,"6");
 		Assert.assertFalse(bounus_text);
 		boolean reward_text=pbTransaction.verifyHistoryStopBonusReward();
 		Assert.assertFalse(reward_text);

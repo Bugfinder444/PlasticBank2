@@ -26,8 +26,8 @@ public class ALC_4362 extends BaseClass {
 		loginAlchmey.alc_adminlogin(adminphoneNumber,adminpassword);
 		Thread.sleep(3000);
 		
-		br.transactionApproveInBranch(branch1_Number);
-		bn.bonusVerifyInBonusApproval(bonusName);
+		br.transactionApproveInBranch(Data.branch1_Number);
+		bn.bonusVerifyInBonusApproval(Data.bonusName);
 		
 	}
 

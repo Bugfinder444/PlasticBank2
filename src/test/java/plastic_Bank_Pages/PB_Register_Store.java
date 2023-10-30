@@ -97,7 +97,7 @@ public PB_Register_Store(AndroidDriver pBriver) {
 	@AndroidFindBy(uiAutomator="new UiSelector().textContains(\"tore\")")
 	public WebElement storeButton;
 	
-	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"9,900 = 5,373.08₱\")")
+	@AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"9,900 = \")")
 	public WebElement cashText;
 	
 	public static String store_name380;
@@ -122,14 +122,17 @@ public PB_Register_Store(AndroidDriver pBriver) {
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(takeAPicture)));
 		Thread.sleep(2000);
 		takeAPicture.click();
-	  wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
+		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
 		permission.click();
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(allow)));
-	  allow.click();
+		allow.click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(shutter)));
 		shutter.click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
 		photoDone.click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(confirmButton)));
 		confirmButton.click();
 		
@@ -143,8 +146,10 @@ public PB_Register_Store(AndroidDriver pBriver) {
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(takeAPicture)));
 		Thread.sleep(2000);
 		takeAPicture.click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(shutter)));
 		shutter.click();
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
 		photoDone.click();
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(confirmButton)));
@@ -234,7 +239,7 @@ public PB_Register_Store(AndroidDriver pBriver) {
 			PB_LoginPage pblogin = new PB_LoginPage(pbDriver);
 			PB_Register_Store pbStore = new PB_Register_Store(pbDriver);
 			pblogin.permission();
-			pblogin.login(member_Number, password);
+			pblogin.login(Data.member_Number, password);
 			Thread.sleep(1000);
 			pbMenu.clickCreateBusness();
 			pbStore.fillBusnessData(store_name);

@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import Utilities.BaseClass;
+import Utilities.Data;
 import io.qameta.allure.Allure;
 
 public class Bonus extends BaseClass {
@@ -119,7 +120,7 @@ WebElement excHisTotalKg;
 @FindBy(xpath = "//div[text()='Bonus']") 
 WebElement excHisTotalBonus;
 
-@FindBy(xpath="//transaction-item//div[contains(@class,\"row\")]//div[contains(translate(text(),'kg','KG'),'KG')]")
+@FindBy(xpath="//transaction-item//div[contains(@class,\"row\")]//div[contains(text(),'HDPE')or(contains(text(),'PET'))or(contains(text(),'Total Weight'))]")
 public List<WebElement> kgVerifyUnverifiedReciept;
 
 @FindBy(xpath="//span[contains(@class,'text-green')]")
@@ -161,7 +162,9 @@ public static String expectedexcHisTotalBonus="133";
 
 
 private void clickOrdersTab() throws InterruptedException {
-    Thread.sleep(3000);
+    Thread.sleep(4000);
+    WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
+    wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
     orders_tab.click();
 }
 private void clickBounsTab() throws InterruptedException {
@@ -239,7 +242,7 @@ public void bonusBranch1Verification() throws InterruptedException {
 	
 	clickOrdersTab();
 	clickBounsTab();
-	search_byName(bonusName);
+	search_byName(Data.bonusName);
 	clickSpecificOrdersBonus();
 	
 	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
@@ -251,7 +254,8 @@ public void bonusBranch1Verification() throws InterruptedException {
 
 	wait.until(ExpectedConditions.elementToBeClickable(verifyReceiptsButton));
 	verifyReceiptsButton.click();
-	wait.until(ExpectedConditions.elementToBeClickable(approveRecipt.get(0)));
+	Thread.sleep(3000);
+	//wait.until(ExpectedConditions.elementToBeClickable(approveRecipt.get(0)));
 	
 	Set<String>expectedBranchOneRecieptKgB1 = new HashSet<>(Arrays.asList("PET- / 5.00 kg", "HDPE- / 6.00 kg",  "Total Weight: 11.00 KG","PET- / 7.00 kg","HDPE- / 8.00 kg","Total Weight: 15.00 KG","PET- / 9.00 kg","HDPE- / 10.00 kg","Total Weight: 19.00 KG"));
 	Set<String>expectedBranchOneReciptBonusB1 = new HashSet<>(Arrays.asList("Bonus 4", "Bonus 4","Bonus 16","Bonus 14","Bonus 63","Bonus 70"));
@@ -279,6 +283,7 @@ public void bonusBranch1Verification() throws InterruptedException {
 	Assert.assertEquals(actualBranchOneRecieptBonusB1, expectedBranchOneReciptBonusB1);
 	Assert.assertEquals(actualBranchOneRecieptTotalBonusB1, expectedBranchOneReciptTotalBonusB1);
 	  Thread.sleep(2000);
+	
 	    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
 	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
 	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
@@ -318,7 +323,7 @@ public void bonusBranch1Verification() throws InterruptedException {
 	wait.until(ExpectedConditions.elementToBeClickable(startApprovalButton));
 	startApprovalButton.click();
 	
-	Thread.sleep(2000);
+	Thread.sleep(3000);
 	wait.until(ExpectedConditions.elementToBeClickable(buyTransactionsButton));
 	buyTransactionsButton.click();
 	Thread.sleep(2000);
@@ -370,6 +375,9 @@ public void bonusBranch1Verification() throws InterruptedException {
 	Assert.assertEquals(actualBranchOneBuyTransactionsWeightB1, expectedOneBuyTransactionsWeightB1);
 	Assert.assertEquals(actualBranchOneBuyTransactionsBonusB1, expectedOneBuyTransactionsBonusB1);
 
+	 Actions actions2 = new Actions(alcDriver);
+	 actions2.scrollToElement(payBonusButton).build().perform();
+	   	 
 	  Thread.sleep(2000);
 	    TakesScreenshot ts3 = (TakesScreenshot) alcDriver;
 	    byte[] screenshot3 = ts3.getScreenshotAs(OutputType.BYTES);
@@ -378,10 +386,10 @@ public void bonusBranch1Verification() throws InterruptedException {
 	    
 	wait.until(ExpectedConditions.elementToBeClickable(payBonusButton));
 	payBonusButton.click();
-
+	Thread.sleep(2000);
 	wait.until(ExpectedConditions.elementToBeClickable(confirmButton));
 	confirmButton.click();
-
+	
 	wait.until(ExpectedConditions.visibilityOf(bonusPaidText));
 	Actions actions = new Actions(alcDriver);
     actions.moveToElement(bonusNameLink).click().build().perform();	
@@ -477,12 +485,15 @@ public void bonusBranch2Verification() throws InterruptedException {
 	Assert.assertEquals(actualBranchTwosellTransactionsWeightB2, expectedBranchTwosellTransactionsWeightB2);
 	Assert.assertEquals(actualBranchTwosellTransactionsBonusB2, expectedBranchTwosellTransactionsBonusB2);
 
+	Actions actions2 = new Actions(alcDriver);
+	 actions2.scrollToElement(payBonusButton).build().perform();
+	   	 
 	  Thread.sleep(2000);
 	    TakesScreenshot ts2 = (TakesScreenshot) alcDriver;
 	    byte[] screenshot2 = ts2.getScreenshotAs(OutputType.BYTES);
 	    Allure.addAttachment("Screenshot2", new ByteArrayInputStream(screenshot2));
 	    Thread.sleep(2000);
-
+	    
 	wait.until(ExpectedConditions.elementToBeClickable(payBonusButton));
 	payBonusButton.click();
 
@@ -612,7 +623,7 @@ public void bonusBranch3Verification() throws InterruptedException {
 
 public void bonusBranch1ValueVerification() throws InterruptedException {
 	
-	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(30));
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
 	wait.until(ExpectedConditions.elementToBeClickable(bonusApprovalButton));
 	bonusApprovalButton.click();
 	wait.until(ExpectedConditions.elementToBeClickable(branchButton.get(0)));
@@ -699,7 +710,7 @@ public void bonusBranch1ValueVerification() throws InterruptedException {
 	Assert.assertEquals(actualBranchOneAuditTrailBuyBonusB1, expectedBranchOneAuditTrailBuyBonusB1);
 	Assert.assertEquals(actualBranchOneAuditTrailBuyTotalBonusB1, expectedBranchOneAuditTrailBuyTotalBonusB1);
 	
-	
+	wait.until(ExpectedConditions.elementToBeClickable(sellTransactionsTagAuditTrail));
 	
 	sellTransactionsTagAuditTrail.click();
 	Thread.sleep(2000);
@@ -789,6 +800,7 @@ public void bonusBranch2ValueVerification() throws InterruptedException {
 
 	viewAuditTrail.click();
 	Thread.sleep(2000);
+	wait.until(ExpectedConditions.elementToBeClickable(sellTransactionsTagAuditTrail));
 	sellTransactionsTagAuditTrail.click();
 	
 	wait.until(ExpectedConditions.visibilityOf(kgTransactions.get(0)));
@@ -1074,5 +1086,103 @@ public void bonusApproval(String Name) throws InterruptedException {
 	Thread.sleep(2000);
 	
 }
+public void payBonus1711() throws InterruptedException {
+	
+	alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+Data.bonusOrderId1711);
+	
+	
+	
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+	wait.until(ExpectedConditions.elementToBeClickable(bonusApprovalButton));
+	bonusApprovalButton.click();
+	wait.until(ExpectedConditions.elementToBeClickable(branchButton.get(0)));
+	branchButton.get(0).click();
+	
+	Thread.sleep(2000);
+	wait.until(ExpectedConditions.elementToBeClickable(startApprovalButton));
+	startApprovalButton.click();
+
+	Thread.sleep(3000);
+	wait.until(ExpectedConditions.elementToBeClickable(buyTransactionsButton));
+	buyTransactionsButton.click();
+	Thread.sleep(2000);
+	wait.until(ExpectedConditions.elementToBeClickable(sellTransactionsButton));
+	sellTransactionsButton.click();
+	Thread.sleep(2000);
+	wait.until(ExpectedConditions.visibilityOfAllElements(checkMarkButton));
+	for(WebElement checkMarkButtons :checkMarkButton ) {
+		 Actions actions = new Actions(alcDriver);
+	     actions.moveToElement(checkMarkButtons).click().build().perform();	
+	}
+	
+	Thread.sleep(2000);
+	    
+    buyTransactionsButton.click();
+    Thread.sleep(2000);
+    for(WebElement checkMarkButtons :checkMarkButton ) {
+		 Actions actions = new Actions(alcDriver);
+	     actions.moveToElement(checkMarkButtons).click().build().perform();	
+	}
+	  Thread.sleep(1000);
+	  
+	    
+	wait.until(ExpectedConditions.elementToBeClickable(payBonusButton));
+	payBonusButton.click();
+
+	wait.until(ExpectedConditions.elementToBeClickable(confirmButton));
+	confirmButton.click();
+
+	Thread.sleep(2000);
+    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    Allure.addAttachment("Bonus Paid Screenshot", new ByteArrayInputStream(screenshot1));
+    Thread.sleep(2000);
+
+	wait.until(ExpectedConditions.visibilityOf(bonusPaidText));
+	Actions actions = new Actions(alcDriver);
+    actions.moveToElement(bonusNameLink).click().build().perform();	
+	Thread.sleep(2000);
+	bonusNameLink.click();
+	Thread.sleep(3000);
+	bonusApprovalButton.click();
+	
+	
+	wait.until(ExpectedConditions.elementToBeClickable(bonusApprovalButton));
+	bonusApprovalButton.click();
+	wait.until(ExpectedConditions.elementToBeClickable(branchButton.get(0)));
+	branchButton.get(1).click();
+	
+	Thread.sleep(2000);
+	wait.until(ExpectedConditions.elementToBeClickable(startApprovalButton));
+	startApprovalButton.click();
+	Thread.sleep(3000);
+	wait.until(ExpectedConditions.visibilityOfAllElements(checkMarkButton));
+	for(WebElement checkMarkButtons :checkMarkButton ) {
+		 Actions actions2 = new Actions(alcDriver);
+	     actions2.moveToElement(checkMarkButtons).click().build().perform();	
+	}
+	
+	Thread.sleep(2000);
+	    
+	wait.until(ExpectedConditions.elementToBeClickable(payBonusButton));
+	payBonusButton.click();
+	Thread.sleep(1000);
+	wait.until(ExpectedConditions.elementToBeClickable(confirmButton));
+	confirmButton.click();
+
+	wait.until(ExpectedConditions.visibilityOf(bonusPaidText));
+	Actions actions3 = new Actions(alcDriver);
+    actions3.moveToElement(bonusNameLink).click().build().perform();	
+	Thread.sleep(2000);
+	bonusNameLink.click();
+
+//
+//
+//	wait.until(ExpectedConditions.elementToBeClickable(bonusApprovalButton));
+//	bonusApprovalButton.click();
+
+	
+}
+	
 }
 

@@ -130,7 +130,7 @@ public WebElement verify6;
 //functions:-
 
 public void clickSignUpButton() {
-	WebDriverWait wait = new WebDriverWait(pbDriver,Duration.ofSeconds(30));
+	WebDriverWait wait = new WebDriverWait(pbDriver,Duration.ofSeconds(50));
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
 	permission.click();
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(signUpButton)));

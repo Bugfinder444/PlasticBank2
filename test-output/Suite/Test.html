@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>39/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>46/6/9</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Aug 30 12:01:24 IST 2023</td>
+<td>Started on:</td><td>Sat Oct 07 20:14:38 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>4541 seconds (4541372 ms)</td>
+<tr><td>Total time:</td><td>6235 seconds (6235448 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,321 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='smoke_Suite.ALC_4363.setup()'><b>setup</b><br>Test class: smoke_Suite.ALC_4363</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1778804717", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1778804717'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>14</td>
+<td>smoke_Suite.ALC_4363@1130520d</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4359.setup()'><b>setup</b><br>Test class: smoke_Suite.ALC_4359</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1994424411", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1994424411'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>17</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.setup()'><b>setup</b><br>Test class: smoke_Suite.ALC_4361</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace173098492", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace173098492'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>6</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='smoke_Suite.ALC_4359.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4359</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.teardown()'><b>teardown</b><br>Test class: smoke_Suite.ALC_4361</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4359.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4359</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4359.teardown()'><b>teardown</b><br>Test class: smoke_Suite.ALC_4359</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4363.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4363</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4363@1130520d</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4363.teardown()'><b>teardown</b><br>Test class: smoke_Suite.ALC_4363</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4363@1130520d</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4361</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4359.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4359</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4361</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4361</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4361</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4359.afterMethod()'><b>afterMethod</b><br>Test class: smoke_Suite.ALC_4359</td>
+<td></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-failed'>
 <tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,40 +391,44 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='smoke_Suite.ALC_4357.BonusTransferedCheck()'><b>BonusTransferedCheck</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Check for transferred label in All the Branch exchange history.</td>
-<td><div><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;button _ngcontent-fdu-c162=&quot;&quot; type=&quot;button&quot; ngbpaneltoggle=&quot;&quot; class=&quot;btn p-0 container-fluid text-left pl-0 collapsed&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;panel_1&quot;&gt;...&lt;/button&gt; is not clickable at point (551, 502). Other element would receive the click: &lt;div _ngcontent-fdu-c162=&quot;&quot; class=&quot;row m-0 p-2&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=116.0.5845.111)
-Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
+<td title='smoke_Suite.ALC_4360.disablebonusAndVerifyExchangeHistory()'><b>disablebonusAndVerifyExchangeHistory</b><br>Test class: smoke_Suite.ALC_4360<br>Test method: Bonus is disabled and associated bonus is dissapering in Branch1 and Branch2 Exchange History</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//a[text()=&apos;Exchange History&apos;]&quot;}
+  (Session info: chrome=117.0.5938.149)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [0b6b6d8420f23dc10bda0f5db7aa2b33, clickElement {id=63D0A6186B9F3F70F5B18D909395992B_element_2077}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.111, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51675}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51675/devtoo..., se:cdpVersion: 116.0.5845.111, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (0b6b6d8420f23dc10bda0f5db7aa2b33)] -&gt; xpath: //div[@class=&apos;card-header&apos;]/div/button]
-Session ID: 0b6b6d8420f23dc10bda0f5db7aa2b33
+Command: [757c5cca3f9562c153b644c332f17c3e, findElement {using=xpath, value=//a[text()=&apos;Exchange History&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 117.0.5938.149 (e3344ddefa1..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65480}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65480/devtoo..., se:cdpVersion: 117.0.5938.149, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 757c5cca3f9562c153b644c332f17c3e
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
 	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:224)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-	at alchemy_Pages.Branches.verifyBonusTransfered(Branches.java:522)
-	at smoke_Suite.ALC_4357.BonusTransferedCheck(ALC_4357.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy52.click(Unknown Source)
+	at alchemy_Pages.Branches.disablebonus(Branches.java:760)
+	at smoke_Suite.ALC_4360.disablebonusAndVerifyExchangeHistory(ALC_4360.java:65)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1866297497", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1866297497'><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;button _ngcontent-fdu-c162=&quot;&quot; type=&quot;button&quot; ngbpaneltoggle=&quot;&quot; class=&quot;btn p-0 container-fluid text-left pl-0 collapsed&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;panel_1&quot;&gt;...&lt;/button&gt; is not clickable at point (551, 502). Other element would receive the click: &lt;div _ngcontent-fdu-c162=&quot;&quot; class=&quot;row m-0 p-2&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=116.0.5845.111)
-Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1515146605", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1515146605'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//a[text()=&apos;Exchange History&apos;]&quot;}
+  (Session info: chrome=117.0.5938.149)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [0b6b6d8420f23dc10bda0f5db7aa2b33, clickElement {id=63D0A6186B9F3F70F5B18D909395992B_element_2077}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.111, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51675}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51675/devtoo..., se:cdpVersion: 116.0.5845.111, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (0b6b6d8420f23dc10bda0f5db7aa2b33)] -&gt; xpath: //div[@class=&apos;card-header&apos;]/div/button]
-Session ID: 0b6b6d8420f23dc10bda0f5db7aa2b33
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+Command: [757c5cca3f9562c153b644c332f17c3e, findElement {using=xpath, value=//a[text()=&apos;Exchange History&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 117.0.5938.149 (e3344ddefa1..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65480}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65480/devtoo..., se:cdpVersion: 117.0.5938.149, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 757c5cca3f9562c153b644c332f17c3e
+	at jdk.internal.reflect.GeneratedConstructorAccessor19.newInstance(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
@@ -119,11 +438,16 @@ Session ID: 0b6b6d8420f23dc10bda0f5db7aa2b33
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:224)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-	at alchemy_Pages.Branches.verifyBonusTransfered(Branches.java:522)
-	at smoke_Suite.ALC_4357.BonusTransferedCheck(ALC_4357.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy52.click(Unknown Source)
+	at alchemy_Pages.Branches.disablebonus(Branches.java:760)
+	at smoke_Suite.ALC_4360.disablebonusAndVerifyExchangeHistory(ALC_4360.java:65)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -153,8 +477,499 @@ Session ID: 0b6b6d8420f23dc10bda0f5db7aa2b33
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>306</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>60</td>
+<td>smoke_Suite.ALC_4360@1b266842</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4360.verifyBuySellRemovedBonusInBonusOrderSummary()'><b>verifyBuySellRemovedBonusInBonusOrderSummary</b><br>Test class: smoke_Suite.ALC_4360<br>Test method: verify Buy Sell Transaction removed from BonusOrder Approval Screen |Verify after disabling, Bonus progress value in the Bonus order Summary screen is showing zero as value with 0% fulfilled status </td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[text()=&apos;Bonus Approval &apos;]&quot;}
+  (Session info: chrome=117.0.5938.149)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [757c5cca3f9562c153b644c332f17c3e, findElement {using=xpath, value=//div[text()=&apos;Bonus Approval &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 117.0.5938.149 (e3344ddefa1..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65480}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65480/devtoo..., se:cdpVersion: 117.0.5938.149, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 757c5cca3f9562c153b644c332f17c3e
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy52.click(Unknown Source)
+	at alchemy_Pages.Orders.verifyBonusOrderSummaryAndApprovalSteps(Orders.java:599)
+	at smoke_Suite.ALC_4360.verifyBuySellRemovedBonusInBonusOrderSummary(ALC_4360.java:71)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1118442425", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1118442425'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[text()=&apos;Bonus Approval &apos;]&quot;}
+  (Session info: chrome=117.0.5938.149)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [757c5cca3f9562c153b644c332f17c3e, findElement {using=xpath, value=//div[text()=&apos;Bonus Approval &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 117.0.5938.149 (e3344ddefa1..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65480}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65480/devtoo..., se:cdpVersion: 117.0.5938.149, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 757c5cca3f9562c153b644c332f17c3e
+	at jdk.internal.reflect.GeneratedConstructorAccessor19.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy52.click(Unknown Source)
+	at alchemy_Pages.Orders.verifyBonusOrderSummaryAndApprovalSteps(Orders.java:599)
+	at smoke_Suite.ALC_4360.verifyBuySellRemovedBonusInBonusOrderSummary(ALC_4360.java:71)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>60</td>
+<td>smoke_Suite.ALC_4360@1b266842</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4360.verifyBuySellTransactionInBonusOrder()'><b>verifyBuySellTransactionInBonusOrder</b><br>Test class: smoke_Suite.ALC_4360<br>Test method: Bonus BUY AND SELL transactions are appearing in the Bonus order approval screen</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[text()=&apos;Exchange History &apos;]&quot;}
+  (Session info: chrome=117.0.5938.149)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [757c5cca3f9562c153b644c332f17c3e, findElement {using=xpath, value=//div[text()=&apos;Exchange History &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 117.0.5938.149 (e3344ddefa1..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65480}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65480/devtoo..., se:cdpVersion: 117.0.5938.149, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 757c5cca3f9562c153b644c332f17c3e
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy52.click(Unknown Source)
+	at alchemy_Pages.Orders.buySellPresent(Orders.java:507)
+	at smoke_Suite.ALC_4360.verifyBuySellTransactionInBonusOrder(ALC_4360.java:59)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2146312410", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2146312410'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[text()=&apos;Exchange History &apos;]&quot;}
+  (Session info: chrome=117.0.5938.149)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [757c5cca3f9562c153b644c332f17c3e, findElement {using=xpath, value=//div[text()=&apos;Exchange History &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 117.0.5938.149 (e3344ddefa1..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65480}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65480/devtoo..., se:cdpVersion: 117.0.5938.149, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 757c5cca3f9562c153b644c332f17c3e
+	at jdk.internal.reflect.GeneratedConstructorAccessor19.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy52.click(Unknown Source)
+	at alchemy_Pages.Orders.buySellPresent(Orders.java:507)
+	at smoke_Suite.ALC_4360.verifyBuySellTransactionInBonusOrder(ALC_4360.java:59)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>60</td>
+<td>smoke_Suite.ALC_4360@1b266842</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4360.verifyKgRecycledAndDelayedBonus()'><b>verifyKgRecycledAndDelayedBonus</b><br>Test class: smoke_Suite.ALC_4360<br>Test method: verify Kg recycled and Delayed Bonus in Branch1 and Branch2 </td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[text()=&apos;KG Recycled&apos;]/following-sibling::div/div/following-sibling::div/div&quot;}
+  (Session info: chrome=117.0.5938.149)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [757c5cca3f9562c153b644c332f17c3e, findElement {using=xpath, value=//div[text()=&apos;KG Recycled&apos;]/following-sibling::div/div/following-sibling::div/div}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 117.0.5938.149 (e3344ddefa1..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65480}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65480/devtoo..., se:cdpVersion: 117.0.5938.149, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 757c5cca3f9562c153b644c332f17c3e
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy52.isDisplayed(Unknown Source)
+	at alchemy_Pages.Branches.verifykgrecycled(Branches.java:684)
+	at smoke_Suite.ALC_4360.verifyKgRecycledAndDelayedBonus(ALC_4360.java:33)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1728211173", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1728211173'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[text()=&apos;KG Recycled&apos;]/following-sibling::div/div/following-sibling::div/div&quot;}
+  (Session info: chrome=117.0.5938.149)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [757c5cca3f9562c153b644c332f17c3e, findElement {using=xpath, value=//div[text()=&apos;KG Recycled&apos;]/following-sibling::div/div/following-sibling::div/div}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.149, chrome: {chromedriverVersion: 117.0.5938.149 (e3344ddefa1..., userDataDir: C:\Users\Fleek\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:65480}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:65480/devtoo..., se:cdpVersion: 117.0.5938.149, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 757c5cca3f9562c153b644c332f17c3e
+	at jdk.internal.reflect.GeneratedConstructorAccessor19.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy52.isDisplayed(Unknown Source)
+	at alchemy_Pages.Branches.verifykgrecycled(Branches.java:684)
+	at smoke_Suite.ALC_4360.verifyKgRecycledAndDelayedBonus(ALC_4360.java:33)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>65</td>
+<td>smoke_Suite.ALC_4360@1b266842</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4360.delayedBonusRemovedInApp()'><b>delayedBonusRemovedInApp</b><br>Test class: smoke_Suite.ALC_4360<br>Test method: Delayed Bonus Is removed in App for Member and Branch1 and Branch2 profile screen</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for condition (visibility of Located by By.chained({AppiumBy.androidUIAutomator: new UiSelector().text(&quot;menu&quot;)})) to be refreshed (tried for 10 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at plastic_Bank_Pages.PB_Transaction.verifyMemberBonusNotPresent(PB_Transaction.java:1333)
+	at smoke_Suite.ALC_4360.delayedBonusRemovedInApp(ALC_4360.java:79)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: By.chained({AppiumBy.androidUIAutomator: new UiSelector().text(&quot;menu&quot;)})
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:125)
+	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.call(InterceptorOfASingleElement.java:54)
+	at io.appium.java_client.proxy.Interceptor.intercept(Interceptor.java:75)
+	at org.openqa.selenium.remote.RemoteWebElement$ByteBuddy$LMCm2r9n.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:37)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
+	at org.openqa.selenium.support.ui.ExpectedConditions$25.apply(ExpectedConditions.java:717)
+	at org.openqa.selenium.support.ui.ExpectedConditions$25.apply(ExpectedConditions.java:713)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	... 30 more
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@653bd850 (tried for 1 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:262)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.waitFor(AppiumElementLocator.java:98)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:118)
+	... 40 more
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.chained({AppiumBy.androidUIAutomator: new UiSelector().text(&quot;menu&quot;)})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: driver.version: RemoteWebDriver
+	at io.appium.java_client.pagefactory.bys.builder.ByChained.findElement(ByChained.java:77)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at io.appium.java_client.pagefactory.bys.ContentMappedBy.findElement(ContentMappedBy.java:50)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.lambda$findElement$0(AppiumElementLocator.java:119)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:171)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:164)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	... 42 more
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1868933966", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1868933966'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for condition (visibility of Located by By.chained({AppiumBy.androidUIAutomator: new UiSelector().text(&quot;menu&quot;)})) to be refreshed (tried for 10 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at plastic_Bank_Pages.PB_Transaction.verifyMemberBonusNotPresent(PB_Transaction.java:1333)
+	at smoke_Suite.ALC_4360.delayedBonusRemovedInApp(ALC_4360.java:79)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: By.chained({AppiumBy.androidUIAutomator: new UiSelector().text(&quot;menu&quot;)})
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:125)
+	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.call(InterceptorOfASingleElement.java:54)
+	at io.appium.java_client.proxy.Interceptor.intercept(Interceptor.java:75)
+	at org.openqa.selenium.remote.RemoteWebElement$ByteBuddy$LMCm2r9n.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:37)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
+	at org.openqa.selenium.support.ui.ExpectedConditions$25.apply(ExpectedConditions.java:717)
+	at org.openqa.selenium.support.ui.ExpectedConditions$25.apply(ExpectedConditions.java:713)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	... 30 more
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@653bd850 (tried for 1 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:262)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.waitFor(AppiumElementLocator.java:98)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:118)
+	... 40 more
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.chained({AppiumBy.androidUIAutomator: new UiSelector().text(&quot;menu&quot;)})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: driver.version: RemoteWebDriver
+	at io.appium.java_client.pagefactory.bys.builder.ByChained.findElement(ByChained.java:77)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at io.appium.java_client.pagefactory.bys.ContentMappedBy.findElement(ContentMappedBy.java:50)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.lambda$findElement$0(AppiumElementLocator.java:119)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:171)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:164)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	... 42 more
+</pre></div></td>
+<td>40</td>
+<td>smoke_Suite.ALC_4360@1b266842</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4360.verifyDelayedBonusInApp()'><b>verifyDelayedBonusInApp</b><br>Test class: smoke_Suite.ALC_4360<br>Test method: verify delayed bonus is appearing in APP for member and branch 1 and branch 2 based on the transaction</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: By.chained({AppiumBy.androidUIAutomator: new UiSelector().textContains(&quot;lock-bonus&quot;)})
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:125)
+	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.call(InterceptorOfASingleElement.java:54)
+	at io.appium.java_client.proxy.Interceptor.intercept(Interceptor.java:75)
+	at org.openqa.selenium.remote.RemoteWebElement$ByteBuddy$n3IcIuIW.isDisplayed(Unknown Source)
+	at plastic_Bank_Pages.PB_Transaction.verifyMemberBonusPresent(PB_Transaction.java:1235)
+	at smoke_Suite.ALC_4360.verifyDelayedBonusInApp(ALC_4360.java:42)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@7ce100f8 (tried for 1 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:262)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.waitFor(AppiumElementLocator.java:98)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:118)
+	... 33 more
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.chained({AppiumBy.androidUIAutomator: new UiSelector().textContains(&quot;lock-bonus&quot;)})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: driver.version: RemoteWebDriver
+	at io.appium.java_client.pagefactory.bys.builder.ByChained.findElement(ByChained.java:77)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at io.appium.java_client.pagefactory.bys.ContentMappedBy.findElement(ContentMappedBy.java:50)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.lambda$findElement$0(AppiumElementLocator.java:119)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:171)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:164)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	... 35 more
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1508179880", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1508179880'><pre>org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: By.chained({AppiumBy.androidUIAutomator: new UiSelector().textContains(&quot;lock-bonus&quot;)})
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:125)
+	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.call(InterceptorOfASingleElement.java:54)
+	at io.appium.java_client.proxy.Interceptor.intercept(Interceptor.java:75)
+	at org.openqa.selenium.remote.RemoteWebElement$ByteBuddy$n3IcIuIW.isDisplayed(Unknown Source)
+	at plastic_Bank_Pages.PB_Transaction.verifyMemberBonusPresent(PB_Transaction.java:1235)
+	at smoke_Suite.ALC_4360.verifyDelayedBonusInApp(ALC_4360.java:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@7ce100f8 (tried for 1 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:262)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.waitFor(AppiumElementLocator.java:98)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:118)
+	... 33 more
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.chained({AppiumBy.androidUIAutomator: new UiSelector().textContains(&quot;lock-bonus&quot;)})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: driver.version: RemoteWebDriver
+	at io.appium.java_client.pagefactory.bys.builder.ByChained.findElement(ByChained.java:77)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at io.appium.java_client.pagefactory.bys.ContentMappedBy.findElement(ContentMappedBy.java:50)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.lambda$findElement$0(AppiumElementLocator.java:119)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:171)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:164)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
+	... 35 more
+</pre></div></td>
+<td>14</td>
+<td>smoke_Suite.ALC_4360@1b266842</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -165,200 +980,949 @@ Session ID: 0b6b6d8420f23dc10bda0f5db7aa2b33
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='smoke_Suite.ALC_4357.Verify_Bonus_Branch1()'><b>Verify_Bonus_Branch1</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Assert Branch Tags Values in Summary in Branch1. | Check approve transaction from Branch 1. | Toggle all required, Verify Values and validate all gets approved.</td>
+<td title='smoke_Suite.ALC_4357.checkBonusTransferedInApp()'><b>checkBonusTransferedInApp</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Check bonus amount is accurate in Plastic Bank App for member and Branch 1,2,3 </td>
 <td></td>
-<td>145</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>120</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4350.memberSuspendVerify()'><b>memberSuspendVerify</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: User should not be able to login because account was suspended</td>
+<td title='smoke_Suite.ALC_4357.Plastic_Chain_Before_Approval()'><b>Plastic_Chain_Before_Approval</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Check for plastic chain in the Bonus Order.Verify if it is all in Orange Color as they are pending. Also check Chain is in correct Order</td>
 <td></td>
-<td>18</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
+<td>100</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4350.EditMemberDetails()'><b>EditMemberDetails</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: - Data displayed in user will turn into a field that can be edited | -Changes are saved and can be seen in user details</td>
+<td title='smoke_Suite.ALC_4360.makeTransaction()'><b>makeTransaction</b><br>Test class: smoke_Suite.ALC_4360<br>Test method: Transaction between member>branch1>branch2>processor with Bonus</td>
 <td></td>
-<td>35</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
+<td>92</td>
+<td>smoke_Suite.ALC_4360@1b266842</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4350.createBranchAndMember()'><b>createBranchAndMember</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: -New member can be successfully created in app | -New member account is searchable in Alchemy under the 'Members' section</td>
+<td title='smoke_Suite.ALC_4351.verifySuspendedAccount()'><b>verifySuspendedAccount</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: User should not be able to login because account was suspended</td>
 <td></td>
-<td>101</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
+<td>38</td>
+<td>smoke_Suite.ALC_4351@495ee280</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4357.Branch1_Branch3_Transaction()'><b>Branch1_Branch3_Transaction</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Do Transaction between Branch 1 and Branch 3 and Verify Bonus and Kg Transferred</td>
+<td title='smoke_Suite.ALC_380.create_Store()'><b>create_Store</b><br>Test class: smoke_Suite.ALC_380<br>Test method: Create 2 members one for cash out and second for store also Create a Store</td>
 <td></td>
-<td>70</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>86</td>
+<td>smoke_Suite.ALC_380@895e367</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4350.suspendMemberALC()'><b>suspendMemberALC</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: -A pop up confirmation will appear and ask user if they are sure to suspend the account | - Once confirming, user should have suspend checkbox checked</td>
+<td title='smoke_Suite.ALC_4357.member_Branch1_Transaction_KG_Bonus_App_Assertion()'><b>member_Branch1_Transaction_KG_Bonus_App_Assertion</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Verify that the correct KG and bonus values are showing in before transaction completion screen in mobile app | verify  the correct KG, bonus and amount value in Confirm Exchange Page | Verify in Branch 1 that there is no bonus recorded under Exchange </td>
 <td></td>
-<td>32</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
+<td>171</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4350.loginBranchMemberPB()'><b>loginBranchMemberPB</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: User should see the updated data</td>
+<td></td>
+<td>20</td>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_380.cashOutTest()'><b>cashOutTest</b><br>Test class: smoke_Suite.ALC_380<br>Test method: Perform CashOut Transaction with a Member already having enough Cash</td>
+<td></td>
+<td>62</td>
+<td>smoke_Suite.ALC_380@895e367</td></tr>
 <tr>
 <td title='smoke_Suite.ALC_4357.VerifyBonusOrderBranchValueAssertions()'><b>VerifyBonusOrderBranchValueAssertions</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Verify in Bonus Approval and Assert 1.'Total Bonus'/'Needing Approval' | 2. Assert 'Audit Trail' under which it will Assert all the values in 'Buy/Sell Transactions' of all the Branches and Processor</td>
 <td></td>
 <td>70</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
 <tr>
 <td title='smoke_Suite.ALC_4357.Branch3_Processor_Transaction()'><b>Branch3_Processor_Transaction</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Do Transaction between Branch 3 and Processor and Verify Bonus and Kg Transferred</td>
 <td></td>
-<td>77</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>78</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4350.VerifyMemberAlchmey()'><b>VerifyMemberAlchmey</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: New member account is searchable in Alchemy under the 'Members' section</td>
+<td title='smoke_Suite.ALC_4351.suspendBranch()'><b>suspendBranch</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: -A pop up confirmation will appear and ask user if they are sure to suspend the account | - Once confirming, user should have suspend checkbox checked</td>
 <td></td>
-<td>87</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
+<td>211</td>
+<td>smoke_Suite.ALC_4351@495ee280</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4357.VerifyBonusOrderRecieptBranchAssertions()'><b>VerifyBonusOrderRecieptBranchAssertions</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: In Bonus Approval Check for receipts | qty bonus values from Audit trail | Verify Total Weight/ Bonus in Bonus Approval Page</td>
+<td title='smoke_Suite.ALC_4357.Branch1_Branch3_Transaction()'><b>Branch1_Branch3_Transaction</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Do Transaction between Branch 1 and Branch 3 and Verify Bonus and Kg Transferred</td>
 <td></td>
-<td>205</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>73</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4357.Plastic_Chain_Before_Approval()'><b>Plastic_Chain_Before_Approval</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Check for plastic chain in the Bonus Order.Verify if it is all in Orange Color as they are pending. Also check Chain is in correct Order</td>
+<td title='smoke_Suite.ALC_4351.verifyEditInApp()'><b>verifyEditInApp</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: User should see the updated data</td>
 <td></td>
-<td>108</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>40</td>
+<td>smoke_Suite.ALC_4351@495ee280</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4354.seacrchAndEditProcessorInAlchmey()'><b>seacrchAndEditProcessorInAlchmey</b><br>Test class: smoke_Suite.ALC_4354<br>Test method: New processor account is searchable in Alchemy under the 'Processor' section | -Changes are saved and can be seen in user details</td>
+<td title='smoke_Suite.ALC_4350.createBranchAndMember()'><b>createBranchAndMember</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: -New member can be successfully created in app | -New member account is searchable in Alchemy under the 'Members' section</td>
 <td></td>
-<td>142</td>
-<td>smoke_Suite.ALC_4354@189cbd7c</td></tr>
+<td>103</td>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4350.loginAlchmey()'><b>loginAlchmey</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: Login on alchemy with admin user</td>
+<td title='smoke_Suite.ALC_4354.createProcessor()'><b>createProcessor</b><br>Test class: smoke_Suite.ALC_4354<br>Test method: New Processor account should be successfully created</td>
 <td></td>
-<td>8</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
+<td>66</td>
+<td>smoke_Suite.ALC_4354@64e7619d</td></tr>
 <tr>
 <td title='smoke_Suite.ALC_4357.member_Branch1_Transaction_KG_Bonus_Alchmey_Assertion()'><b>member_Branch1_Transaction_KG_Bonus_Alchmey_Assertion</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: 1.Check Branch Details if KG Recycled, Members Registered and Active members count are correct. | 2. In branch 1 exchange history, check, Member photo, material name, material amount, money amount , total and bonus amount and associated bonus name. | 3.Check in Bonus search Area, KG promised KG delivered, and pending KG. | 4.Check HDPE and PET KG count in Bonus Summary. Also check bonus progress values. | 5. Check if the start bonus is there for the first branch in  Bonus Approval and Assert Total Bonus/Needing Approval</td>
 <td></td>
-<td>299</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>285</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4366.tokenTransferAndVerifyInOrdersData()'><b>tokenTransferAndVerifyInOrdersData</b><br>Test class: smoke_Suite.ALC_4366<br>Test method: Screen will display member's details page | Screen will display a prompt page to fill out to transfer the tokens | Transferring of token was complete Current member token will be added and displayed in the App Current member token will be added and displayed in the Alchemy under 'Tokens in wallet' column</td>
+<td></td>
+<td>340</td>
+<td>smoke_Suite.ALC_4366@748741cb</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4357.Verify_Bonus_Branch2()'><b>Verify_Bonus_Branch2</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Assert Branch Tags Values in Summary in Branch2 | .Check approve transaction from Branch 2. | Toggle all required, Verify Values and validate all gets approved.</td>
+<td></td>
+<td>190</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4351.branchVerifyAndEdit()'><b>branchVerifyAndEdit</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: - Data displayed in user will turn into a field that can be edited | -Changes are saved and can be seen in user details</td>
+<td></td>
+<td>159</td>
+<td>smoke_Suite.ALC_4351@495ee280</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4350.EditMemberDetails()'><b>EditMemberDetails</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: - Data displayed in user will turn into a field that can be edited | -Changes are saved and can be seen in user details</td>
+<td></td>
+<td>35</td>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4350.suspendMemberALC()'><b>suspendMemberALC</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: -A pop up confirmation will appear and ask user if they are sure to suspend the account | - Once confirming, user should have suspend checkbox checked</td>
+<td></td>
+<td>31</td>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_380.editDetailsInAlchmey()'><b>editDetailsInAlchmey</b><br>Test class: smoke_Suite.ALC_380<br>Test method: Login on alchemy and edit details like | Turn On tokenActiveToggle Check canSeeTokenInWallet | Set level To PlasticBankOperated</td>
+<td></td>
+<td>85</td>
+<td>smoke_Suite.ALC_380@895e367</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4357.Branch1_Branch2_Transaction_App_Assertions()'><b>Branch1_Branch2_Transaction_App_Assertions</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Do Transaction between Branch 1 and Branch 2 and Verify Bonus and Kg Transferred</td>
+<td></td>
+<td>70</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4357.BonusTransferedCheck()'><b>BonusTransferedCheck</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Check for transferred label in All the Branch exchange history.</td>
+<td></td>
+<td>530</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4351.openRegisterdBranchInApp()'><b>openRegisterdBranchInApp</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: New branch account is searchable in Alchemy under the 'Members' section</td>
+<td></td>
+<td>20</td>
+<td>smoke_Suite.ALC_4351@495ee280</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_380.verifyInAlchemy()'><b>verifyInAlchemy</b><br>Test class: smoke_Suite.ALC_380<br>Test method: Verify the Tokens deducted in Alchemy</td>
+<td></td>
+<td>25</td>
+<td>smoke_Suite.ALC_380@895e367</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4365.createNewBonusAndSuspendedBonus()'><b>createNewBonusAndSuspendedBonus</b><br>Test class: smoke_Suite.ALC_4365<br>Test method: Bonus order should be  stopped</td>
+<td></td>
+<td>453</td>
+<td>smoke_Suite.ALC_4365@2e32ccc5</td></tr>
 <tr>
 <td title='smoke_Suite.ALC_4357.Verify_Bonus_Branch3()'><b>Verify_Bonus_Branch3</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Assert Branch Tags Values in Summary in Branch3. | Check approve transaction from Branch 3. | Toggle all required, Verify Vallues and validate all gets approved.</td>
 <td></td>
-<td>120</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>189</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4350.memberSuspendVerify()'><b>memberSuspendVerify</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: User should not be able to login because account was suspended</td>
+<td></td>
+<td>17</td>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4365.verifyTransactionStoppedBonus()'><b>verifyTransactionStoppedBonus</b><br>Test class: smoke_Suite.ALC_4365<br>Test method: New member transaction with the branch in the stopped bonus order DOES NOT generate bonus once the Bonus order is stopped</td>
+<td></td>
+<td>66</td>
+<td>smoke_Suite.ALC_4365@2e32ccc5</td></tr>
 <tr>
 <td title='smoke_Suite.ALC_4350.branchSuspendMemberVerification()'><b>branchSuspendMemberVerification</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: Suspended member should not appear in the search</td>
 <td></td>
 <td>30</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4366.verifyTransferTokenOnApp()'><b>verifyTransferTokenOnApp</b><br>Test class: smoke_Suite.ALC_4366<br>Test method: Transaction was recorded in transfers tab with all the correct data</td>
-<td></td>
-<td>41</td>
-<td>smoke_Suite.ALC_4366@5f20155b</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4354.createProcessor()'><b>createProcessor</b><br>Test class: smoke_Suite.ALC_4354<br>Test method: New Processor account should be successfully created</td>
-<td></td>
-<td>71</td>
-<td>smoke_Suite.ALC_4354@189cbd7c</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4351.verifySuspendedAccount()'><b>verifySuspendedAccount</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: User should not be able to login because account was suspended</td>
-<td></td>
-<td>39</td>
-<td>smoke_Suite.ALC_4351@7bf3a5d8</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4352.verifyNewStore()'><b>verifyNewStore</b><br>Test class: smoke_Suite.ALC_4352<br>Test method: New store account is searchable in Alchemy under the 'Store' section | - Data displayed in user will turn into a field that can be edited | -Changes are saved and can be seen in user details</td>
-<td></td>
-<td>40</td>
-<td>smoke_Suite.ALC_4352@5e21e98f</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4351.suspendBranch()'><b>suspendBranch</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: -A pop up confirmation will appear and ask user if they are sure to suspend the account | - Once confirming, user should have suspend checkbox checked</td>
-<td></td>
-<td>159</td>
-<td>smoke_Suite.ALC_4351@7bf3a5d8</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4357.checkMemberBonusTransfered()'><b>checkMemberBonusTransfered</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Check member bonus amount is accurate in Plastic Bank App.</td>
-<td></td>
-<td>25</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4357.Verify_Bonus_Processor()'><b>Verify_Bonus_Processor</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Verify details of transaction from Processor and validate all gets approved in processor Exchange History.</td>
-<td></td>
-<td>94</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
 <tr>
 <td title='smoke_Suite.ALC_4352.createNewStore()'><b>createNewStore</b><br>Test class: smoke_Suite.ALC_4352<br>Test method: New store account should be successfully created</td>
 <td></td>
-<td>114</td>
-<td>smoke_Suite.ALC_4352@5e21e98f</td></tr>
+<td>90</td>
+<td>smoke_Suite.ALC_4352@3224a577</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4350.loginBranchMemberPB()'><b>loginBranchMemberPB</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: User should see the updated data</td>
+<td title='smoke_Suite.ALC_4357.Verify_Bonus_Processor()'><b>Verify_Bonus_Processor</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Verify details of transaction from Processor and validate all gets approved in processor Exchange History.</td>
 <td></td>
-<td>21</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4357.member_Branch1_Transaction_KG_Bonus_App_Assertion()'><b>member_Branch1_Transaction_KG_Bonus_App_Assertion</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Verify that the correct KG and bonus values are showing in before transaction completion screen in mobile app | verify  the correct KG, bonus and amount value in Confirm Exchange Page | Verify in Branch 1 that there is no bonus recorded under Exchange </td>
-<td></td>
-<td>74</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4351.openRegisterdBranchInApp()'><b>openRegisterdBranchInApp</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: New branch account is searchable in Alchemy under the 'Members' section</td>
-<td></td>
-<td>22</td>
-<td>smoke_Suite.ALC_4351@7bf3a5d8</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4365.createNewBonusAndSuspendedBonus()'><b>createNewBonusAndSuspendedBonus</b><br>Test class: smoke_Suite.ALC_4365<br>Test method: Bonus order should be  stopped</td>
-<td></td>
-<td>447</td>
-<td>smoke_Suite.ALC_4365@51a9ad5e</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4357.Branch1_Branch2_Transaction_App_Assertions()'><b>Branch1_Branch2_Transaction_App_Assertions</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Do Transaction between Branch 1 and Branch 2 and Verify Bonus and Kg Transferred</td>
-<td></td>
-<td>68</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4365.verifyTransactionStoppedBonus()'><b>verifyTransactionStoppedBonus</b><br>Test class: smoke_Suite.ALC_4365<br>Test method: New member transaction with the branch in the stopped bonus order DOES NOT generate bonus once the Bonus order is stopped</td>
-<td></td>
-<td>68</td>
-<td>smoke_Suite.ALC_4365@51a9ad5e</td></tr>
-<tr>
-<td title='smoke_Suite.ALC_4366.tokenTransferAndVerifyInOrdersData()'><b>tokenTransferAndVerifyInOrdersData</b><br>Test class: smoke_Suite.ALC_4366<br>Test method: Screen will display member's details page | Screen will display a prompt page to fill out to transfer the tokens | Transferring of token was complete Current member token will be added and displayed in the App Current member token will be added and displayed in the Alchemy under 'Tokens in wallet' column</td>
-<td></td>
-<td>320</td>
-<td>smoke_Suite.ALC_4366@5f20155b</td></tr>
+<td>99</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
 <tr>
 <td title='smoke_Suite.ALC_4357.Plastic_Chain_After_Approval()'><b>Plastic_Chain_After_Approval</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Verified Check chain turned to green and is in order.</td>
 <td></td>
-<td>103</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>99</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4350.VerifyMemberAlchmey()'><b>VerifyMemberAlchmey</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: New member account is searchable in Alchemy under the 'Members' section</td>
+<td></td>
+<td>86</td>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4350.signUp()'><b>signUp</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: New member account should be successfully created | New member should be successfully logged in</td>
+<td></td>
+<td>149</td>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4357.VerifyBonusOrderRecieptBranchAssertions()'><b>VerifyBonusOrderRecieptBranchAssertions</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: In Bonus Approval Check for receipts | qty bonus values from Audit trail | Verify Total Weight/ Bonus in Bonus Approval Page</td>
+<td></td>
+<td>208</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_380.verifyInApp()'><b>verifyInApp</b><br>Test class: smoke_Suite.ALC_380<br>Test method: Verify the Tokens deducted in App</td>
+<td></td>
+<td>7</td>
+<td>smoke_Suite.ALC_380@895e367</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4354.seacrchAndEditProcessorInAlchmey()'><b>seacrchAndEditProcessorInAlchmey</b><br>Test class: smoke_Suite.ALC_4354<br>Test method: New processor account is searchable in Alchemy under the 'Processor' section | -Changes are saved and can be seen in user details</td>
+<td></td>
+<td>142</td>
+<td>smoke_Suite.ALC_4354@64e7619d</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4357.Branch2_Processor_Transaction()'><b>Branch2_Processor_Transaction</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Do Transaction between Branch 2 and Processor and Verify Bonus and Kg Transferred</td>
+<td></td>
+<td>80</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4357.Verify_Bonus_Branch1()'><b>Verify_Bonus_Branch1</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Assert Branch Tags Values in Summary in Branch1. | Check approve transaction from Branch 1. | Toggle all required, Verify Values and validate all gets approved.</td>
+<td></td>
+<td>222</td>
+<td>smoke_Suite.ALC_4357@3e44f2a5</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4362.Approve_transactions_In_Bonus_Sell_Buy_Verify_In_BranchExchangeHistory()'><b>Approve_transactions_In_Bonus_Sell_Buy_Verify_In_BranchExchangeHistory</b><br>Test class: smoke_Suite.ALC_4362<br>Test method: Approve_transactions_In_Bonus_Sell_Buy_Verify_In_BranchExchangeHistory</td>
+<td></td>
+<td>394</td>
+<td>smoke_Suite.ALC_4362@295cf707</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4350.loginAlchmey()'><b>loginAlchmey</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: Login on alchemy with admin user</td>
+<td></td>
+<td>8</td>
+<td>smoke_Suite.ALC_4350@7f284218</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4366.verifyTransferTokenOnApp()'><b>verifyTransferTokenOnApp</b><br>Test class: smoke_Suite.ALC_4366<br>Test method: Transaction was recorded in transfers tab with all the correct data</td>
+<td></td>
+<td>42</td>
+<td>smoke_Suite.ALC_4366@748741cb</td></tr>
 <tr>
 <td title='smoke_Suite.ALC_4354.VerifyInApp()'><b>VerifyInApp</b><br>Test class: smoke_Suite.ALC_4354<br>Test method: User should see the updated data</td>
 <td></td>
 <td>30</td>
-<td>smoke_Suite.ALC_4354@189cbd7c</td></tr>
+<td>smoke_Suite.ALC_4354@64e7619d</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4357.Branch2_Processor_Transaction()'><b>Branch2_Processor_Transaction</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Do Transaction between Branch 2 and Processor and Verify Bonus and Kg Transferred</td>
+<td title='smoke_Suite.ALC_4352.verifyNewStore()'><b>verifyNewStore</b><br>Test class: smoke_Suite.ALC_4352<br>Test method: New store account is searchable in Alchemy under the 'Store' section | - Data displayed in user will turn into a field that can be edited | -Changes are saved and can be seen in user details</td>
 <td></td>
-<td>77</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td>91</td>
+<td>smoke_Suite.ALC_4352@3224a577</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
 <tr>
-<td title='smoke_Suite.ALC_4357.Verify_Bonus_Branch2()'><b>Verify_Bonus_Branch2</b><br>Test class: smoke_Suite.ALC_4357<br>Test method: Assert Branch Tags Values in Summary in Branch2 | .Check approve transaction from Branch 2. | Toggle all required, Verify Values and validate all gets approved.</td>
-<td></td>
-<td>121</td>
-<td>smoke_Suite.ALC_4357@72ade7e3</td></tr>
+<td title='smoke_Suite.ALC_4359.dataCreation()'><b>dataCreation</b><br>Test class: smoke_Suite.ALC_4359<br>Test method: Create a branch, adding a branch and processor in branch through endpoint</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1968730969", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1968730969'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4350.signUp()'><b>signUp</b><br>Test class: smoke_Suite.ALC_4350<br>Test method: New member account should be successfully created | New member should be successfully logged in</td>
-<td></td>
-<td>150</td>
-<td>smoke_Suite.ALC_4350@26adfd2d</td></tr>
+<td title='smoke_Suite.ALC_4359.editMemberUncheckBonus()'><b>editMemberUncheckBonus</b><br>Test class: smoke_Suite.ALC_4359<br>Test method: Use and existing member and Uncheck bonus eligibility in the member profile</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1954287773", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1954287773'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4351.verifyEditInApp()'><b>verifyEditInApp</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: User should see the updated data</td>
-<td></td>
-<td>41</td>
-<td>smoke_Suite.ALC_4351@7bf3a5d8</td></tr>
+<td title='smoke_Suite.ALC_4359.verifyBonusPlasticBankWithProcessor()'><b>verifyBonusPlasticBankWithProcessor</b><br>Test class: smoke_Suite.ALC_4359<br>Test method: Processor exchange history should show System Offset under Associated Bonus</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2000000855", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2000000855'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4351.branchVerifyAndEdit()'><b>branchVerifyAndEdit</b><br>Test class: smoke_Suite.ALC_4351<br>Test method: - Data displayed in user will turn into a field that can be edited | -Changes are saved and can be seen in user details</td>
-<td></td>
-<td>101</td>
-<td>smoke_Suite.ALC_4351@7bf3a5d8</td></tr>
+<td title='smoke_Suite.ALC_4363.Approve_transactions_branch_exchange_history_Verify_In_BonusApproval()'><b>Approve_transactions_branch_exchange_history_Verify_In_BonusApproval</b><br>Test class: smoke_Suite.ALC_4363<br>Test method: Approve_transactions_branch_exchange_history_Verify_In_BonusApproval</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace815621675", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace815621675'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4363@1130520d</td></tr>
 <tr>
-<td title='smoke_Suite.ALC_4352.loginAlchmey()'><b>loginAlchmey</b><br>Test class: smoke_Suite.ALC_4352<br>Test method: Login on alchemy with admin user</td>
-<td></td>
-<td>6</td>
-<td>smoke_Suite.ALC_4352@5e21e98f</td></tr>
+<td title='smoke_Suite.ALC_4361.addDonations()'><b>addDonations</b><br>Test class: smoke_Suite.ALC_4361<br>Test method: Add donation item to branch and processor</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace908870836", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace908870836'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.doTransactions()'><b>doTransactions</b><br>Test class: smoke_Suite.ALC_4361<br>Test method: Perform transactions between member, branch and processor</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1060606924", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1060606924'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4359.verifyBonusPlasticBankWithBranch()'><b>verifyBonusPlasticBankWithBranch</b><br>Test class: smoke_Suite.ALC_4359<br>Test method: Notice that no bonus is generated in the entire transaction | Branch exchange history should show System Offset under Associated Bonus</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2081522298", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2081522298'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Appium Settings app is not running after 5000ms 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4359@463fd068</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.createdata()'><b>createdata</b><br>Test class: smoke_Suite.ALC_4361<br>Test method: Create data for testcase ALC_4361</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1032194251", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1032194251'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
+<tr>
+<td title='smoke_Suite.ALC_4361.verifyNoBonusForDonations()'><b>verifyNoBonusForDonations</b><br>Test class: smoke_Suite.ALC_4361<br>Test method: Verify that no bonus is received for donation</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1257607640", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1257607640'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;C:\\Users\\Fleek\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+cmd: Can&apos;t find service: settings
+ 
+Host info: host: &apos;DESKTOP-KC70OC4&apos;, ip: &apos;192.168.29.145&apos;
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[{appium:appActivity=org.plasticbank.app.MainActivity, appium:appPackage=org.plasticbank.app, appium:automationName=Appium, appium:deviceName=Android Emulator, appium:newCommandTimeout=9000, platformName=ANDROID, appium:platformVersion=11.0, appium:udid=emulator-5554}], desiredCapabilities=Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}}]
+Capabilities {appActivity: org.plasticbank.app.MainAct..., appPackage: org.plasticbank.app, automationName: Appium, deviceName: Android Emulator, newCommandTimeout: 9000, platformName: ANDROID, platformVersion: 11.0, udid: emulator-5554}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:133)
+	at io.appium.java_client.remote.AppiumProtocolHandshake.createSession(AppiumProtocolHandshake.java:102)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:182)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:274)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:163)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:89)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:101)
+	at io.appium.java_client.android.AndroidDriver.&lt;init&gt;(AndroidDriver.java:113)
+	at Utilities.BaseClass.setup(BaseClass.java:160)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>smoke_Suite.ALC_4361@5f77d0f9</td></tr>
 </table><p>
 </body>
 </html>

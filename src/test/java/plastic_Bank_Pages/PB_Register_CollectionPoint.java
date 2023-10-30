@@ -207,17 +207,17 @@ public void createBranch() throws InterruptedException {
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(doneButton)));
     doneButton.click();
  }
-public void addDonation(){
+public void addDonation() throws InterruptedException {
 	
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
-	
+	Thread.sleep(2000);
 	PointerInput fingerconfirmpassword = new PointerInput(PointerInput.Kind.TOUCH, "fingerconfirmpassword");
     Sequence scrollconfirmpassword = new Sequence(fingerconfirmpassword, 1);
     scrollconfirmpassword.addAction(fingerconfirmpassword.createPointerMove(Duration.ofMillis(0),
-        PointerInput.Origin.viewport(), 950, 2122));
+        PointerInput.Origin.viewport(), 950, 2060));
     scrollconfirmpassword.addAction(fingerconfirmpassword.createPointerDown(0));
     scrollconfirmpassword.addAction(fingerconfirmpassword.createPointerMove(Duration.ofMillis(100),
-        PointerInput.Origin.viewport(), 950, 2122));
+        PointerInput.Origin.viewport(), 950, 2060));
     scrollconfirmpassword.addAction(fingerconfirmpassword.createPointerUp(0));
     pbDriver.perform(Arrays.asList(scrollconfirmpassword));
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(addButton)));
@@ -339,7 +339,7 @@ public void addMemberToCreatedBranch() throws InterruptedException {
     finishButton.click();
     Thread.sleep(5000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(crossButton)));
-    crossButton.click();
+    tap(crossButton.getLocation().getX()+10,crossButton.getLocation().getY()+10);
     
     
 }

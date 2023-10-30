@@ -3,20 +3,69 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="smoke_Suite.ALC_4357">
+      <class name="smoke_Suite.ALC_4360">
         <methods>
-          <include name="generateRandomBranchMemberNumber"/>
+          <include name="afterMethod"/>
+          <include name="generateRandomLastName"/>
+          <include name="generateBranchName"/>
+          <include name="delayedBonusRemovedInApp"/>
           <include name="generateRandomNumber"/>
-          <include name="dataCreation"/>
+          <include name="generateRandomBranchMemberNumber"/>
+          <include name="verifyBuySellRemovedBonusInBonusOrderSummary"/>
+          <include name="disablebonusAndVerifyExchangeHistory"/>
+          <include name="verifyDelayedBonusInApp"/>
+          <include name="verifyKgRecycledAndDelayedBonus"/>
+          <include name="setup"/>
+          <include name="teardown"/>
+          <include name="generateBranchMemberName"/>
+          <include name="verifyBuySellTransactionInBonusOrder"/>
+        </methods>
+      </class> <!-- smoke_Suite.ALC_4360 -->
+      <class name="smoke_Suite.ALC_4361">
+        <methods>
+          <include name="generateRandomNumber"/>
+          <include name="generateRandomBranchMemberNumber"/>
+          <include name="verifyNoBonusForDonations"/>
+          <include name="doTransactions"/>
+          <include name="createdata"/>
           <include name="afterMethod"/>
           <include name="setup"/>
-          <include name="BonusTransferedCheck"/>
+          <include name="generateRandomLastName"/>
+          <include name="teardown"/>
+          <include name="generateBranchMemberName"/>
+          <include name="addDonations"/>
+          <include name="generateBranchName"/>
+        </methods>
+      </class> <!-- smoke_Suite.ALC_4361 -->
+      <class name="smoke_Suite.ALC_4363">
+        <methods>
+          <include name="generateRandomNumber"/>
+          <include name="generateRandomBranchMemberNumber"/>
+          <include name="Approve_transactions_branch_exchange_history_Verify_In_BonusApproval"/>
+          <include name="afterMethod"/>
+          <include name="setup"/>
           <include name="generateRandomLastName"/>
           <include name="teardown"/>
           <include name="generateBranchMemberName"/>
           <include name="generateBranchName"/>
         </methods>
-      </class> <!-- smoke_Suite.ALC_4357 -->
+      </class> <!-- smoke_Suite.ALC_4363 -->
+      <class name="smoke_Suite.ALC_4359">
+        <methods>
+          <include name="generateRandomNumber"/>
+          <include name="dataCreation"/>
+          <include name="generateRandomBranchMemberNumber"/>
+          <include name="verifyBonusPlasticBankWithProcessor"/>
+          <include name="editMemberUncheckBonus"/>
+          <include name="setup"/>
+          <include name="afterMethod"/>
+          <include name="generateRandomLastName"/>
+          <include name="verifyBonusPlasticBankWithBranch"/>
+          <include name="teardown"/>
+          <include name="generateBranchMemberName"/>
+          <include name="generateBranchName"/>
+        </methods>
+      </class> <!-- smoke_Suite.ALC_4359 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

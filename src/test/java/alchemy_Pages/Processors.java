@@ -5,12 +5,14 @@ package alchemy_Pages;
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
 import java.util.List;
-
-import org.openqa.selenium.OutputType;
+import static org.testng.Assert.assertTrue;
+	import Utilities.Data;
+	import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
-	import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.CacheLookup;
 	import org.openqa.selenium.support.FindBy;
 	import org.openqa.selenium.support.PageFactory;
 	import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,6 +63,18 @@ import io.qameta.allure.Allure;
 	@FindBy(xpath = "//div[@class='card-header']/div/div[1]/button")
 	List<WebElement> approvedConfirm;
 
+	@FindBy(xpath = "//li[contains(@class,'page-item')]")
+	WebElement lastItemOnPage;
+		@FindBy(xpath = "//a[text()='Exchange History']")
+		private WebElement exchangeHistoryTab;
+
+		@FindBy(xpath = "//div[@class='card-header']")
+		List<WebElement> cardheaders;
+
+		@FindBy(xpath = "//label[text()='Branch Bonus']/following-sibling::div/div[contains(@class,'text')]")
+		List<WebElement> branchbonustext;
+
+		WebDriverWait wait = new WebDriverWait(pbDriver,Duration.ofSeconds(40));
 	public void waitforloader() {
 		WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(300));
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(circleLoader)));
@@ -95,12 +109,13 @@ public void clickExchangeHistoryButton() {
 	
 	public void transactionApproveExcHisP1(String pNum) throws InterruptedException {
 		processors_TAB.click();
+		Thread.sleep(2000);
 		waitforloader();
 		phoneSearch.clear();
 		phoneSearch.sendKeys(pNum);
 		clickSpecificProcessor();
 		clickExchangeHistoryButton();
-		
+		Thread.sleep(2000);
 		for (int p=0; p<=1; p++) {		
 			transactions.get(p).click();
 			Thread.sleep(1000);
@@ -119,17 +134,35 @@ public void clickExchangeHistoryButton() {
 			assertEquals(alc_B2_P_ExngHisKgVerify,actualAlcKgList);
 		}
 		transactions.get(p).click();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		}	
 		
 		for(int i=0;i<approvedConfirm.size();i++) {
+			
 			String ac=approvedConfirm.get(i).getText();
 			assertEquals(ac, "Approved");	
 		}
 		  Thread.sleep(2000);
+		  Actions actions1 =new Actions(alcDriver);
+			actions1.scrollToElement(lastItemOnPage).build().perform();
+			Thread.sleep(2000);
 		    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
 		    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
 		    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
 		    Thread.sleep(2000);
 	}
+		public void processordelayedbonusverify() throws InterruptedException {
+			alcDriver.get("https://"+actual+"/#/admin/recyclingcenter/"+ Data.pid4360);
+			exchangeHistoryTab.click();
+			cardheaders.get(0).click();
+			wait.until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(branchbonustext.get(0), "14")));
+			assertTrue(branchbonustext.get(0).getText().equals("14"));
+			Thread.sleep(2000);
+			TakesScreenshot ts112 = (TakesScreenshot) alcDriver;
+			byte[] screenshot112 = ts112.getScreenshotAs(OutputType.BYTES);
+			Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot112));
+			Thread.sleep(2000);
+			System.out.println("pass 5");
+		}
+
 }

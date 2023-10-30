@@ -1,13 +1,11 @@
 package alchemy_Pages;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -17,13 +15,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
 import Utilities.BaseClass;
+import Utilities.Data;
 import io.qameta.allure.Allure;
+
+import static org.testng.Assert.*;
 
 
 public class Branches extends BaseClass {
@@ -92,7 +94,13 @@ private WebElement exchangeHistory;
 
 @FindBy(xpath = "//a[text()='Exchange History']")
 private WebElement exchangeHistoryTab;
+@FindBy(xpath = "//div[text()='Exchange History ']")
+private WebElement exchangeHistoryTabInBonusOrder;
 
+@FindBy(xpath = "//div[text()='KG Recycled']/following::div[5]")
+public WebElement kgRecycledInBranchText;
+@FindBy(xpath = "//div[text()='KG Recycled']")
+private WebElement kgRecycledInBranch;
 
 
 @FindBy(xpath = "//loader/div//table") 
@@ -151,7 +159,77 @@ List<WebElement> approvedConfirm;
 @FindBy(xpath = "//div[contains(@class,'col pl')]/div")
 List<WebElement> branchDetailsTagTexts;
 
+@FindBy(xpath = "//*[text()='Branch Bonus']/following::div[2]")
+WebElement bonusInExchangeHistorytext;
 
+@FindBy(xpath = "//*[text()='Branch Bonus']")
+WebElement bonusInBranchExchangeHistory;
+
+
+@FindBy(xpath = "//label[text()='Branch Bonus']/following-sibling::div/div[contains(@class,'text')]")
+List<WebElement> branchbonustext;
+@FindBy(xpath = "//label[text()='Member Bonus']/following-sibling::div/div[contains(@class,'text')]")
+WebElement memberbonustext;
+@FindBy(xpath = "//a[text()='Details']")
+WebElement details;
+@FindBy(xpath = "//label[text()='Branch Bonus']/following-sibling::div/div[contains(@class,'text')]")
+WebElement branchBonustext;
+	@FindBy(xpath = "//label[text()='ASSOCIATED BONUS']/following::label/following::label/following-sibling::div/div[contains(@class,'text')]")
+	WebElement bonustext;
+	@FindBy(xpath = "//label[text()='Branch Bonus']")
+	WebElement branchBonus;
+
+@FindBy(xpath = "//div[text()='KG Recycled']/following-sibling::div/div/following-sibling::div/div")
+WebElement kgrecycled;
+@FindBy(xpath = "//div[@class='card-header']/div/button")
+List<WebElement> cardheaders;
+@FindBy(xpath = "//li[contains(@class,'page-item')]")
+WebElement lastItemOnPage;
+@FindBy(xpath = "//div[text()='TOTAL']")
+WebElement total;
+@FindBy(xpath = "//div[@class='switch bonus-checked']")
+WebElement bonustoggle;
+@FindBy(xpath = "//textarea")
+WebElement textarea;
+@FindBy(xpath = "//label[@class='item-name offset-border']")
+WebElement associatedbonus;
+@FindBy(xpath = "//div[@class='switch bonus-locked']")
+List<WebElement> lockedbonus;
+@FindBy(xpath = "//span[text()=' Disable ']")
+WebElement disable;
+@FindBy(xpath = "//button[text()='Close']")
+WebElement close;
+@FindBy(xpath = "//div[text()='Tokens in Wallet']/following::div[5]")
+WebElement tokenInWalletText;
+@FindBy(xpath = "//button[text()='Void Transaction']")
+WebElement voidTransactionButton;
+@FindBy(xpath = "//span[text()=' Void ']" )
+WebElement voidButton;
+@FindBy(xpath = "//button[text()='Close']" )
+WebElement closeButton;
+
+@FindBy(xpath = "//button[@aria-label='Close']" )
+WebElement crossButton;
+@FindBy(xpath = "//button[@aria-label='Close']" )
+WebElement voidedButton;
+@FindBy(xpath = "//button[text()='Reclaim Tokens']" )
+WebElement reclaimTokenButton;
+@FindBy(xpath = "//textarea[@placeholder='Describe information about the reclamation.']" )
+WebElement textAreaReclaimToken;
+@FindBy(xpath = "//span[text()=' Reclaim ']" )
+WebElement reclaimButton;
+@FindBy(xpath = "//input[@id='smsCode']")
+WebElement authCode;
+@FindBy(xpath = "//button[text()='Submit']" )
+WebElement submitButton;
+@FindBy(xpath = "//button[text()='Cancel']" )
+WebElement cancelButton;
+	@FindBy(xpath = "//*[text()='Success']" )
+	WebElement success;
+
+
+
+WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
 public void verifybranchDetailsTagTexts() {
 	
 }
@@ -159,12 +237,16 @@ public void searchAddedBranch(String Name) {
 	name_SearchBox.sendKeys(Name);
 }
 
-public void clickBranchesTab() {
+public void clickBranchesTab() throws InterruptedException {
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
+	wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
 	branches_TAB.click();
 }
 
 public void clickSpecificBranch() throws InterruptedException {
 	Thread.sleep(15000);
+	WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(300));
+	wait.until(ExpectedConditions.invisibilityOf(pageLoader));
 	tableData_FirstRow.click();
 	
 }
@@ -207,7 +289,7 @@ public void searchSpecificBranch(String pNum) throws InterruptedException {
 	Thread.sleep(5000);
 	WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(300));
 	wait.until(ExpectedConditions.invisibilityOf(pageLoader));
-	wait.until(ExpectedConditions.elementToBeClickable(phone_SearchBox));
+	//wait.until(ExpectedConditions.elementToBeClickable(phone_SearchBox));
 	phone_SearchBox.clear();
 	phone_SearchBox.sendKeys(pNum);
 }
@@ -327,7 +409,7 @@ public void transactionApproveExcHisB1(String pNum) throws InterruptedException 
 	for(WebElement branchDetails: branchDetailsTagTexts)
 		actualBr1TagsDetails.add(branchDetails.getText()) ;
 	System.out.println("B1="+actualBr1TagsDetails);
-	
+	Thread.sleep(2000);
 	List<String> expectedBr1TagsDetails = new ArrayList<>();
 	expectedBr1TagsDetails.addAll(Arrays.asList("19","0","1","0"));
 	Assert.assertEquals(actualBr1TagsDetails, expectedBr1TagsDetails);
@@ -335,13 +417,25 @@ public void transactionApproveExcHisB1(String pNum) throws InterruptedException 
 	TakesScreenshot ts = (TakesScreenshot) pbDriver;
     byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
     Allure.addAttachment("Screenshot", new ByteArrayInputStream(screenshot));
-    Thread.sleep(2000);
+    Thread.sleep(4000);
     
 	clickExchangeHistoryButton();
+	
 	for (int p=0; p<3; p++) {
+	
+		
 		
 	transactions.get(p).click();
-	Thread.sleep(1000);
+	Thread.sleep(2000);
+	
+	Actions actions =new Actions(alcDriver);
+	actions.scrollToElement(lastItemOnPage).build().perform();
+	Thread.sleep(2000);
+	    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+	    Thread.sleep(2000);
+	
 	for (int i=0;i<2;i++)
 	{	
 		
@@ -389,6 +483,7 @@ public void transactionApproveExcHisB2(String pNum) throws InterruptedException 
 	for(WebElement branchDetails: branchDetailsTagTexts)
 		actualBr2TagsDetails.add(branchDetails.getText()) ;
 	System.out.println("B2="+actualBr2TagsDetails);
+	Thread.sleep(2000);
 	List<String> expectedBr2TagsDetails = new ArrayList<>();
 	expectedBr2TagsDetails.addAll(Arrays.asList("0","0","0","0"));
 	Assert.assertEquals(actualBr2TagsDetails, expectedBr2TagsDetails);
@@ -396,13 +491,23 @@ public void transactionApproveExcHisB2(String pNum) throws InterruptedException 
 	TakesScreenshot ts = (TakesScreenshot) pbDriver;
     byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
     Allure.addAttachment("Screenshot", new ByteArrayInputStream(screenshot));
-    Thread.sleep(2000);
+    Thread.sleep(4000);
 	
 	clickExchangeHistoryButton();
+	
 	for (int p=0; p<=1; p++) {
+		
+		
 	transactions.get(p).click();
 	Thread.sleep(2000);
 	
+	Actions actions1 =new Actions(alcDriver);
+	actions1.scrollToElement(lastItemOnPage).build().perform();
+	Thread.sleep(2000);
+	    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+	    Thread.sleep(2000);
 		
 	String actualAlcBonus= branchBonusTextInAlchmeyVerify.getText();
 	String actualAlcKgList[] = {hdpeKgAlcText.getText(),petKgAlcText.getText(),totalKgAlcText.getText()};
@@ -453,6 +558,7 @@ public void transactionApproveExcHisB3(String pNum) throws InterruptedException 
 	for(WebElement branchDetails: branchDetailsTagTexts)
 		actualBr3TagsDetails.add(branchDetails.getText()) ;
 	System.out.println("B3="+actualBr3TagsDetails);
+	Thread.sleep(2000);
 	List<String> expectedBr3TagsDetails = new ArrayList<>();
 	expectedBr3TagsDetails.addAll(Arrays.asList("0","0","0","0"));
 	Assert.assertEquals(actualBr3TagsDetails, expectedBr3TagsDetails);
@@ -460,13 +566,22 @@ public void transactionApproveExcHisB3(String pNum) throws InterruptedException 
 	TakesScreenshot ts = (TakesScreenshot) pbDriver;
     byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
     Allure.addAttachment("Screenshot", new ByteArrayInputStream(screenshot));
-    Thread.sleep(2000);
+    Thread.sleep(4000);
 	
 	clickExchangeHistoryButton();
 	
-	for (int p=0; p<=1; p++) {		
+	for (int p=0; p<=1; p++) {	
+		
 	transactions.get(p).click();
-	Thread.sleep(1000);
+	
+	Thread.sleep(2000);
+	Actions actions1 =new Actions(alcDriver);
+	actions1.scrollToElement(lastItemOnPage).build().perform();
+	Thread.sleep(2000);
+	    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+	    Thread.sleep(2000);
 	
 		
 	String actualAlcBonus= branchBonusTextInAlchmeyVerify.getText();
@@ -519,8 +634,13 @@ public void verifyBonusTransfered(String pNum) throws InterruptedException {
 	Thread.sleep(2000);
 	for (WebElement transaction:transactions) {
 
+	
 		transaction.click();
+		Thread.sleep(2000);
+		Actions action =new Actions(alcDriver);
+		action.scrollToElement(lastItemOnPage).build().perform();
 		Thread.sleep(4000);
+		
 		assertTrue(transferedTextDisplay.isDisplayed());
 		Thread.sleep(2000);
 			TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
@@ -571,7 +691,7 @@ public void verifyBonusInBranchExcHistory(String pNum) throws InterruptedExcepti
 	for (WebElement transaction:transactions) {
 
 		transaction.click();
-		Thread.sleep(4000);
+		Thread.sleep(3000);
 		assertTrue(transferedTextDisplay.isDisplayed());
 		Thread.sleep(2000);
 			TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
@@ -582,5 +702,430 @@ public void verifyBonusInBranchExcHistory(String pNum) throws InterruptedExcepti
 		    Thread.sleep(2000);
 		}
 }
+public void kgRecycledInBranch(String branchId,String kgRecycled) throws InterruptedException {
+	
+	alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+branchId);
+	alcDriver.navigate().refresh();
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(80));
+    wait.until(ExpectedConditions.visibilityOfAllElements(kgRecycledInBranch));
+	Thread.sleep(2000);
+	String kgRecycledBranch=kgRecycledInBranchText.getText();
+	Thread.sleep(2000);
+	Assert.assertEquals(kgRecycledBranch,kgRecycled);
+	Thread.sleep(2000);
+	 TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("KG Recycled In Branch", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+	System.out.println(kgRecycledBranch);
+
+}
+	private void enterAuthCode(String code) throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.elementToBeClickable(authCode));
+		authCode.sendKeys(code);
+		Thread.sleep(2000);
+	}
+public void bonusExchangeHistoryBranch(String branchId) throws InterruptedException {
+	alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+branchId);
+	alcDriver.navigate().refresh();
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
+	wait.until(ExpectedConditions.visibilityOfAllElements(exchangeHistoryTab));
+	exchangeHistoryTab.click();
+	Thread.sleep(3000);
+	for(WebElement transaction : transactions){
+		Thread.sleep(2000);
+		transaction.click();
+		Thread.sleep(2000);
+
+		Actions action = new Actions(alcDriver);
+		action.scrollToElement(lastItemOnPage).build().perform();
+		Thread.sleep(2000);
+		TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+		byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Branch Exchange History Screenshot", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+		assertTrue(bonustext.isDisplayed());
+		Thread.sleep(2000);
+		transaction.click();
+		Thread.sleep(2000);
+	}
+}
+	public void bonusExchangeHistoryBranchAfterVoid(String branchId) throws InterruptedException {
+		alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+branchId);
+		alcDriver.navigate().refresh();
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+		Thread.sleep(3000);
+		for(WebElement transaction : transactions){
+			Thread.sleep(2000);
+			transaction.click();
+			Thread.sleep(3000);
+			Actions action = new Actions(alcDriver);
+			action.scrollToElement(lastItemOnPage).build().perform();
+			Thread.sleep(2000);
+			TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+			byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+			Allure.addAttachment("Bonus In Branch Exchange History", new ByteArrayInputStream(screenshot1));
+			System.out.println("Bonus is Not present");
+//			assertFalse(bonustext.isDisplayed());
+			Thread.sleep(2000);
+			transaction.click();
+			Thread.sleep(2000);
+		}
+	}
+
+public void verifykgrecycled() throws InterruptedException {
+	alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+Data.b1id4360);
+	Thread.sleep(2000);
+	kgrecycled.isDisplayed();
+	System.out.println("-----"+kgrecycled.getText()+"-----");
+	wait.until(ExpectedConditions.textToBePresentInElement(kgrecycled, "19"));
+	assertTrue(kgrecycled.getText().equals("19"));
+	Thread.sleep(2000);
+	 TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Verify Kg Recycled", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+
+}
+
+public void verifyDelayedBonus() throws InterruptedException {
+	exchangeHistoryTab.click();
+	
+	cardheaders.get(0).click();
+	wait.until(ExpectedConditions.textToBePresentInElement(branchbonustext.get(0), "30"));
+	assertTrue(branchbonustext.get(0).getText().equals("30"));
+	Thread.sleep(2000);
+
+	 TakesScreenshot ts13 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot13 = ts13.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot13));
+		Thread.sleep(2000);
+
+	System.out.println("pass 1");
+	
+	cardheaders.get(1).click();
+	wait.until(ExpectedConditions.textToBePresentInElement(memberbonustext, "133"));
+	assertTrue(memberbonustext.getText().equals("133"));
+	Actions action = new Actions(alcDriver);
+	action.moveToElement(lastItemOnPage).build().perform();
+	Thread.sleep(2000);
+
+	 TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+
+	System.out.println("pass 2");
+	
+	alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+Data.b2id4360);
+	alcDriver.navigate().refresh();
+	
+	exchangeHistoryTab.click();
+	
+	cardheaders.get(0).click();
+	wait.until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(branchbonustext.get(0), "14")));
+	assertTrue(branchbonustext.get(0).getText().equals("14"));
+	Thread.sleep(2000);
+
+	 TakesScreenshot ts112 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot112 = ts112.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot112));
+		Thread.sleep(2000);
+	System.out.println("pass 3");
+	
+	cardheaders.get(1).click();
+	wait.until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(branchbonustext.get(1), "30")));
+	assertTrue(branchbonustext.get(1).getText().equals("30"));
+	action.moveToElement(lastItemOnPage).build().perform();
+	Thread.sleep(2000);
+
+	 TakesScreenshot ts11 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot11 = ts11.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot11));
+		Thread.sleep(2000);
+
+	System.out.println("pass 4");
+}
+
+@SuppressWarnings("deprecation")
+public void disablebonus() throws InterruptedException {
+	
+	alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+Data.b1id4360);
+	exchangeHistoryTab.click();
+	transactions.get(1).click();
+	bonustoggle.click();
+	textarea.sendKeys("Test");
+	disable.click();
+	close.click();
+	transactions.get(0).click();
+	for(WebElement lb: lockedbonus) {
+		lb.isDisplayed();
+	}
+	alcDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
+	try {
+		 WebDriverWait waitab = new WebDriverWait(alcDriver,Duration.ofSeconds(2));
+		waitab.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(associatedbonus)));
+	}catch(Exception e) {
+		System.out.println("associated bonus not present after disabling bonus");
+	}
+	try {
+		 WebDriverWait waitmb = new WebDriverWait(alcDriver,Duration.ofSeconds(2));
+		waitmb.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(memberbonustext)));
+	}catch(Exception e) {
+		System.out.println("member bonus not present after disabling bonus");
+	}
+	try {
+		 WebDriverWait waitbb = new WebDriverWait(alcDriver,Duration.ofSeconds(2));
+		waitbb.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(branchbonustext.get(0))));
+	}catch(Exception e) {
+		System.out.println("branch bonus not present after disabling bonus");
+	}
+	
+	Actions action = new Actions(alcDriver);
+	action.moveToElement(lastItemOnPage).build().perform();
+	Thread.sleep(2000);
+
+	 TakesScreenshot ts11 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot11 = ts11.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot11));
+		Thread.sleep(2000);
+    
+	    
+	 alcDriver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+	details.click();
+	kgrecycled.isDisplayed();
+	wait.until(ExpectedConditions.textToBePresentInElement(kgrecycled, "19"));
+	alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+Data.b2id4360);
+	alcDriver.navigate().refresh();
+	exchangeHistoryTab.click();
+	Thread.sleep(2000);
+	for(WebElement t: transactions) {
+		Thread.sleep(2000);
+		t.click();
+	}
+	total.isDisplayed();
+	alcDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
+	try {
+		 WebDriverWait waitbb = new WebDriverWait(alcDriver,Duration.ofSeconds(2));
+		waitbb.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(branchbonustext.get(0))));
+	}catch(Exception e) {
+		System.out.println("branch bonus not present after disabling bonus");
+	}
+	try {
+		 WebDriverWait waitab = new WebDriverWait(alcDriver,Duration.ofSeconds(2));
+		waitab.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(associatedbonus)));
+	}catch(Exception e) {
+		System.out.println("associated bonus not present after disabling bonus");
+	}
+	
+	
+	action.moveToElement(lastItemOnPage).build().perform();
+	Thread.sleep(2000);
+
+	 TakesScreenshot ts111 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot111 = ts111.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot111));
+		Thread.sleep(2000);
+  
+	    
+	 alcDriver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+	
+}
+
+public void bonusBranchExcHistoryVerification(String branchId) throws InterruptedException {
+
+	alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+branchId);
+	alcDriver.navigate().refresh();
+	exchangeHistoryTab.click();
+	Thread.sleep(1000);
+
+	for(WebElement cardHeaders:cardheaders) {
+
+		cardHeaders.click();
+		Actions action = new Actions(alcDriver);
+		action.scrollToElement(lastItemOnPage).build().perform();
+
+		Thread.sleep(1000);
+
+		TakesScreenshot ts13 = (TakesScreenshot) alcDriver;
+		byte[] screenshot13 = ts13.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Token in Branch Exchange History Before Void Screenshot", new ByteArrayInputStream(screenshot13));
+		Thread.sleep(3000);
+		try {
+			assertTrue(bonustext.isDisplayed());
+			System.out.println("Bonus is present");
+		}
+		catch(Exception e){
+			System.out.println("Bonus is Not Present");
+		}
+
+		wait.until(ExpectedConditions.elementToBeClickable(cardHeaders));
+		cardHeaders.click();
+		Thread.sleep(2000);
+
+	}
+	
+}
+	public void bonusBranchExcHistoryAfterVoidVerification(String branchId) throws InterruptedException {
+
+		alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+branchId);
+		//alcDriver.navigate().refresh();
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+		Thread.sleep(1000);
+
+		for(WebElement cardHeaders:cardheaders) {
+
+			cardHeaders.click();
+			Actions action = new Actions(alcDriver);
+			action.scrollToElement(lastItemOnPage).build().perform();
+
+			Thread.sleep(1000);
+
+			TakesScreenshot ts13 = (TakesScreenshot) alcDriver;
+			byte[] screenshot13 = ts13.getScreenshotAs(OutputType.BYTES);
+			Allure.addAttachment("Token in Branch Exchange History After Void", new ByteArrayInputStream(screenshot13));
+			Thread.sleep(3000);
+			alcDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+			try{
+
+				bonustext.isDisplayed();
+
+			}
+			catch(Exception e){
+
+				System.out.println("Bonus is Not Present");
+			}
+			alcDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+			wait.until(ExpectedConditions.elementToBeClickable(cardHeaders));
+			cardHeaders.click();
+			Thread.sleep(2000);
+
+		}
+
+	}
+
+	public void bonusProcessorExcHistoryVerification(String processorId) throws InterruptedException {
+
+		alcDriver.get("https://"+BaseClass.actual+"/#/admin/recyclingcenter/"+processorId);
+
+		exchangeHistoryTab.click();
+		for(WebElement cardHeaders:cardheaders)
+			cardHeaders.click();
+		Actions action = new Actions(alcDriver);
+		action.moveToElement(lastItemOnPage).build().perform();
+		Thread.sleep(2000);
+
+		TakesScreenshot ts13 = (TakesScreenshot) alcDriver;
+		byte[] screenshot13 = ts13.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Bonus in Processor Exchange History Screenshot", new ByteArrayInputStream(screenshot13));
+		Thread.sleep(3000);
+		alcDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+		try {
+			assertTrue(branchBonus.isDisplayed());
+		}
+		catch(Exception e){
+			//assertFalse(branchBonus.isDisplayed());
+			System.out.println("No Bonus is Present");
+		}
+		alcDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+	}
+public void verifyBonusInAlchmeyBranches_1711(String branchId,String bonus) throws InterruptedException {
+	
+	alcDriver.get("https://"+actual+"/#/admin/collectionpoint/"+branchId);
+	alcDriver.navigate().refresh();
+	Thread.sleep(2000);
+	String tokenInWallet=tokenInWalletText.getText();
+	System.out.println(tokenInWallet);
+	assertTrue(tokenInWallet.equals(bonus));
+	
+	 TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Token in wallet for Branch in Alchemy", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+	
+}
+public void voidTransaction(String branchId) throws InterruptedException {
+
+	alcDriver.get("https://"+actual+"/#/admin/collectionpoint/"+branchId);
+	Thread.sleep(2000);
+	exchangeHistoryTab.click();
+	Thread.sleep(2000);
+
+	cardheaders.get(1).click();
+
+	Actions action = new Actions(alcDriver);
+	action.scrollToElement(lastItemOnPage).build().perform();
+	Thread.sleep(2000);
+
+	voidTransactionButton.click();
+	voidButton.click();
+	closeButton.click();
+	Thread.sleep(2000);
+//	Actions action1 = new Actions(alcDriver);
+//	action1.moveToElement(crossButton).click().build().perform();
+//	//crossButton.click();
+
+//	Actions action1 = new Actions(alcDriver);
+//	action1.moveToElement(crossButton).build().perform();
+
+//	crossButton.click();
+//	Thread.sleep(3000);
+//	wait.until(ExpectedConditions.elementToBeClickable(cardheaders.get(1)));
+//	cardheaders.get(1).click();
+
+	TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	Allure.addAttachment("Void Transaction", new ByteArrayInputStream(screenshot1));
+	Thread.sleep(2000);
+
+//	Assert.assertTrue(voidedButton.isDisplayed());
+
+}
+	public void reclaimToken(String branchId) throws InterruptedException {
+
+		alcDriver.get("https://"+actual+"/#/admin/collectionpoint/"+branchId);
+		Thread.sleep(2000);
+		exchangeHistoryTab.click();
+
+		Thread.sleep(2000);
+
+		Actions action = new Actions(alcDriver);
+		action.moveToElement(lastItemOnPage).build().perform();
+		Thread.sleep(2000);
+
+		cardheaders.get(1).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(reclaimTokenButton));
+		reclaimTokenButton.click();
+		textAreaReclaimToken.sendKeys("Token Reclaim for test case ALC-1711");
+		reclaimButton.click();
+
+		enterAuthCode("778899");
+
+		submitButton.click();
+
+
+
+		Thread.sleep(2000);
+
+
+		TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+		byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Reclaim Token Screenshot", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+		Assert.assertTrue(success.isDisplayed());
+		closeButton.click();
+
+	}
+
 }
 

@@ -25,7 +25,7 @@ import plastic_Bank_Pages.PB_Register_Member;
 public class ALC_4350 extends BaseClass {
 
 
-	@Test(priority=0, description = "New member account should be successfully created | New member should be successfully logged in")
+	@Test(priority=0, description = "Signing up a member and Login Verification and Logout")
 	@Description("Signing up a member and Login Verification and Logout")
 	public void signUp()throws InterruptedException {
 		
@@ -106,7 +106,7 @@ public class ALC_4350 extends BaseClass {
 		PB_LoginPage lp =new PB_LoginPage(pbDriver);
 		lp.login(branchMemberphoneNumber,password);
 		Thread.sleep(2000);
-	    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
 	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
 	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
 	    Thread.sleep(2000);
@@ -123,7 +123,7 @@ public class ALC_4350 extends BaseClass {
 		Thread.sleep(2000);
 		lp.clickSuspendedMemebr();
 		Thread.sleep(2000);
-	    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
 	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
 	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
 	    Thread.sleep(2000);

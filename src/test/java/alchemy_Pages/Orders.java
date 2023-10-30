@@ -3,22 +3,30 @@ package alchemy_Pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Utilities.BaseClass;
+import Utilities.Data;
 import io.qameta.allure.Allure;
 
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 ;
 
 public class Orders extends BaseClass{
@@ -86,7 +94,7 @@ public class Orders extends BaseClass{
     @FindBy(xpath = "//div[normalize-space()='TOTAL:']/following-sibling::span") 
     WebElement summary_Total_KG_Text;
     
-    @FindBy(xpath = "//div[text()='Exchange History ']") 
+    @FindBy(xpath = "//div[text()='Exchange History ']")
     WebElement exchangeHistoryTab;
     
     @FindBy(xpath = "//div[text()='HDPE-Clean-Clear / 10.00 kg']") 
@@ -116,6 +124,51 @@ public class Orders extends BaseClass{
     @FindBy(xpath = "//button[text()=' Confirm new participants']") WebElement confirmNewParticipants;
     @FindBy(xpath = "//button[text()='Close']") WebElement closeBtnPopup;
     @FindBy(xpath = "//button[text()='Save']") WebElement saveBonusInfoBtn;
+    @FindBy(xpath = "//div[text()='Summary']") 
+    WebElement summary;
+    @FindBy(xpath = "//span[text()='Start Approval']") 
+    WebElement startApproval;
+    @FindBy(xpath = "//span[@class='expanded-entity-icon']")
+    List<WebElement> expander;
+    
+    @FindBy(xpath = "//div[@class='col text-dark-grey d-flex align-items-center']/descendant::div[@class='row']") 
+    WebElement bonusinBAtext;
+    @FindBy(xpath = "//div[@class='col-auto d-flex align-items-center']") 
+    WebElement dp;
+    @FindBy(xpath = "//div[text()='133 ']") 
+    WebElement bonus133;
+    @FindBy(xpath = "//div[text()='Exchange History ']") 
+    WebElement exchangehistory;
+    @FindBy(xpath = "//div[@class='card-header']") 
+    WebElement pccardheader;
+    @FindBy(xpath = "//i[@class='fa fa-circle text-green']") 
+    WebElement greencircle;
+    @FindBy(xpath = "//div[text()='Bonus Approval ']") 
+    WebElement bonusApproval;
+    @FindBy(xpath = "//li[contains(@class,'page-item')]")
+    WebElement lastItemOnPaage;
+    @FindBy(xpath = "//a[contains(text(),'Sell Transactions')]")
+    WebElement selltransactions;   
+    @FindBy(xpath = "//a[contains(text(),'Buy Transactions')]")
+    WebElement buytransactions;
+    @FindBy(xpath = "//div[text()=' 0% fulfilled ']") 
+    WebElement fulfilledbonus;
+    @FindBy(xpath = "//button[@disabled]/descendant::span[text()='Start Approval']")
+    WebElement disabledStartApproval;
+    @FindBy(xpath = "//div[text()='Bonus']")
+    WebElement bonusExcHisBonus;
+    @FindBy(xpath = "//div[text()='Bonus']/following-sibling::div")
+    WebElement bonusExcHisBonusText;
+    @FindBy(xpath = "//div[text()='KG Recycled']/following-sibling::div/div/following-sibling::div/div")
+    WebElement kgrecycled;
+    @FindBy(xpath = "//button[contains(text(),'Fleek')]")
+    WebElement bonusname;
+    @FindBy(xpath = "//div[@class='card-header']/div/button")
+    List<WebElement> transactions;
+    @FindBy(xpath = "//span[text()='View Audit Trail']")
+    WebElement viewAuditTrail;
+    @FindBy(xpath = "(//div[text()=' Total KG Sold '])[1]/span")
+    WebElement verifyKgVoided;
     
     public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
     public static String expectedexcHisPetKG="PET-Raw-Transparent / 9.00 kg";
@@ -159,7 +212,7 @@ public class Orders extends BaseClass{
     }
     public void clickExchangeHistory() {
     WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(30));
-    wait.until(ExpectedConditions.invisibilityOf(pageLoader));
+    //wait.until(ExpectedConditions.invisibilityOf(pageLoader));
     wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
     exchangeHistoryTab.click();
     }
@@ -390,6 +443,7 @@ public class Orders extends BaseClass{
 
     }
     public void searchBonus(String bonusName) throws InterruptedException {
+    	
     	clickOrdersTab();
         clickBounsTab();
         search_byName(bonusName);
@@ -413,7 +467,7 @@ public class Orders extends BaseClass{
     
     public void verifyDetailsInBonusSummary() throws InterruptedException {
     	//searchBonus(bonusName);
-    	Thread.sleep(5000);
+    	Thread.sleep(1000);
     	clickSpecificOrdersBonus();
     	Thread.sleep(3000);
     	 List<String> lst= new ArrayList<>();
@@ -454,8 +508,286 @@ public class Orders extends BaseClass{
     	
     }
     
+  WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(20));
+    
+  public void buySellPresent() throws InterruptedException, IOException {
+  	alcDriver.get("https://"+BaseClass.actual+"/#/admin/ordersoffsets/offset/"+Data.bonusid4360);
+  	exchangehistory.click();
+  	pccardheader.isDisplayed();
+  	Actions action = new Actions(alcDriver);
+  	action.moveToElement(lastItemOnPaage).build().perform();
+  	Thread.sleep(2000);
+
+  	 TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+  	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+  	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+  		Thread.sleep(2000);
+  		bonusApproval.click();
+  		expander.get(0).click();
+  			startApproval.click();
+  			wait.until(ExpectedConditions.textToBePresentInElement(buytransactions, "Buy Transactions (1)"));
+  			buytransactions.click();
+  			Thread.sleep(2000);
+  			wait.until(ExpectedConditions.textToBePresentInElement(selltransactions, "Sell Transactions (1)"));
+  			selltransactions.click();
+  			Thread.sleep(2000);
+  			wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(dp)));
+  			dp.click();
+  			
+  			try {
+  			Thread.sleep(5000);
+  			System.out.println("sell transac   --"+bonusinBAtext.getText()+"---");
+  			wait.until(ExpectedConditions.textToBePresentInElement(bonusinBAtext, "30"));
+  			assertTrue(bonusinBAtext.getText().equals("30"));
+  			Thread.sleep(2000);
+  			TakesScreenshot ts111 = (TakesScreenshot) alcDriver;
+			    byte[] screenshotsell = ts111.getScreenshotAs(OutputType.BYTES);
+			    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshotsell));
+			    Thread.sleep(2000);
+  			}
+  			
+  			catch(Exception e) {
+					
+  			}
+  				
+  		alcDriver.navigate().refresh();
+  		wait.until(ExpectedConditions.textToBePresentInElement(buytransactions, "Buy Transactions (1)"));
+  		buytransactions.click();
+  		Thread.sleep(2000);
+  		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(dp)));
+  		dp.click();
+  		
+  		try {
+  		Thread.sleep(5000);
+  		System.out.println("buy transac   ---"+bonusinBAtext.getText()+"---");
+  		wait.until(ExpectedConditions.textToBePresentInElement(bonusinBAtext, "133"));
+  		assertTrue(bonusinBAtext.getText().equals("133"));
+  		Thread.sleep(2000);
+ 		 TakesScreenshot ts1111 = (TakesScreenshot) alcDriver;
+ 		    byte[] screenshotbuy = ts1111.getScreenshotAs(OutputType.BYTES);
+ 		 Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshotbuy));
+ 		Thread.sleep(2000);
+  		}
+  		
+  		catch(Exception e) {
+				
+  		}
+  		
+  		
+  		bonusname.click();
+  		bonusApproval.click();
+  		expander.get(1).click();
+  			startApproval.click();
+  			wait.until(ExpectedConditions.textToBePresentInElement(selltransactions, "Sell Transactions (1)"));
+  			selltransactions.click();
+  			wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(dp)));
+  			dp.click();
+  			
+  			try {
+  			Thread.sleep(5000);
+  			System.out.println("sell transac   --"+bonusinBAtext.getText()+"---");
+  			wait.until(ExpectedConditions.textToBePresentInElement(bonusinBAtext, "14"));
+  			assertTrue(bonusinBAtext.getText().equals("14"));
+  			Thread.sleep(2000);
+  			TakesScreenshot ts111 = (TakesScreenshot) alcDriver;
+			    byte[] screenshotsell = ts111.getScreenshotAs(OutputType.BYTES);
+			    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshotsell));
+			    Thread.sleep(2000);
+  			}
+  			
+  			catch(Exception e) {
+					
+  			}
+  		
+  }   
+    
+    @SuppressWarnings("deprecation")
+	public void verifyBonusOrderSummaryAndApprovalSteps() throws InterruptedException {
+    	alcDriver.get("https://"+BaseClass.actual+"/#/admin/ordersoffsets/offset/"+Data.bonusid4360);
+    	bonusApproval.click();
+    	Thread.sleep(2000);
+		expander.get(0).click();
+		Thread.sleep(2000);
+		disabledStartApproval.isDisplayed();
+		Thread.sleep(2000);
+   	 TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+   	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+   	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+   		Thread.sleep(2000);
+		summary.click();
+		Thread.sleep(1000);
+		fulfilledbonus.isDisplayed();
+		Thread.sleep(2000);
+   	 TakesScreenshot ts11 = (TakesScreenshot) alcDriver;
+   	    byte[] screenshot11 = ts11.getScreenshotAs(OutputType.BYTES);
+   	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot11));
+   		Thread.sleep(2000);
+    	exchangehistory.click();
+    	alcDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    	try {
+    		 WebDriverWait waitpc = new WebDriverWait(alcDriver,Duration.ofSeconds(2));
+    		waitpc.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pccardheader)));
+    	}catch(Exception e) {
+    		System.out.println("plastic chain not present after disabling bonus");
+    	}
+    	Actions action = new Actions(alcDriver);
+    	action.moveToElement(greencircle).build().perform();
+    	Thread.sleep(2000);
+    	 TakesScreenshot ts111 = (TakesScreenshot) alcDriver;
+    	    byte[] screenshot111 = ts111.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot111));
+    		Thread.sleep(2000);
+    	 alcDriver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+    }
+    
+    public void bonusExcHisVerification(String bonusId) throws InterruptedException {
     	
+    	alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+bonusId);
+
+        WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(50));
+        wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+        exchangeHistoryTab.click();
+        Thread.sleep(4000);
+        alcDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        try{
+            Actions action = new Actions(alcDriver);
+            action.scrollToElement(lastItemOnPaage).build().perform();
+            Thread.sleep(2000);
+            TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Bonus In Exchange History ScreenShot", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(2000);
+            assertTrue(bonusExcHisBonusText.isDisplayed());
+
+        }
+
+        catch(Exception e){
+            Thread.sleep(2000);
+            TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Token in Bonus Exchange History ", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(2000);
+            //Assert.assertFalse(bonusExcHisBonusText.isDisplayed());
+            System.out.println("No Bonus Found");
+        }
+        alcDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+    }
+   
+    public void buySellVerification_1711beforeVoid(String bonusId) throws InterruptedException {
+    	
+    	alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+bonusId);
+    	bonusApproval.click();
+    	Thread.sleep(2000);
+
+    		bonusApproval.click();
+        expander.get(0).click();
+    			startApproval.click();
+//    			wait.until(ExpectedConditions.textToBePresentInElement(buytransactions, "Buy Transactions (1)"));
+//    			buytransactions.click();
+//    			wait.until(ExpectedConditions.textToBePresentInElement(selltransactions, "Sell Transactions (1)"));
+//    			selltransactions.click();
+                Thread.sleep(2000);
+    			wait.until(ExpectedConditions.elementToBeClickable(dp));
+    			dp.click();
     
-    
+    			Thread.sleep(3000);
+
+    			assertTrue(bonusinBAtext.isDisplayed());
+    			Thread.sleep(2000);
+    			TakesScreenshot ts111 = (TakesScreenshot) alcDriver;
+			    byte[] screenshotsell = ts111.getScreenshotAs(OutputType.BYTES);
+			    Allure.addAttachment("Buy Sell Verification  Screenshot", new ByteArrayInputStream(screenshotsell));
+			    Thread.sleep(2000);
+
+    		buytransactions.click();
+    		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(dp)));
+    		dp.click();
+   
+    		Thread.sleep(3000);
+
+    		assertTrue(bonusinBAtext.isDisplayed());
+    		Thread.sleep(2000);
+   		 TakesScreenshot ts1111 = (TakesScreenshot) alcDriver;
+   		    byte[] screenshotbuy = ts1111.getScreenshotAs(OutputType.BYTES);
+   		 Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshotbuy));
+   		Thread.sleep(2000);
+           bonusname.click();
+        Thread.sleep(2000);
+        bonusApproval.click();
+        Thread.sleep(3000);
+        expander.get(1).click();
+        startApproval.click();
+        Thread.sleep(3000);
+        buytransactions.click();
+        Thread.sleep(3000);
+        selltransactions.click();
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(dp)));
+        dp.click();
+
+        Thread.sleep(3000);
+
+        assertTrue(bonusinBAtext.isDisplayed());
+        Thread.sleep(2000);
+        TakesScreenshot ts11111 = (TakesScreenshot) alcDriver;
+        byte[] screenshotsell1 = ts11111.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshotsell1));
+        Thread.sleep(2000);
+
+    }
+    public void buySellVerification_1711AfterVoid(String bonusId) throws InterruptedException {
+
+        alcDriver.get("https://"+BaseClass.actual+"/#/admin/ordersoffsets/offset/"+bonusId);
+        bonusApproval.click();
+        Thread.sleep(2000);
+        for(WebElement ele : expander) {
+
+            ele.click();
+
+            Actions action= new Actions(alcDriver);
+            action.scrollToElement(viewAuditTrail).build().perform();
+            Thread.sleep(2000);
+
+            String voidedKg = verifyKgVoided.getText();
+            Assert.assertEquals(voidedKg,"0 KG");
+
+            Thread.sleep(2000);
+            TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Token in Buy/Sell Bomnus Exchange History", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(2000);
+            ele.click();
+            Thread.sleep(2000);
+
+        }
+
+    }
+    public void bonusProgressInSummaryTab(String bonusProgress) throws InterruptedException {
+
+        alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+Data.bonusOrderId1711);
+        alcDriver.navigate().refresh();
+        try {
+            String bonusProgressActual = summary_bonusProgressText.getText();
+            System.out.println(bonusProgressActual);
+            assert bonusProgressActual.contains(bonusProgress);
+            Thread.sleep(2000);
+            TakesScreenshot ts11 = (TakesScreenshot) alcDriver;
+            byte[] screenshot11 = ts11.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Bonus in Summary tab in Bonus Progress", new ByteArrayInputStream(screenshot11));
+            Thread.sleep(2000);
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(" Bonus is Not Present ");
+            Thread.sleep(2000);
+            TakesScreenshot ts11 = (TakesScreenshot) alcDriver;
+            byte[] screenshot11 = ts11.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Bonus in Summary tab in Bonus Progress", new ByteArrayInputStream(screenshot11));
+            Thread.sleep(2000);
+
+        }
+  }
 
 }

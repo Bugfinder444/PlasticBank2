@@ -76,10 +76,11 @@ public class Stores extends BaseClass {
     }
     
     public void clickEditStore() throws InterruptedException {
-       WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(90));
+       WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(120));
        wait.until(ExpectedConditions.invisibilityOf(pageLoader));
+       //wait.until(ExpectedConditions.elementToBeClickable(edit_store));
        // Thread.sleep(15000);
-        edit_store.click();
+       edit_store.click();
     }
 
     public void editUserCity(String cityName) throws InterruptedException {

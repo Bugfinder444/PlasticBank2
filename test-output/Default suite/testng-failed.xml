@@ -3,19 +3,25 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="smoke_Suite.ALC_4352">
+      <class name="smoke_Suite.ALC_1711">
         <methods>
+          <include name="createAndPerformTransaction"/>
+          <include name="afterMethod"/>
+          <include name="verifyTokenInAppBeforeBonusPaid"/>
+          <include name="generateRandomLastName"/>
+          <include name="kgRecycledInBranchBeforeVoid"/>
+          <include name="generateBranchName"/>
           <include name="generateRandomBranchMemberNumber"/>
           <include name="generateRandomNumber"/>
-          <include name="afterMethod"/>
+          <include name="bonusOrderExcHisVerificationBeforeVoid"/>
+          <include name="approveBonus"/>
           <include name="setup"/>
-          <include name="generateRandomLastName"/>
-          <include name="verifyNewStore"/>
           <include name="teardown"/>
+          <include name="dashBoardVerificationsBeforeVoid"/>
           <include name="generateBranchMemberName"/>
-          <include name="generateBranchName"/>
+          <include name="memberExcHisBonusVerificationBeforeVoid"/>
         </methods>
-      </class> <!-- smoke_Suite.ALC_4352 -->
+      </class> <!-- smoke_Suite.ALC_1711 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

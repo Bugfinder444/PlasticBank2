@@ -56,7 +56,7 @@ public class ALC_4354 extends BaseClass {
 		l.loginRandom(password);
 		l.menu();
 		Thread.sleep(2000);
-	    TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	    TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
 	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
 	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
 		Thread.sleep(4000);

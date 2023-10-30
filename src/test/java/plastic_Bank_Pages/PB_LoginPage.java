@@ -241,6 +241,11 @@ public void suspendAccountBranchVerify() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(pbDriver,Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(navigateBack)));
 		//Assertion
+		Thread.sleep(2000);
+	    TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+	    Thread.sleep(2000);
 		assertTrue(accountSuspended.isDisplayed());
 	}
 	catch(Exception e){

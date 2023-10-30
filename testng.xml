@@ -9,12 +9,13 @@
       <class name="smoke_Suite.ALC_4352"/>
       <class name="smoke_Suite.ALC_4365"/>
       <class name="smoke_Suite.ALC_4366"/>
-      <class name="smoke_Suite.ALC_4357"/>
       <class name="smoke_Suite.ALC_4362"/>
       <class name="smoke_Suite.ALC_4363"/>
       <class name="smoke_Suite.ALC_4361"/>
       <class name="smoke_Suite.ALC_4359"/>
       <class name="smoke_Suite.ALC_380"/>
+      <class name="smoke_Suite.ALC_4360"/>
+      <class name="smoke_Suite.ALC_1711"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

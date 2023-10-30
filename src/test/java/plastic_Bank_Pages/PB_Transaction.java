@@ -1,5 +1,6 @@
 package plastic_Bank_Pages;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
@@ -18,6 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import Utilities.BaseClass;
+import Utilities.Data;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -109,7 +111,7 @@ public WebElement kgbranch3toProcessor;
 @AndroidFindBy(uiAutomator="new UiSelector().textContains(\"rocess\")")
 public WebElement processor;
 
-@AndroidFindBy(uiAutomator="new UiSelector().textContains(\"133 = 72\")")
+@AndroidFindBy(uiAutomator="new UiSelector().textContains(\"133 = \")")
 public WebElement bonusMemberVerify;
 
 
@@ -121,7 +123,7 @@ public WebElement bonusMemberVerify;
     public WebElement hdpeMixed;
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"History\")")
     public WebElement historyButton;
-    @AndroidFindBy(uiAutomator="new UiSelector().text(\"seventhaug collector\")")
+    @AndroidFindBy(uiAutomator="new UiSelector().textContains(\"leek\")")
     public List<WebElement> M1MemberButton;
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"Reward\")")
     public WebElement rewardText;
@@ -145,9 +147,27 @@ public WebElement bonusMemberVerify;
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"0\")")
     WebElement processorBonus;
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"lock-bonus\")")
+    public WebElement lock_bonus;
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Unlock Bonus\")")
+    public WebElement unlock_bonus;
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Delayed Bonus\")")
+    public WebElement delayed_bonus;
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"pb-logo-bonus\")")
+    public WebElement pb_logo_bonus;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").instance(0)")
+    public WebElement memberbonustext;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").instance(2)")
+    public WebElement bonustextbranch;
+	@AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"133 = \")")
+	public WebElement tokenInApp;
+	
+	@AndroidFindBy(xpath="//android.view.View[7]/android.view.View[1]")
+	public WebElement branchToken;
+	
  
-WebDriverWait wait = new WebDriverWait(pbDriver,Duration.ofSeconds(10));
-public void doTransaction(String number, String load1, String load2) throws InterruptedException {
+	WebDriverWait wait = new WebDriverWait(pbDriver,Duration.ofSeconds(10));
+	public void doTransaction(String number, String load1, String load2) throws InterruptedException {
 	
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
 	search.sendKeys(number);
@@ -180,6 +200,8 @@ public void doTransaction(String number, String load1, String load2) throws Inte
     addPicture.click();
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(takePicture)));
     takePicture.click();
+    
+    
     
     try {
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
@@ -305,6 +327,7 @@ public void m1toB1(String m1number) throws InterruptedException {
     pet.click();
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
 	requiredQuantity.sendKeys("9");
+	Thread.sleep(2000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));
     checkmark.get(1).click();
     
@@ -317,16 +340,20 @@ public void m1toB1(String m1number) throws InterruptedException {
     assertTrue(bonusToMember.isDisplayed());
     assertTrue(kgMemberToBranch1.isDisplayed());
    
+    Thread.sleep(2000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(addPicture)));
     addPicture.click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(takePicture)));
     takePicture.click();
-    
+    Thread.sleep(1000);
     try {
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
     	permission.click();
+    	Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(allow)));
         allow.click();
         Thread.sleep(5000);
@@ -341,6 +368,7 @@ public void m1toB1(String m1number) throws InterruptedException {
         pbDriver.perform(Arrays.asList(scrollShutter));
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
     	photoDone.click();
+    	Thread.sleep(1000);
     	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
     				checkmark.get(0)))); checkmark.get(0).click();
     	
@@ -357,6 +385,7 @@ public void m1toB1(String m1number) throws InterruptedException {
             pbDriver.perform(Arrays.asList(scrollShutter));
         	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
         	photoDone.click();
+        	Thread.sleep(1000);
         	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
         				checkmark.get(0)))); checkmark.get(0).click();
        }
@@ -368,11 +397,13 @@ public void m1toB1(String m1number) throws InterruptedException {
     Thread.sleep(2000);
     assertTrue(bonusToMember.isDisplayed());
     assertTrue(kgMemberToBranch1.isDisplayed());
-    
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 	checkmark.get(0)))); checkmark.get(0).click();
+	Thread.sleep(1000);
 	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 				ok))); ok.click();
 				
@@ -386,13 +417,16 @@ public void m1toB1(String m1number) throws InterruptedException {
 	                PointerInput.Origin.viewport(), 400, 2060));
 	            scrollMemberTab.addAction(fingerMemberTab.createPointerUp(0));	
 	            pbDriver.perform(Arrays.asList(scrollMemberTab));
-	            
+	            Thread.sleep(1000);
 	            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(history)));
 	            history.click();
+	            Thread.sleep(2000);
 	            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(transaction)));
 	            assertTrue(transaction.isDisplayed());
+	            Thread.sleep(1000);
 	            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(arrowBack)));
 	            arrowBack.click();
+	            Thread.sleep(2000);
 	            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(noBonus)));
 	            assertTrue(noBonus.isDisplayed());
 				
@@ -412,9 +446,10 @@ public void b1toB2(String b1number) throws InterruptedException {
 	searchOutline.click();
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchResult)));
 	searchResult.click();
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
-    
+    Thread.sleep(1000);
     
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(hdpe)));
 	hdpe.click();
@@ -422,11 +457,13 @@ public void b1toB2(String b1number) throws InterruptedException {
 	requiredQuantity.sendKeys("8");
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));
     checkmark.get(1).click();
+    Thread.sleep(1000);
     
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pet)));
     pet.click();
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
 	requiredQuantity.sendKeys("7");
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));
     checkmark.get(1).click();
     Thread.sleep(2000);
@@ -436,17 +473,20 @@ public void b1toB2(String b1number) throws InterruptedException {
     Thread.sleep(2000);
     assertTrue(bonusToBranch1fromBranch2.isDisplayed());
     assertTrue(kgBranch1ToBranch2.isDisplayed());
-    
+    Thread.sleep(2000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(addPicture)));
     addPicture.click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(takePicture)));
     takePicture.click();
     
     try {
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
     	permission.click();
+    	Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(allow)));
         allow.click();
         Thread.sleep(5000);
@@ -459,8 +499,10 @@ public void b1toB2(String b1number) throws InterruptedException {
             PointerInput.Origin.viewport(), 545, 1930));
         scrollShutter.addAction(fingerShutter.createPointerUp(0));
         pbDriver.perform(Arrays.asList(scrollShutter));
+        Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
     	photoDone.click();
+    	Thread.sleep(1000);
     	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
     				checkmark.get(0)))); checkmark.get(0).click();
     	
@@ -475,8 +517,10 @@ public void b1toB2(String b1number) throws InterruptedException {
                 PointerInput.Origin.viewport(), 545, 1930));
             scrollShutter.addAction(fingerShutter.createPointerUp(0));
             pbDriver.perform(Arrays.asList(scrollShutter));
+            Thread.sleep(1000);
         	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
         	photoDone.click();
+        	Thread.sleep(1000);
         	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
         				checkmark.get(0)))); checkmark.get(0).click();
         	
@@ -491,10 +535,13 @@ public void b1toB2(String b1number) throws InterruptedException {
     assertTrue(kgBranch1ToBranch2.isDisplayed());
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 	checkmark.get(0)))); checkmark.get(0).click();
+	Thread.sleep(1000);
 	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 				ok))); ok.click();
+				Thread.sleep(1000);
 }
 
 public void b1toB3(String b1number) throws InterruptedException {
@@ -505,6 +552,7 @@ public void b1toB3(String b1number) throws InterruptedException {
 	searchOutline.click();
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchResult)));
 	searchResult.click();
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
     
@@ -513,9 +561,10 @@ public void b1toB3(String b1number) throws InterruptedException {
 	hdpe.click();
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
 	requiredQuantity.sendKeys("6");
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));
     checkmark.get(1).click();
-    
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pet)));
     pet.click();
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
@@ -531,14 +580,18 @@ public void b1toB3(String b1number) throws InterruptedException {
     assertTrue(kgBranch1toBranch3.isDisplayed());
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
+    
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(addPicture)));
     addPicture.click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(takePicture)));
     takePicture.click();
-    
+    Thread.sleep(1000);
     try {
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
     	permission.click();
+    	Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(allow)));
         allow.click();
         Thread.sleep(5000);
@@ -551,8 +604,10 @@ public void b1toB3(String b1number) throws InterruptedException {
             PointerInput.Origin.viewport(), 545, 1930));
         scrollShutter.addAction(fingerShutter.createPointerUp(0));
         pbDriver.perform(Arrays.asList(scrollShutter));
+        Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
     	photoDone.click();
+    	Thread.sleep(1000);
     	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
     				checkmark.get(0)))); checkmark.get(0).click();
     	
@@ -569,9 +624,10 @@ public void b1toB3(String b1number) throws InterruptedException {
             pbDriver.perform(Arrays.asList(scrollShutter));
         	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
         	photoDone.click();
+        	Thread.sleep(1000);
         	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
         				checkmark.get(0)))); checkmark.get(0).click();
-        	
+        				Thread.sleep(1000);
         	
         }
     Thread.sleep(2000);
@@ -581,12 +637,16 @@ public void b1toB3(String b1number) throws InterruptedException {
     Thread.sleep(3000);
     assertTrue(bonusToBranch1fromBranch3.isDisplayed());
     assertTrue(kgBranch1toBranch3.isDisplayed());
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 	checkmark.get(0)))); checkmark.get(0).click();
+	Thread.sleep(1000);
 	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 				ok))); ok.click();
+				Thread.sleep(1000);
 }
 
 public void b3ToP(String b3number) throws InterruptedException {
@@ -599,10 +659,13 @@ public void b3ToP(String b3number) throws InterruptedException {
 	Thread.sleep(4000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
 	search.sendKeys(b3number);
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
 	searchOutline.click();
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchResult)));
 	searchResult.click();
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
     
@@ -613,11 +676,12 @@ public void b3ToP(String b3number) throws InterruptedException {
 	requiredQuantity.sendKeys("1");
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));
     checkmark.get(1).click();
-    
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pet)));
     pet.click();
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
 	requiredQuantity.sendKeys("1");
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));
     checkmark.get(1).click();
     Thread.sleep(2000);
@@ -630,14 +694,18 @@ public void b3ToP(String b3number) throws InterruptedException {
     
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(addPicture)));
     addPicture.click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(takePicture)));
     takePicture.click();
+    Thread.sleep(1000);
     
     try {
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
     	permission.click();
+    	Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(allow)));
         allow.click();
         Thread.sleep(5000);
@@ -650,10 +718,13 @@ public void b3ToP(String b3number) throws InterruptedException {
             PointerInput.Origin.viewport(), 545, 1930));
         scrollShutter.addAction(fingerShutter.createPointerUp(0));
         pbDriver.perform(Arrays.asList(scrollShutter));
+        Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
     	photoDone.click();
+    	Thread.sleep(1000);
     	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
     				checkmark.get(0)))); checkmark.get(0).click();
+    				Thread.sleep(1000);
     	
         }catch(Exception e) {
         	Thread.sleep(5000);
@@ -666,10 +737,13 @@ public void b3ToP(String b3number) throws InterruptedException {
                 PointerInput.Origin.viewport(), 545, 1930));
             scrollShutter.addAction(fingerShutter.createPointerUp(0));
             pbDriver.perform(Arrays.asList(scrollShutter));
+            Thread.sleep(1000);
         	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
         	photoDone.click();
+        	Thread.sleep(1000);
         	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
         				checkmark.get(0)))); checkmark.get(0).click();
+        				Thread.sleep(1000);
         	
         	
         }
@@ -685,8 +759,10 @@ public void b3ToP(String b3number) throws InterruptedException {
     Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
 	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 				ok))); ok.click();
+				Thread.sleep(1000);
 }
 
 public void b2ToP(String b2number) throws InterruptedException {
@@ -704,17 +780,19 @@ public void b2ToP(String b2number) throws InterruptedException {
 	searchOutline.click();
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchResult)));
 	searchResult.click();
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
     
-    
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(hdpe)));
 	hdpe.click();
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
 	requiredQuantity.sendKeys("4");
+	Thread.sleep(1000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));
     checkmark.get(1).click();
-    
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(pet)));
     pet.click();
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
@@ -729,17 +807,21 @@ public void b2ToP(String b2number) throws InterruptedException {
     assertTrue(bonusTobranch2fromProcessor.isDisplayed());
     assertTrue(kgbranch2toProcessor.isDisplayed());
     
-    
+    Thread.sleep(2000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(addPicture)));
     addPicture.click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(takePicture)));
     takePicture.click();
+    Thread.sleep(1000);
     
     try {
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(permission)));
     	permission.click();
+    	Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(allow)));
         allow.click();
         Thread.sleep(5000);
@@ -752,11 +834,13 @@ public void b2ToP(String b2number) throws InterruptedException {
             PointerInput.Origin.viewport(), 545, 1930));
         scrollShutter.addAction(fingerShutter.createPointerUp(0));
         pbDriver.perform(Arrays.asList(scrollShutter));
+        Thread.sleep(1000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
     	photoDone.click();
+    	Thread.sleep(1000);
     	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
     				checkmark.get(0)))); checkmark.get(0).click();
-    	
+    				Thread.sleep(1000);
         }catch(Exception e) {
         	Thread.sleep(5000);
             PointerInput fingerShutter = new PointerInput(PointerInput.Kind.TOUCH, "fingerShutter");
@@ -768,11 +852,13 @@ public void b2ToP(String b2number) throws InterruptedException {
                 PointerInput.Origin.viewport(), 545, 1930));
             scrollShutter.addAction(fingerShutter.createPointerUp(0));
             pbDriver.perform(Arrays.asList(scrollShutter));
+            Thread.sleep(1000);
         	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(photoDone)));
         	photoDone.click();
+        	Thread.sleep(1000);
         	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
         				checkmark.get(0)))); checkmark.get(0).click();
-        	
+        				Thread.sleep(1000);
         	
         }
     Thread.sleep(2000);
@@ -786,15 +872,18 @@ public void b2ToP(String b2number) throws InterruptedException {
     
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
+    Thread.sleep(1000);
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 	checkmark.get(0)))); checkmark.get(0).click();
+	Thread.sleep(1000);
 	 wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(
 				ok))); ok.click();
+				Thread.sleep(1000);
 }
 public void CheckMemberBonus() throws InterruptedException {
 	PB_LoginPage lo =new  PB_LoginPage(pbDriver);
-	lo.login(member_Number, password);
-	Thread.sleep(3000);
+	lo.login(Data.member_Number, password);
+	Thread.sleep(4000);
 	Assert.assertTrue(bonusMemberVerify.isDisplayed());
 	
 	Thread.sleep(2000);
@@ -802,6 +891,37 @@ public void CheckMemberBonus() throws InterruptedException {
     byte[] screenshot2 = ts2.getScreenshotAs(OutputType.BYTES);
     Allure.addAttachment("Screenshot2", new ByteArrayInputStream(screenshot2));
     Thread.sleep(2000);
+    lo.logout();
+}
+public void CheckBranchBonus(String phoneNumber, String password ) throws InterruptedException {
+	PB_LoginPage lo =new  PB_LoginPage(pbDriver);
+	lo.login(phoneNumber, password);
+	Thread.sleep(3000);
+	tap(420,2060);
+	Thread.sleep(2000);
+	Assert.assertTrue(branchToken.isDisplayed());
+	
+	Thread.sleep(2000);
+    TakesScreenshot ts2 = (TakesScreenshot) pbDriver;
+    byte[] screenshot2 = ts2.getScreenshotAs(OutputType.BYTES);
+    Allure.addAttachment("Screenshot2", new ByteArrayInputStream(screenshot2));
+    Thread.sleep(2000);
+    lo.logout();
+    Thread.sleep(2000);
+}
+public void tap(int x, int y) throws InterruptedException {
+	
+	Thread.sleep(3000);
+	PointerInput fingerShutter = new PointerInput(PointerInput.Kind.TOUCH, "fingerShutter");
+    Sequence scrollShutter = new Sequence(fingerShutter, 1);
+    scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(0),
+        PointerInput.Origin.viewport(), x, y));
+    scrollShutter.addAction(fingerShutter.createPointerDown(0));
+    scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(100),
+        PointerInput.Origin.viewport(), x, y));
+    scrollShutter.addAction(fingerShutter.createPointerUp(0));
+    pbDriver.perform(Arrays.asList(scrollShutter));
+	
 }
     public boolean transactionBranchStopBonus(String number, String load) throws InterruptedException {
 
@@ -822,6 +942,10 @@ public void CheckMemberBonus() throws InterruptedException {
 
         boolean bounus_text = false;
         try {
+        	TakesScreenshot ts2 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot2 = ts2.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot2));
+    		Thread.sleep(2000);
             // Code that might throw an exception
             bounus_text = bonusText.isDisplayed();
             if (bounus_text == true) {
@@ -860,7 +984,7 @@ public void CheckMemberBonus() throws InterruptedException {
     }
 
     public boolean verifyHistoryStopBonusReward() throws InterruptedException {
-
+    	
         Thread.sleep(5000);
         PointerInput finger1 = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
         Sequence scrolla = new Sequence(finger1, 1);
@@ -953,30 +1077,37 @@ public void CheckMemberBonus() throws InterruptedException {
     	logout.click();
     }
     
-    public void branchToProcessorDonation(String number) {
+    public void branchToProcessorDonation(String number) throws InterruptedException {
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
     	  menu.click();
-    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(processor)));
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(processor)));
     	  processor.click();
+    	  Thread.sleep(2000);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
     	search.sendKeys(number);
     	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
     	searchOutline.click();
-    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchResult)));
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(searchResult)));
     	searchResult.click();
-    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
+    	Thread.sleep(2000);
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(checkmark.get(0))));
         checkmark.get(0).click();
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(donation)));
+    	Thread.sleep(2000);
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(donation)));
     	donation.click();
-    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
+    	Thread.sleep(2000);
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(requiredQuantity)));
     	requiredQuantity.sendKeys("100");
-    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(checkmark.get(1))));
         checkmark.get(1).click();
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
+    	Thread.sleep(2000);
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(checkmark.get(0))));
         checkmark.get(0).click();
-        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
+    	Thread.sleep(2000);
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(checkmark.get(0))));
         checkmark.get(0).click();
+    	Thread.sleep(2000);
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(ok)));
         assertTrue(donationaccepted.isDisplayed());
         TakesScreenshot ts2 = (TakesScreenshot) pbDriver;
@@ -1019,6 +1150,11 @@ public void CheckMemberBonus() throws InterruptedException {
         Thread.sleep(5000);
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
         checkmark.get(0).click();
+        Thread.sleep(2000);
+        TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
         boolean bounus_text = bonusText.isDisplayed();
         wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(hdpeMixed)));
         hdpeMixed.click();
@@ -1059,6 +1195,11 @@ public void CheckMemberBonus() throws InterruptedException {
         historyExpense.click();
         boolean reward_text = false;
         try {
+        	Thread.sleep(2000);
+        	TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
             // Code that might throw an exception
             reward_text = rewardText.isDisplayed();
             if (reward_text== true) {
@@ -1106,9 +1247,341 @@ public void CheckMemberBonus() throws InterruptedException {
         Thread.sleep(3000);
             boolean reward_text = processorBonus.isDisplayed();
             if (reward_text) {
+            	Thread.sleep(2000);
+            	TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+        	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+        		Thread.sleep(2000);
                 System.out.println("Bonus is 0 in processor transaction.");
             }
         return reward_text;
     }
+    
+    public void verifyMemberBonusPresent() throws InterruptedException {
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+    	lock_bonus.isDisplayed();
+    	delayed_bonus.isDisplayed();
+    	pb_logo_bonus.isDisplayed();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(memberbonustext, "133")));
+    	assertTrue(memberbonustext.getText().equals("133"));
+    	Thread.sleep(2000);
+    	 TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    }
+    public void branchBonusPresent(String branchNumber, String password, String bonus) throws InterruptedException {
+
+        PB_LoginPage pblogin = new PB_LoginPage(pbDriver);
+        pblogin.login(branchNumber, password);
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
+        PointerInput fingerShutter = new PointerInput(PointerInput.Kind.TOUCH, "fingerShutter");
+        Sequence scrollShutter = new Sequence(fingerShutter, 1);
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(0),
+                PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerDown(0));
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(100),
+                PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerUp(0));
+        pbDriver.perform(Arrays.asList(scrollShutter));
+
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+        lock_bonus.isDisplayed();
+        unlock_bonus.isDisplayed();
+        pb_logo_bonus.isDisplayed();
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(bonustextbranch, bonus)));
+        assertTrue(bonustextbranch.getText().equals(bonus));
+        Thread.sleep(2000);
+        TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Token in Branch Screenshot", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(2000);
+
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+        menu.click();
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+        logout.click();
+
+    }
+
+    public void verifyBranch1BonusPresent() throws InterruptedException {
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
+    	PointerInput fingerShutter = new PointerInput(PointerInput.Kind.TOUCH, "fingerShutter");
+        Sequence scrollShutter = new Sequence(fingerShutter, 1);
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(0),
+            PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerDown(0));
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(100),
+            PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerUp(0));
+        pbDriver.perform(Arrays.asList(scrollShutter));
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+    	lock_bonus.isDisplayed();
+    	unlock_bonus.isDisplayed();
+    	pb_logo_bonus.isDisplayed();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(bonustextbranch, "30")));
+    	assertTrue(bonustextbranch.getText().equals("30"));
+    	Thread.sleep(2000);
+    	 TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    }
+
+    public void verifyBranch2BonusPresent() throws InterruptedException {
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
+    	PointerInput fingerShutter = new PointerInput(PointerInput.Kind.TOUCH, "fingerShutter");
+        Sequence scrollShutter = new Sequence(fingerShutter, 1);
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(0),
+            PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerDown(0));
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(100),
+            PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerUp(0));
+        pbDriver.perform(Arrays.asList(scrollShutter));
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+    	lock_bonus.isDisplayed();
+    	unlock_bonus.isDisplayed();
+    	pb_logo_bonus.isDisplayed();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(bonustextbranch, "14")));
+    	assertTrue(bonustextbranch.getText().equals("14"));
+    	Thread.sleep(2000);
+    	 TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    }
+
+    public void verifyMemberBonusNotPresent() throws InterruptedException {
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+    	try {
+    		lock_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	try {
+    		delayed_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	try {
+    		pb_logo_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	Thread.sleep(2000);
+    	 TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    }
+
+    public void verifyBranch1BonusNotPresent() throws InterruptedException {
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
+    	PointerInput fingerShutter = new PointerInput(PointerInput.Kind.TOUCH, "fingerShutter");
+        Sequence scrollShutter = new Sequence(fingerShutter, 1);
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(0),
+            PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerDown(0));
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(100),
+            PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerUp(0));
+        pbDriver.perform(Arrays.asList(scrollShutter));
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+    	try {
+    		lock_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	try {
+    		delayed_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	try {
+    		pb_logo_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	Thread.sleep(2000);
+    	 TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    }
+
+    public void verifyBranch2BonusNotPresent() throws InterruptedException {
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
+    	PointerInput fingerShutter = new PointerInput(PointerInput.Kind.TOUCH, "fingerShutter");
+        Sequence scrollShutter = new Sequence(fingerShutter, 1);
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(0),
+            PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerDown(0));
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(100),
+            PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerUp(0));
+        pbDriver.perform(Arrays.asList(scrollShutter));
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+    	try {
+    		lock_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	try {
+    		delayed_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	try {
+    		pb_logo_bonus.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	Thread.sleep(2000);
+    	 TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    }
+    public void verifyBonusInAppMem_1711_BeforeBonusPaid() throws InterruptedException {
+    	
+    	PB_LoginPage pblogin = new PB_LoginPage(pbDriver);
+		pblogin.login(Data.member_Number1711, password);
+
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+        wait.until(ExpectedConditions.visibilityOfAllElements(delayed_bonus));
+
+    	Assert.assertTrue(delayed_bonus.isDisplayed());
+
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.textToBePresentInElement(memberbonustext, "133")));
+    	assertTrue(memberbonustext.getText().equals("133"));
+    	Thread.sleep(2000);
+    	TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Token for Member in App ", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    	
+    }
+    public void verifyBonusInAppMem_AfterBonusPaid(String member, String password) throws InterruptedException {
+		PB_LoginPage pblogin = new PB_LoginPage(pbDriver);
+		pblogin.login(member, password);
+
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+        Thread.sleep(3000);
+    	assertTrue(tokenInApp.isDisplayed());
+    	Thread.sleep(2000);
+    	TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment("Wallet Token available in App", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    }
+    public void verifyBonusInAppMem_1711_AfterVoid() throws InterruptedException {
+    	
+    	PB_LoginPage pblogin = new PB_LoginPage(pbDriver);
+		pblogin.login(Data.member_Number1711, password);
+
+		wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+    	try {
+    		tokenInApp.isDisplayed();
+    	}catch(Exception e) {
+    		
+    	}
+    	Thread.sleep(2000);
+    	TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+    	    Allure.addAttachment(" Member Bonus In App", new ByteArrayInputStream(screenshot1));
+    		Thread.sleep(2000);
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+    	menu.click();
+    	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+    	logout.click();
+    	
+    } 
+    public void verifyBonusInAppB1_AfterBonusPaid(String branchNumber,String password) throws InterruptedException {
+
+        PB_LoginPage pblogin = new PB_LoginPage(pbDriver);
+        pblogin.login(branchNumber, password);
+
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOf(loading)));
+        PointerInput fingerShutter = new PointerInput(PointerInput.Kind.TOUCH, "fingerShutter");
+        Sequence scrollShutter = new Sequence(fingerShutter, 1);
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(0),
+                PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerDown(0));
+        scrollShutter.addAction(fingerShutter.createPointerMove(Duration.ofMillis(100),
+                PointerInput.Origin.viewport(), 400, 2060));
+        scrollShutter.addAction(fingerShutter.createPointerUp(0));
+        pbDriver.perform(Arrays.asList(scrollShutter));
+
+        try {
+
+            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(branchToken)));
+            assertTrue(branchToken.isDisplayed());
+            Thread.sleep(2000);
+            TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Branch Token in App", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(2000);
+            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+            menu.click();
+            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+            logout.click();
+        } catch (Exception e) {
+            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(branchToken)));
+           // assertFalse(branchToken.isDisplayed());
+            System.out.println("No Bonus is Present");
+            Thread.sleep(2000);
+            TakesScreenshot ts1 = (TakesScreenshot) pbDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(2000);
+            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(menu)));
+            menu.click();
+            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(logout)));
+            logout.click();
+        }
+    }
 
 }
+

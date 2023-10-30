@@ -35,7 +35,7 @@ public class ALC_4359 extends BaseClass {
         PB_LoginPage pblogin = new PB_LoginPage(pbDriver);
         PB_Transaction pbTransaction = new PB_Transaction(pbDriver);
         pblogin.permission();
-        pblogin.login(branch1_Number,password);
+        pblogin.login(Data.branch1_Number4359,password);
         Thread.sleep(5000);
         boolean bounus_text = pbTransaction.transactionBranchStopBonus4359(Data.member_Number4359,"6");
         Assert.assertTrue(bounus_text);
