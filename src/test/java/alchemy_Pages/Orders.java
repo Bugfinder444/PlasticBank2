@@ -1,12 +1,10 @@
 package alchemy_Pages;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,17 +15,16 @@ import Utilities.BaseClass;
 import Utilities.Data;
 import io.qameta.allure.Allure;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-;
+;import static org.testng.Assert.*;
 
 public class Orders extends BaseClass{
     public Orders(WebDriver alcDriver){
@@ -147,6 +144,8 @@ public class Orders extends BaseClass{
     WebElement bonusApproval;
     @FindBy(xpath = "//li[contains(@class,'page-item')]")
     WebElement lastItemOnPaage;
+    @FindBy(xpath = "//li[contains(@class,'page-item')][5]")
+    WebElement lastItemOnPageOrder;
     @FindBy(xpath = "//a[contains(text(),'Sell Transactions')]")
     WebElement selltransactions;   
     @FindBy(xpath = "//a[contains(text(),'Buy Transactions')]")
@@ -169,13 +168,88 @@ public class Orders extends BaseClass{
     WebElement viewAuditTrail;
     @FindBy(xpath = "(//div[text()=' Total KG Sold '])[1]/span")
     WebElement verifyKgVoided;
-    
+
+//Locators Related to Order
+    @FindBy(xpath="(//a[normalize-space()='Orders'])")
+    public WebElement ordersTab;
+
+    @FindBy(xpath="//div[@class='pb-add-button fixed ng-star-inserted']")
+    public WebElement addIcon;
+    @FindBy(xpath="//label[text()='Order name']/following::input")
+    public WebElement orderNameTextFeild;
+    @FindBy(xpath="//select[@id='country']")
+    public WebElement countryDropdown;
+    @FindBy(xpath="//select[@id='country']//following::option[text()='Philippines']")
+    public WebElement selectCountryPhilippines;
+    @FindBy(xpath="//select[@id='priceType']")
+    public WebElement priceTypeDropdown;
+    @FindBy(xpath="//input[@id='startDate']")
+    public WebElement startDate;
+    @FindBy(xpath="//input[@id='dueDate']")
+    public WebElement dueDate;
+    @FindBy(xpath="//input[@id='noDueDate']")
+    public WebElement noDueDate;
+    @FindBy(xpath="//input[@id='brand']")
+    public WebElement brandTextField;
+    @FindBy(xpath="//li[text()=' Plastic Bank ']")
+    public WebElement brandPlasticBank;
+
+    @FindBy(xpath="//input[@id='shippingDate']")
+    public WebElement shippingDate;
+    @FindBy(xpath="//input[@id='productionDate']")
+    public WebElement productionDate;
+    @FindBy(xpath="//input[@id='subBrand']")
+    public WebElement subBrand;
+    @FindBy(xpath="//label[text()='Total Revenue (USD)']/following::input")
+    public WebElement totalRevenueUSDTextField;
+    @FindBy(xpath="//label[text()='Category']/following::select[1]")
+    public WebElement categoryDropdown;
+    @FindBy(xpath="//label[text()='Type']/following::select")
+    public WebElement typeDropdown;
+    @FindBy(xpath="//label[text()='Color']/following::select")
+    public WebElement colorDropdown;
+    @FindBy(xpath="//label[text()='Weight/kg']/following::input")
+    public WebElement weightTextField;
+    @FindBy(xpath="//div[text()=' Assign Processor ']/div")
+    public WebElement assignProcessorButton;
+    @FindBy(xpath="//button[normalize-space()='Create']")
+    public WebElement createButton;
+    @FindBy(xpath="//input[@placeholder='Name']")
+    public WebElement nameSearchField;
+    @FindBy(xpath="//datatable//table/tbody/tr[1]/td[1]/div/div")
+    public WebElement checkBoxInProcessorAssign;
+    @FindBy(xpath="//select[@title='Select year']")
+    public WebElement selectYear;
+    @FindBy(xpath="//div[@role='gridcell']/div[text()]")
+    public WebElement selectDate;
+    @FindBy(xpath="//span[text()=' Edit Order ']")
+    public WebElement editOrder;
+    @FindBy(xpath="//div[text()='Save']")
+    public WebElement saveButton;
+    @FindBy(xpath="//div[contains(text(),'Order Name:')]")
+    public WebElement ordername;
+    @FindBy(xpath="//div[contains(text(),' Add From Exchange History ')]")
+    public WebElement addFromExchangeHistoryButton;
+    @FindBy(xpath="//select[@name='selectedOrderStatus']")
+    public WebElement sp_EPR_EligibleDropdown;
+    @FindBy(xpath="//option[text()='Show All']")
+    public WebElement showAllDropdown;
+    @FindBy(xpath="//label[text()=' Select All ']")
+    public WebElement selectAllCheckMark;
+    @FindBy(xpath="//tbody/tr/td[5]/div[1]/div")
+    public List<WebElement> bonusOrderVerify;
+
+
+
+
     public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
     public static String expectedexcHisPetKG="PET-Raw-Transparent / 9.00 kg";
     public static String expectedexcHisHdpeBonus="Bonus 70";
     public static String expectedexcHisPetBonus="Bonus 63";
     public static String expectedexcHisTotalKg="Total Weight: 19.00 KG";
     public static String expectedexcHisTotalBonus="133";
+    public static String order_Name;
+    public static String order_NameUpdated;
 
     public void clickOrdersTab() throws InterruptedException {
 		/*
@@ -719,7 +793,7 @@ public class Orders extends BaseClass{
         Thread.sleep(3000);
         expander.get(1).click();
         startApproval.click();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         buytransactions.click();
         Thread.sleep(3000);
         selltransactions.click();
@@ -768,9 +842,10 @@ public class Orders extends BaseClass{
         alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+Data.bonusOrderId1711);
         alcDriver.navigate().refresh();
         try {
+            Thread.sleep(6000);
             String bonusProgressActual = summary_bonusProgressText.getText();
             System.out.println(bonusProgressActual);
-            assert bonusProgressActual.contains(bonusProgress);
+            assertTrue(bonusProgressActual.contains(bonusProgress));
             Thread.sleep(2000);
             TakesScreenshot ts11 = (TakesScreenshot) alcDriver;
             byte[] screenshot11 = ts11.getScreenshotAs(OutputType.BYTES);
@@ -788,6 +863,152 @@ public class Orders extends BaseClass{
             Thread.sleep(2000);
 
         }
+  }
+
+  public void createOrder() throws InterruptedException {
+
+      WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+      orders_tab.click();
+      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementToBeClickable(ordersTab));
+      ordersTab.click();
+      wait.until(ExpectedConditions.elementToBeClickable(addIcon));
+      addIcon.click();
+
+      wait.until(ExpectedConditions.elementToBeClickable(orderNameTextFeild));
+
+      String randomOrderName = RandomStringUtils.randomAlphabetic(5);
+      order_Name="Fleek"+randomOrderName;
+      orderNameTextFeild.sendKeys(order_Name);
+      System.out.println("Order Name : "+order_Name);
+
+      countryDropdown.click();
+      selectCountryPhilippines.click();
+
+      Thread.sleep(1000);
+      brandTextField.sendKeys("Plastic Ban");
+      Thread.sleep(2000);
+      brandPlasticBank.click();
+
+      startDate.click();
+      Select select_Year = new Select(selectYear);
+      // Select the option by its visible text (option name)
+      select_Year.selectByVisibleText("2022");
+      selectDate.click();
+
+      shippingDate.click();
+      // Select the option by its visible text (option name)
+      select_Year.selectByVisibleText("2025");
+      selectDate.click();
+
+      Select selectType = new Select(typeDropdown);
+      // Select the option by its visible text (option name)
+      selectType.selectByVisibleText("PET");
+      Thread.sleep(2000);
+      weightTextField.sendKeys("50000");
+
+      assignProcessorButton.click();
+      wait.until(ExpectedConditions.visibilityOfAllElements(nameSearchField));
+      nameSearchField.sendKeys(Data.processor_Name);
+      Thread.sleep(8000);
+      checkBoxInProcessorAssign.click();
+      confirmBtn.click();
+      createButton.click();
+      confirmBtn.click();
+
+      wait.until(ExpectedConditions.visibilityOfAllElements(closeBtnPopup));
+      TakesScreenshot ts = (TakesScreenshot) alcDriver;
+      byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+      Allure.addAttachment("Order Created screenshot ", new ByteArrayInputStream(screenshot));
+      Thread.sleep(2000);
+
+      closeBtnPopup.click();
+
+  }
+  public void editOrder() throws InterruptedException {
+
+      WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+      orders_tab.click();
+      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementToBeClickable(ordersTab));
+      ordersTab.click();
+
+      wait.until(ExpectedConditions.elementToBeClickable(nameSearchField));
+      nameSearchField.sendKeys(order_Name);
+      Thread.sleep(6000);
+      tableData_FirstRow.click();
+
+      wait.until(ExpectedConditions.elementToBeClickable(editOrder));
+      editOrder.click();
+
+      wait.until(ExpectedConditions.elementToBeClickable(orderNameTextFeild));
+      orderNameTextFeild.click();
+      orderNameTextFeild.clear();
+
+      String randomOrderName1 = RandomStringUtils.randomAlphabetic(4);
+      order_NameUpdated="OrderFleek"+randomOrderName1;
+      orderNameTextFeild.sendKeys(order_NameUpdated);
+      System.out.println("Updated Order Name : "+order_NameUpdated);
+
+      saveButton.click();
+      confirmBtn.click();
+
+      wait.until(ExpectedConditions.visibilityOfAllElements(closeBtnPopup));
+      TakesScreenshot ts = (TakesScreenshot) alcDriver;
+      byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+      Allure.addAttachment("Order Name Update SC ", new ByteArrayInputStream(screenshot));
+      Thread.sleep(2000);
+
+      closeBtnPopup.click();
+      Thread.sleep(2000);
+
+      wait.until(ExpectedConditions.visibilityOfAllElements(ordername));
+      Actions action = new Actions(alcDriver);
+      action.scrollToElement(ordername).build().perform();
+      String verifyOrderName=ordername.getText();
+
+      assertTrue(verifyOrderName.contains(order_NameUpdated));
+
+      TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+      byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+      Allure.addAttachment("Order Name Updated SC in Order Detail ", new ByteArrayInputStream(screenshot1));
+      Thread.sleep(2000);
+
+  }
+  public void addFromExchangeHistory() throws InterruptedException {
+
+      WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(40));
+      wait.until(ExpectedConditions.elementToBeClickable(addFromExchangeHistoryButton));
+      Actions action = new Actions(alcDriver);
+      action.scrollToElement(addFromExchangeHistoryButton).build().perform();
+      addFromExchangeHistoryButton.click();
+      Thread.sleep(2000);
+      wait.until(ExpectedConditions.visibilityOf(sp_EPR_EligibleDropdown));
+      sp_EPR_EligibleDropdown.click();
+      Thread.sleep(2000);
+     // showAllDropdown.click();
+       Select selectOrder = new Select(sp_EPR_EligibleDropdown);
+       selectOrder.selectByVisibleText("Show All");
+      Thread.sleep(2000);
+      selectAllCheckMark.click();
+      confirmBtn.click();
+      Thread.sleep(1000);
+      action.scrollToElement(lastItemOnPageOrder).build().perform();
+
+      List<String> bonusAssociated = new ArrayList<>();
+
+      for(WebElement ele:bonusOrderVerify) {
+
+          bonusAssociated.add(ele.getText());
+          assertTrue(ele.getText().equals(Data.bonusName));
+      }
+
+      Thread.sleep(1000);
+      TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+      byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+      Allure.addAttachment("Associated Transaction Items from Exchange History ", new ByteArrayInputStream(screenshot1));
+      Thread.sleep(1000);
+
   }
 
 }
