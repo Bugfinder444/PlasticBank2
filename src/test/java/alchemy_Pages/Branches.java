@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
@@ -224,16 +225,41 @@ WebElement authCode;
 WebElement submitButton;
 @FindBy(xpath = "//button[text()='Cancel']" )
 WebElement cancelButton;
-	@FindBy(xpath = "//*[text()='Success']" )
-	WebElement success;
+@FindBy(xpath = "//*[text()='Success']" )
+WebElement success;
+	@FindBy(xpath = "//span[text()=' 16 ']" )
+	WebElement date16;
+	@FindBy(xpath = "//span[text()=' 13 ']" )
+	WebElement date13;
+	@FindBy(xpath = "(//i[@class=\"calendar-icon\"])[1]" )
+	WebElement calenderIcon;
+	@FindBy(xpath = "//select[@title=\"Select year\"]" )
+	WebElement selectYear;
+	@FindBy(xpath = "//select[@title=\"Select month\"]" )
+	WebElement selectMonth;
+	@FindBy(xpath = "//a[text()=' 2 ']" )
+	WebElement page2;
+	@FindBy(xpath = "//div[text()=' Sold 618 KG to TOPLUN ']/parent::*//parent::*/parent::*" )
+	WebElement branchToplun;
+	@FindBy(xpath = "//div[text()=' Sold 756 KG to TOPLUN ']/parent::*/parent::*/parent::*" )
+	WebElement branchRiezaToplun;
+	@FindBy(xpath = "//div[text()='TOTAL']/following::div" )
+	WebElement totalKg;
+	@FindBy(xpath = "(//div[@class='card-header']/div/button)[1]" )
+	WebElement cardHeader;
 
 
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
 
-WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
+	public static String totalKgMaryGraceBranch;
+	public static String totalKgRiezaBranch;
+	public static String totalKgBranch;
 public void verifybranchDetailsTagTexts() {
 	
 }
 public void searchAddedBranch(String Name) {
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
+	wait.until(ExpectedConditions.elementToBeClickable(name_SearchBox));
 	name_SearchBox.sendKeys(Name);
 }
 
@@ -1113,10 +1139,7 @@ public void voidTransaction(String branchId) throws InterruptedException {
 
 		submitButton.click();
 
-
-
 		Thread.sleep(2000);
-
 
 		TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
 		byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
@@ -1124,6 +1147,100 @@ public void voidTransaction(String branchId) throws InterruptedException {
 		Thread.sleep(2000);
 		Assert.assertTrue(success.isDisplayed());
 		closeButton.click();
+
+	}
+
+	public String VerifyMARYGRACEPartnerBranchAlc666() throws InterruptedException {
+
+	Actions action = new Actions(alcDriver);
+	wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
+	branches_TAB.click();
+	Thread.sleep(4000);
+	searchAddedBranch("MARY GRACE Partner Branch");
+	clickSpecificBranch();
+	wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+	exchangeHistoryTab.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(calenderIcon));
+		calenderIcon.click();
+		Select select_Year = new Select(selectYear);
+		select_Year.selectByVisibleText("2022");
+		Select select_Month = new Select(selectMonth);
+		select_Month.selectByVisibleText("Nov");
+		date16.click();
+		Thread.sleep(1000);
+		date16.click();
+
+	Thread.sleep(6000);
+	page2.click();
+	wait.until(ExpectedConditions.elementToBeClickable(branchToplun));
+	action.scrollToElement(branchToplun).build().perform();
+	branchToplun.click();
+	action.scrollToElement(totalKg).build().perform();
+		TakesScreenshot ts = (TakesScreenshot) alcDriver;
+		byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Total Kg in Mary Grace Branch ", new ByteArrayInputStream(screenshot));
+		Thread.sleep(2000);
+	totalKgMaryGraceBranch=totalKg.getText();
+	return totalKgMaryGraceBranch;
+
+	}
+	public String VerifyRIEZAPartnerBranchAlc666() throws InterruptedException {
+
+		Actions action = new Actions(alcDriver);
+		wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
+		branches_TAB.click();
+		Thread.sleep(4000);
+		searchAddedBranch("RIEZA Partner Branch");
+		clickSpecificBranch();
+
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(calenderIcon));
+		calenderIcon.click();
+		Select select_Year = new Select(selectYear);
+		select_Year.selectByVisibleText("2022");
+		Select select_Month = new Select(selectMonth);
+		select_Month.selectByVisibleText("Oct");
+		date13.click();
+		Thread.sleep(1000);
+		date13.click();
+		Thread.sleep(6000);
+		wait.until(ExpectedConditions.elementToBeClickable(branchRiezaToplun));
+		action.scrollToElement(branchRiezaToplun).build().perform();
+		branchRiezaToplun.click();
+		action.scrollToElement(totalKg).build().perform();
+		TakesScreenshot ts = (TakesScreenshot) alcDriver;
+		byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Total Kg in Rieza Partner Branch ", new ByteArrayInputStream(screenshot));
+		Thread.sleep(2000);
+		totalKgRiezaBranch=totalKg.getText();
+		return totalKgRiezaBranch;
+
+	}
+	public String verifyBranchKgALC666(String branchName) throws InterruptedException {
+
+		Actions action = new Actions(alcDriver);
+		wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
+		branches_TAB.click();
+		searchAddedBranch(branchName);
+		Thread.sleep(6000);
+		tableData_FirstRow.click();
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(calenderIcon));
+		wait.until(ExpectedConditions.elementToBeClickable(cardHeader));
+		action.scrollToElement(cardHeader).build().perform();
+		cardHeader.click();
+		action.scrollToElement(totalKg).build().perform();
+		TakesScreenshot ts = (TakesScreenshot) alcDriver;
+		byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment(" Total Kg in the current Branch Attached", new ByteArrayInputStream(screenshot));
+		Thread.sleep(2000);
+		totalKgBranch=totalKg.getText();
+		return totalKgBranch;
 
 	}
 

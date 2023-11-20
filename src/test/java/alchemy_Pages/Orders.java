@@ -19,11 +19,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 ;import static org.testng.Assert.*;
 
 public class Orders extends BaseClass{
@@ -238,10 +237,31 @@ public class Orders extends BaseClass{
     public WebElement selectAllCheckMark;
     @FindBy(xpath="//tbody/tr/td[5]/div[1]/div")
     public List<WebElement> bonusOrderVerify;
+    @FindBy(xpath="//tbody/tr/td[4]/div[1]/div[1]")
+    public List<WebElement> totalKg;
+    @FindBy(xpath="//span[contains(text(),'Total Collected: ')]")
+    public WebElement totalCollectedKg;
+    @FindBy(xpath="//span[contains(text(),'Pending')]")
+    public WebElement pendingKg;
+    @FindBy(xpath="//div[contains(text(),' TOTAL: ')]/following::span")
+    public WebElement total;
 
-
-
-
+    @FindBy(xpath="//div[text()=' Add Bonus ']")
+    public WebElement addBonusTag;
+    @FindBy(xpath = "//input[@placeholder='Search']")
+    WebElement searchOffsets;
+    @FindBy(xpath = "(//span[contains(@class,'tick')])[last()]")
+    WebElement checkBoxSearchOffsets;
+    @FindBy(xpath = "(//div[@class=\"pb-delete-icon mr-2 pointer\"])[last()]")
+    WebElement deleteBonusButton;
+    @FindBy(xpath = "//div[text()='Audit Trail ']")
+    WebElement auditTrailTag;
+    @FindBy(xpath = "//div[contains(text(),\"4,546\")]")
+    WebElement kgDeliveredToplun;
+    @FindBy(xpath = "//div[contains(text(),\"Order details\")]")
+    WebElement orderDetailsTag;
+    @FindBy(xpath = "//div[contains(text(),'Total Weight: ')]")
+    List<WebElement> totalWeight;
     public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
     public static String expectedexcHisPetKG="PET-Raw-Transparent / 9.00 kg";
     public static String expectedexcHisHdpeBonus="Bonus 70";
@@ -865,7 +885,7 @@ public class Orders extends BaseClass{
         }
   }
 
-  public void createOrder() throws InterruptedException {
+  public void createOrder(String processorName) throws InterruptedException {
 
       WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
       orders_tab.click();
@@ -909,7 +929,7 @@ public class Orders extends BaseClass{
 
       assignProcessorButton.click();
       wait.until(ExpectedConditions.visibilityOfAllElements(nameSearchField));
-      nameSearchField.sendKeys(Data.processor_Name);
+      nameSearchField.sendKeys(processorName);
       Thread.sleep(8000);
       checkBoxInProcessorAssign.click();
       confirmBtn.click();
@@ -925,6 +945,7 @@ public class Orders extends BaseClass{
       closeBtnPopup.click();
 
   }
+
   public void editOrder() throws InterruptedException {
 
       WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
@@ -1010,5 +1031,270 @@ public class Orders extends BaseClass{
       Thread.sleep(1000);
 
   }
+  public void verifyTotalKg() throws InterruptedException {
+
+      List<String> totalKgString =new ArrayList<>();
+      for(WebElement kg : totalKg ){
+
+          totalKgString.add(kg.getText());
+      }
+      List<Integer> totalKgInt = new ArrayList<>();
+      for(String str :totalKgString){
+          int totalKgVal = Integer.parseInt(str);
+          totalKgInt.add(totalKgVal);
+      }
+
+      int sumTotalKg =0;
+      for (int num : totalKgInt){
+          sumTotalKg += num;
+      }
+      Actions action =new Actions(alcDriver);
+      action.scrollToElement(total).build().perform();
+
+      String t= total.getText();
+      String tc= totalCollectedKg.getText();
+      String pk= pendingKg.getText();
+
+      int intTotal=convertStringToInteger(t);
+      System.out.println(intTotal);
+
+      int intTotalCollectedKg=stringToInt(tc);
+      System.out.println(intTotalCollectedKg);
+
+      int intpendingKg=stringToInt(pk);
+      System.out.println(intpendingKg);
+
+
+      Assert.assertEquals(intTotalCollectedKg,sumTotalKg);
+      assertTrue(intTotal==intTotalCollectedKg+intpendingKg);
+
+      Thread.sleep(1000);
+      TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+      byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+      Allure.addAttachment("Total Kg/kgDelivered/Pending Kg Verify in Donught Graph", new ByteArrayInputStream(screenshot1));
+      Thread.sleep(1000);
+
+
+    }
+    public void createOrder666(String processorName) throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+        orders_tab.click();
+        Thread.sleep(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(ordersTab));
+        ordersTab.click();
+        wait.until(ExpectedConditions.elementToBeClickable(addIcon));
+        addIcon.click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(orderNameTextFeild));
+
+        String randomOrderName = RandomStringUtils.randomAlphabetic(5);
+        order_Name="Fleek"+randomOrderName;
+        orderNameTextFeild.sendKeys(order_Name);
+        System.out.println("Order Name : "+order_Name);
+
+        countryDropdown.click();
+        selectCountryPhilippines.click();
+
+        Thread.sleep(1000);
+        brandTextField.sendKeys("Plastic Ban");
+        Thread.sleep(2000);
+        brandPlasticBank.click();
+
+        startDate.click();
+        Select select_Year = new Select(selectYear);
+        // Select the option by its visible text (option name)
+        select_Year.selectByVisibleText("2022");
+        selectDate.click();
+
+        shippingDate.click();
+        // Select the option by its visible text (option name)
+        select_Year.selectByVisibleText("2025");
+        selectDate.click();
+
+        Select selectType = new Select(typeDropdown);
+        // Select the option by its visible text (option name)
+        selectType.selectByVisibleText("PET");
+        Thread.sleep(2000);
+        weightTextField.sendKeys("50000");
+
+        assignProcessorButton.click();
+        wait.until(ExpectedConditions.visibilityOfAllElements(nameSearchField));
+        nameSearchField.sendKeys(processorName);
+        Thread.sleep(8000);
+        checkBoxInProcessorAssign.click();
+        confirmBtn.click();
+        Thread.sleep(2000);
+        assignProcessorButton.click();
+        wait.until(ExpectedConditions.visibilityOfAllElements(nameSearchField));
+        nameSearchField.sendKeys("TOPLUN");
+        Thread.sleep(8000);
+        checkBoxInProcessorAssign.click();
+        confirmBtn.click();
+
+        TakesScreenshot ts = (TakesScreenshot) alcDriver;
+        byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Processors added Screenshot ", new ByteArrayInputStream(screenshot));
+        Thread.sleep(2000);
+        createButton.click();
+        confirmBtn.click();
+
+        wait.until(ExpectedConditions.visibilityOfAllElements(closeBtnPopup));
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Order Created screenshot ", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(2000);
+
+        closeBtnPopup.click();
+
+    }
+
+
+    public void addBonusToOrder(String bonusName) throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(40));
+//        wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
+//        orders_tab.click();
+        wait.until(ExpectedConditions.elementToBeClickable(nameSearchField));
+        nameSearchField.sendKeys(order_Name);
+        Thread.sleep(6000);
+        tableData_FirstRow.click();
+        wait.until(ExpectedConditions.elementToBeClickable(addBonusTag));
+        Actions action = new Actions(alcDriver);
+        action.scrollToElement(addBonusTag).build().perform();
+        addBonusTag.click();
+        wait.until(ExpectedConditions.elementToBeClickable(searchOffsets));
+        searchOffsets.sendKeys(bonusName);
+        Thread.sleep(6000);
+        checkBoxSearchOffsets.click();
+        wait.until(ExpectedConditions.elementToBeClickable(confirmBtn));
+        confirmBtn.click();
+
+    }
+    public void addBonusToOrder666(String bonusName,String bonusName2) throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(40));
+        wait.until(ExpectedConditions.elementToBeClickable(nameSearchField));
+        nameSearchField.sendKeys(order_Name);
+        Thread.sleep(6000);
+        tableData_FirstRow.click();
+        wait.until(ExpectedConditions.elementToBeClickable(addBonusTag));
+        Actions action = new Actions(alcDriver);
+        action.scrollToElement(addBonusTag).build().perform();
+        addBonusTag.click();
+        wait.until(ExpectedConditions.elementToBeClickable(searchOffsets));
+        searchOffsets.sendKeys(bonusName);
+        Thread.sleep(6000);
+        checkBoxSearchOffsets.click();
+        wait.until(ExpectedConditions.elementToBeClickable(confirmBtn));
+        confirmBtn.click();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(addBonusTag));
+        addBonusTag.click();
+        wait.until(ExpectedConditions.elementToBeClickable(searchOffsets));
+        searchOffsets.sendKeys(bonusName2);
+        Thread.sleep(6000);
+        checkBoxSearchOffsets.click();
+        wait.until(ExpectedConditions.elementToBeClickable(confirmBtn));
+        confirmBtn.click();
+        TakesScreenshot ts = (TakesScreenshot) alcDriver;
+        byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment(" Bonus Order added Screenshot ", new ByteArrayInputStream(screenshot));
+        Thread.sleep(2000);
+
+    }
+
+    public void verifyDonughtGraph(int kgCollectedByProcessor) throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(40));
+        wait.until(ExpectedConditions.visibilityOfAllElements(total));
+        Actions action = new Actions(alcDriver);
+
+        action.scrollToElement(kgDeliveredToplun).build().perform();
+        String kgDelTop=kgDeliveredToplun.getText();
+        String cleanedString = kgDelTop.replace(",", "");
+        int kgDelTopIntValue = Integer.parseInt(cleanedString);
+        System.out.println(kgDelTopIntValue);
+
+        action.scrollToElement(total).build().perform();
+
+        String t= total.getText();
+        String tc= totalCollectedKg.getText();
+        String pk= pendingKg.getText();
+
+        int intTotal=convertStringToInteger(t);
+        System.out.println(intTotal);
+
+        int intTotalCollectedKg=stringToInt(tc);
+        System.out.println(intTotalCollectedKg);
+
+        int intpendingKg=stringToInt(pk);
+        System.out.println(intpendingKg);
+
+        assertTrue(intTotal==intTotalCollectedKg+intpendingKg);
+        assertTrue(intTotalCollectedKg==kgDelTopIntValue+kgCollectedByProcessor);
+
+        Thread.sleep(1000);
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Total Kg/kgDelivered/Pending Kg Verify in Donught Graph", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(1000);
+
+    }
+
+    public void verifyAuditTrail() throws InterruptedException {
+
+
+        WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(40));
+        wait.until(ExpectedConditions.elementToBeClickable(auditTrailTag));
+        auditTrailTag.click();
+
+        wait.until(ExpectedConditions.visibilityOf(lastItemOnPaage));
+        Actions action = new Actions(alcDriver);
+        action.scrollToElement(lastItemOnPaage).build().perform();
+        Thread.sleep(3000);
+
+        TakesScreenshot ts = (TakesScreenshot) alcDriver;
+        byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Total Weight in Order ", new ByteArrayInputStream(screenshot));
+        Thread.sleep(2000);
+
+        Set<String> totalWeightsInOrder = new HashSet<>();
+
+        for(int i=0;i<3;i++)
+        {
+            totalWeightsInOrder.add(totalWeight.get(i).getText());
+        }
+        System.out.println("Set of KG in Order Audit Trail :"+totalWeightsInOrder);
+        Thread.sleep(2000);
+        Branches b1=new Branches(alcDriver);
+        b1.VerifyMARYGRACEPartnerBranchAlc666();
+        System.out.println(b1.totalKgMaryGraceBranch);
+        b1.VerifyRIEZAPartnerBranchAlc666();
+        System.out.println(b1.totalKgRiezaBranch);
+        b1.verifyBranchKgALC666(Data.branch2_Name666);
+        System.out.println(b1.totalKgBranch);
+
+        Set<String>totalWeightInBranches = new HashSet<>(Arrays.asList(b1.totalKgMaryGraceBranch,b1.totalKgRiezaBranch,b1.totalKgBranch));
+        System.out.println("Set of KG in Branches :"+totalWeightInBranches);
+        Set<String>totalWeightsInOrderV = new HashSet<>(Arrays.asList("Total Weight: 618.00 KG","Total Weight: 756.00 KG","Total Weight: 110.70 KG"));
+        Set<String>totalWeightInBranchesV = new HashSet<>(Arrays.asList("110.7 KG","756 KG","618 KG"));
+        Assert.assertEquals(totalWeightsInOrder,totalWeightsInOrderV);
+        Assert.assertEquals(totalWeightInBranches,totalWeightInBranchesV);
+    }
+    public void detachBonusToplun() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(40));
+        orders_tab.click();
+        Thread.sleep(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(nameSearchField));
+        nameSearchField.sendKeys(order_Name);
+        Thread.sleep(6000);
+        tableData_FirstRow.click();
+        Thread.sleep(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(deleteBonusButton));
+        deleteBonusButton.click();
+        System.out.println("Order is Detatched");
+    }
 
 }

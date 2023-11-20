@@ -6,6 +6,8 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.qameta.allure.Allure;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -164,6 +166,34 @@ public static String password ="123456a";
 		  adminpassword = "123456a"; 
 		  branchName = randomBusinessName;
 		 
+	}
+
+	public static int stringToInt(String input){
+
+		// Define a regular expression pattern to match the number
+		Pattern pattern = Pattern.compile("\\d+");
+
+		// Create a matcher that matches the pattern to the input string
+		Matcher matcher = pattern.matcher(input);
+
+		// Find the first occurrence of the pattern in the input
+		if (matcher.find()) {
+			// Extract and parse the matched number
+			String matchedNumber = matcher.group();
+			return Integer.parseInt(matchedNumber);
+		}
+
+		// Return a default value or handle the case where no number is found
+		return 0; // Default value (you can change this to suit your needs)
+	}
+	public static int convertStringToInteger(String input) {
+		// Remove non-numeric characters and commas
+		String numericString = input.replaceAll("[^0-9]", "");
+
+		// Parse the remaining string as an integer
+		int convertedValue = Integer.parseInt(numericString);
+
+		return convertedValue;
 	}
 
 	public void tap(int x, int y) throws InterruptedException {
