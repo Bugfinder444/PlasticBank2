@@ -111,6 +111,7 @@ public class Data extends BaseClass {
 	public static String processor_Name666;
 	public static String processor_Number666;
 	public static String bonusName666;
+	public static String b2id666;
 
 	public void runNewman() throws IOException {
 		try {
@@ -916,7 +917,7 @@ public class Data extends BaseClass {
 					String key = valueEntry.get("key").asText();
 					String value = valueEntry.get("value").asText();
 
-					if ("m1randomUsername".equals(key) || "m1randomNumber".equals(key) || "m2randomUsername".equals(key) || "m2randomNumber".equals(key) || "m3randomUsername".equals(key) || "m3randomNumber".equals(key) || "m4randomUsername".equals(key) || "m4randomNumber".equals(key) || "b1randomBranchName".equals(key) || "b1randomNumber".equals(key) || "b2randomBranchName".equals(key) || "b2randomNumber".equals(key) ||"p1randomProcessorName".equals(key) || "p1randomNumber".equals(key) || "bonusOrderName".equals(key)) {
+					if ("m1randomUsername".equals(key) || "m1randomNumber".equals(key) || "m2randomUsername".equals(key) || "m2randomNumber".equals(key) || "m3randomUsername".equals(key) || "m3randomNumber".equals(key) || "m4randomUsername".equals(key) || "m4randomNumber".equals(key) || "b1randomBranchName".equals(key) || "b1randomNumber".equals(key) || "b2randomBranchName".equals(key) || "b2randomNumber".equals(key) ||"p1randomProcessorName".equals(key) || "p1randomNumber".equals(key) || "bonusOrderName".equals(key) || "b2branchid".equals(key)) {
 						System.out.println(key + ": " + value);
 						values666.add(value);
 
@@ -939,9 +940,10 @@ public class Data extends BaseClass {
 		branch1_Number666=values666.get(8);
 		branch2_Name666=values666.get(11);
 		branch2_Number666=values666.get(10);
-		processor_Name666=values666.get(13);
-		processor_Number666=values666.get(12);
-		bonusName666=values666.get(14);
+		b2id666 = values666.get(12);
+		processor_Name666=values666.get(14);
+		processor_Number666=values666.get(13);
+		bonusName666=values666.get(15);
 
 	}
 	

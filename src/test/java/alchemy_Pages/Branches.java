@@ -1153,11 +1153,13 @@ public void voidTransaction(String branchId) throws InterruptedException {
 	public String VerifyMARYGRACEPartnerBranchAlc666() throws InterruptedException {
 
 	Actions action = new Actions(alcDriver);
-	wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
+/*	wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
 	branches_TAB.click();
 	Thread.sleep(4000);
 	searchAddedBranch("MARY GRACE Partner Branch");
-	clickSpecificBranch();
+	clickSpecificBranch();*/
+
+	alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+"64a65f12-7953-4818-a987-4f4fbad181d8");
 	wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
 	exchangeHistoryTab.click();
 
@@ -1176,7 +1178,8 @@ public void voidTransaction(String branchId) throws InterruptedException {
 	wait.until(ExpectedConditions.elementToBeClickable(branchToplun));
 	action.scrollToElement(branchToplun).build().perform();
 	branchToplun.click();
-	action.scrollToElement(totalKg).build().perform();
+	Thread.sleep(1000);
+	action.scrollToElement(lastItemOnPage).build().perform();
 		TakesScreenshot ts = (TakesScreenshot) alcDriver;
 		byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
 		Allure.addAttachment("Total Kg in Mary Grace Branch ", new ByteArrayInputStream(screenshot));
@@ -1188,12 +1191,15 @@ public void voidTransaction(String branchId) throws InterruptedException {
 	public String VerifyRIEZAPartnerBranchAlc666() throws InterruptedException {
 
 		Actions action = new Actions(alcDriver);
-		wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
-		branches_TAB.click();
-		Thread.sleep(4000);
-		searchAddedBranch("RIEZA Partner Branch");
-		clickSpecificBranch();
+//		wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
+//		branches_TAB.click();
+//		Thread.sleep(4000);
+//		searchAddedBranch("RIEZA Partner Branch");
+//		clickSpecificBranch();
 
+
+		alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+"b7f276a6-2b5d-44cb-b583-32f0b5af8017");
+		alcDriver.navigate().refresh();
 		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
 		exchangeHistoryTab.click();
 
@@ -1210,7 +1216,7 @@ public void voidTransaction(String branchId) throws InterruptedException {
 		wait.until(ExpectedConditions.elementToBeClickable(branchRiezaToplun));
 		action.scrollToElement(branchRiezaToplun).build().perform();
 		branchRiezaToplun.click();
-		action.scrollToElement(totalKg).build().perform();
+		action.scrollToElement(lastItemOnPage).build().perform();
 		TakesScreenshot ts = (TakesScreenshot) alcDriver;
 		byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
 		Allure.addAttachment("Total Kg in Rieza Partner Branch ", new ByteArrayInputStream(screenshot));
@@ -1219,14 +1225,17 @@ public void voidTransaction(String branchId) throws InterruptedException {
 		return totalKgRiezaBranch;
 
 	}
-	public String verifyBranchKgALC666(String branchName) throws InterruptedException {
+	public String verifyBranchKgALC666(String branchId) throws InterruptedException {
 
 		Actions action = new Actions(alcDriver);
-		wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
-		branches_TAB.click();
-		searchAddedBranch(branchName);
-		Thread.sleep(6000);
-		tableData_FirstRow.click();
+//		wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
+//		branches_TAB.click();
+//		searchAddedBranch(branchName);
+//		Thread.sleep(6000);
+//		tableData_FirstRow.click();
+
+		alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+branchId);
+		alcDriver.navigate().refresh();
 		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
 		exchangeHistoryTab.click();
 
@@ -1234,7 +1243,8 @@ public void voidTransaction(String branchId) throws InterruptedException {
 		wait.until(ExpectedConditions.elementToBeClickable(cardHeader));
 		action.scrollToElement(cardHeader).build().perform();
 		cardHeader.click();
-		action.scrollToElement(totalKg).build().perform();
+		Thread.sleep(1000);
+		action.scrollToElement(lastItemOnPage).build().perform();
 		TakesScreenshot ts = (TakesScreenshot) alcDriver;
 		byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
 		Allure.addAttachment(" Total Kg in the current Branch Attached", new ByteArrayInputStream(screenshot));

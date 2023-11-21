@@ -262,6 +262,10 @@ public class Orders extends BaseClass{
     WebElement orderDetailsTag;
     @FindBy(xpath = "//div[contains(text(),'Total Weight: ')]")
     List<WebElement> totalWeight;
+
+    @FindBy(xpath = "//tbody/tr[2]/td[1]/div[1]/div[1]")
+    WebElement connectedBonusScroll;
+
     public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
     public static String expectedexcHisPetKG="PET-Raw-Transparent / 9.00 kg";
     public static String expectedexcHisHdpeBonus="Bonus 70";
@@ -1176,8 +1180,9 @@ public class Orders extends BaseClass{
 
         WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(40));
         wait.until(ExpectedConditions.elementToBeClickable(nameSearchField));
+        Thread.sleep(3000);
         nameSearchField.sendKeys(order_Name);
-        Thread.sleep(6000);
+        Thread.sleep(5000);
         tableData_FirstRow.click();
         wait.until(ExpectedConditions.elementToBeClickable(addBonusTag));
         Actions action = new Actions(alcDriver);
@@ -1198,6 +1203,8 @@ public class Orders extends BaseClass{
         checkBoxSearchOffsets.click();
         wait.until(ExpectedConditions.elementToBeClickable(confirmBtn));
         confirmBtn.click();
+        Thread.sleep(2000);
+        action.scrollToElement(connectedBonusScroll).build().perform();
         TakesScreenshot ts = (TakesScreenshot) alcDriver;
         byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
         Allure.addAttachment(" Bonus Order added Screenshot ", new ByteArrayInputStream(screenshot));
@@ -1249,17 +1256,9 @@ public class Orders extends BaseClass{
         WebDriverWait wait = new WebDriverWait(alcDriver,Duration.ofSeconds(40));
         wait.until(ExpectedConditions.elementToBeClickable(auditTrailTag));
         auditTrailTag.click();
-
-        wait.until(ExpectedConditions.visibilityOf(lastItemOnPaage));
-        Actions action = new Actions(alcDriver);
-        action.scrollToElement(lastItemOnPaage).build().perform();
-        Thread.sleep(3000);
-
-        TakesScreenshot ts = (TakesScreenshot) alcDriver;
-        byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
-        Allure.addAttachment("Total Weight in Order ", new ByteArrayInputStream(screenshot));
         Thread.sleep(2000);
-
+        wait.until(ExpectedConditions.visibilityOf(lastItemOnPaage));
+        Thread.sleep(2000);
         Set<String> totalWeightsInOrder = new HashSet<>();
 
         for(int i=0;i<3;i++)
@@ -1267,13 +1266,22 @@ public class Orders extends BaseClass{
             totalWeightsInOrder.add(totalWeight.get(i).getText());
         }
         System.out.println("Set of KG in Order Audit Trail :"+totalWeightsInOrder);
+
+        Actions action = new Actions(alcDriver);
+
+        action.scrollToElement(totalWeight.get(1)).build().perform();
         Thread.sleep(2000);
+        TakesScreenshot ts = (TakesScreenshot) alcDriver;
+        byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Total Weight in Order ", new ByteArrayInputStream(screenshot));
+        Thread.sleep(2000);
+
         Branches b1=new Branches(alcDriver);
         b1.VerifyMARYGRACEPartnerBranchAlc666();
         System.out.println(b1.totalKgMaryGraceBranch);
         b1.VerifyRIEZAPartnerBranchAlc666();
         System.out.println(b1.totalKgRiezaBranch);
-        b1.verifyBranchKgALC666(Data.branch2_Name666);
+        b1.verifyBranchKgALC666(Data.b2id666);
         System.out.println(b1.totalKgBranch);
 
         Set<String>totalWeightInBranches = new HashSet<>(Arrays.asList(b1.totalKgMaryGraceBranch,b1.totalKgRiezaBranch,b1.totalKgBranch));
