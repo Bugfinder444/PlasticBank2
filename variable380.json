@@ -1,74 +1,79 @@
 {
-  "id": "236351f7-ec72-4c7b-b6c9-bfb4de10d509",
+  "id": "aac94b58-56f4-4be5-a323-8748a679264b",
   "values": [
     {
       "type": "any",
-      "value": "Fleek7xVN7E",
+      "value": "FleekWSLgQv",
       "key": "m1randomUsername"
     },
     {
       "type": "any",
-      "value": "+635025901465",
+      "value": "+632603874717",
       "key": "m1randomNumber"
     },
     {
       "type": "any",
-      "value": "2284EC89-0A1E-7E1B-9073-6589347EB28F",
+      "value": "C553D776-C6F4-8B3D-9C95-E20E555D7D1B",
       "key": "m1deviceID"
     },
     {
       "type": "any",
-      "value": "131d16ec-5647-47df-ae53-1b88cd31027d",
+      "value": "3ecf44d3-63e5-49c7-ae24-9b56e0dd0a12",
       "key": "m1id"
     },
     {
       "type": "any",
-      "value": "131d16ec-5647-47df-ae53-1b88cd31027d",
+      "value": "3ecf44d3-63e5-49c7-ae24-9b56e0dd0a12",
       "key": "m1entityId"
     },
     {
       "type": "any",
-      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzIwMDY1MDQsInN1YiI6IjZmZmJjNGNlLTM4NjYtNGQxOS04Nzk0LWVmMjkzMjJiYWRmNCJ9.sSuQR6RuV6pXXMlSQnwkBdcgh6LDS7vu6UiRhJPD7d-ApzDTZDDcQd6IvQfg2hmf0rKUqIlHG7yUsTu2VFpKmA",
+      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzMxODkxNDksInN1YiI6IjQ4MWQyYzc0LTAxNmQtNDRkYi04NGU5LWI1N2Q3YWUwZWFmMSJ9.H4Pda_RyJmReFjeKKpbaOPpgRM2cDNc47ypuFBXUo4Mkm_-JU45YwpnuCNGaFJfzDYXPpYpsCylvVJdwTSDHaQ",
       "key": "m1accessToken"
     },
     {
       "type": "any",
-      "value": "FleekMQpGDD",
+      "value": "FleeklTzTy1",
       "key": "m2randomUsername"
     },
     {
       "type": "any",
-      "value": "+635886290963",
+      "value": "+631666231794",
       "key": "m2randomNumber"
     },
     {
       "type": "any",
-      "value": "30BBA33D-7A7A-7D39-9F9C-41193406E8CF",
+      "value": "9DEA6ABD-0DB1-A6DC-3B8A-753304E9B60E",
       "key": "m2deviceID"
     },
     {
       "type": "any",
-      "value": "6ffbc4ce-3866-4d19-8794-ef29322badf4",
+      "value": "481d2c74-016d-44db-84e9-b57d7ae0eaf1",
       "key": "m2id"
     },
     {
       "type": "any",
-      "value": "6ffbc4ce-3866-4d19-8794-ef29322badf4",
+      "value": "481d2c74-016d-44db-84e9-b57d7ae0eaf1",
       "key": "m2entityId"
     },
     {
       "type": "any",
-      "value": null,
+      "value": "e858f2b195e9280f6bfd93c9a0f8e9d0",
       "key": "sessionCode"
     },
     {
       "type": "any",
-      "value": null,
+      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE2OTA5NTAsInN1YiI6IjY4ZTJiNDMxLTMxMTYtNDQyZC1iNTVkLWRiZTUyNDJiYjliMiJ9.pHPq8lOiJ7kO3CZdlHgiPk_7Tn1PK0JVX6w7LWNN5G2Yvejbnd005oMMnNuN25ObdeVWrVX8s2erIaU7oHob0A",
       "key": "alchemytoken"
+    },
+    {
+      "type": "any",
+      "value": "yKukVA0fe8otEpwIQhCJUxApHg0=",
+      "key": "sessionCode1"
     }
   ],
   "name": "environment",
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2023-11-20T18:55:07.237Z",
+  "_postman_exported_at": "2023-12-04T11:25:55.754Z",
   "_postman_exported_using": "Newman/6.0.0"
 }

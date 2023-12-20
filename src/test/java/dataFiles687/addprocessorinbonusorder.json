@@ -1,0 +1,11 @@
+{
+  "smsCode":"778899",
+  "sessionCode":"{{addprosessionCode}}",
+  "recycleCenters":[{
+    "id":"{{p1processorid}}",
+    "modeForFinder":"delayed",
+    "modeForRC":"delayed",
+    "memberPerKilo":7,
+    "makeDefault":false
+  }]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "59843d73-0915-4f5f-a23c-3770bee9874c",
+  "values": [
+    {
+      "type": "any",
+      "value": "588ecd35f1b33a8cea142490753aa7f5",
+      "key": "sessionCode"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDI0NzQ1ODksInN1YiI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMSJ9.7ubBviS3vjP3PkBU7cUQDq_vAgzBOe9sYI9ELOyGRWZ-ojVjFwcivdXlgUyPiyCMsqViYCIg0uB5B6eQLIaPHg",
+      "key": "alchemytoken"
+    },
+    {
+      "type": "any",
+      "value": "zblbs7s2v44dfh7BsYXJnWMyxeE=",
+      "key": "bonusordersessionCode"
+    },
+    {
+      "type": "any",
+      "value": "2023-12-13T13:06:32.264Z",
+      "key": "formattedDateTime"
+    },
+    {
+      "type": "any",
+      "value": "FleekckOjSU",
+      "key": "bonusOrderName1"
+    },
+    {
+      "type": "any",
+      "value": null,
+      "key": "bonusOrderId2"
+    },
+    {
+      "type": "any",
+      "value": "zblbs7s2v44dfh7BsYXJnWMyxeE=",
+      "key": "addprosessionCode"
+    }
+  ],
+  "name": "environment",
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2023-12-13T13:06:51.581Z",
+  "_postman_exported_using": "Newman/6.0.0"
+}

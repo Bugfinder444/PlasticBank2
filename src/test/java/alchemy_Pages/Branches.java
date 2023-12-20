@@ -1000,7 +1000,7 @@ public void bonusBranchExcHistoryVerification(String branchId) throws Interrupte
 	public void bonusBranchExcHistoryAfterVoidVerification(String branchId) throws InterruptedException {
 
 		alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+branchId);
-		//alcDriver.navigate().refresh();
+		alcDriver.navigate().refresh();
 		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
 		exchangeHistoryTab.click();
 		Thread.sleep(1000);
@@ -1199,6 +1199,7 @@ public void voidTransaction(String branchId) throws InterruptedException {
 
 
 		alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+"b7f276a6-2b5d-44cb-b583-32f0b5af8017");
+		Thread.sleep(5000);
 		alcDriver.navigate().refresh();
 		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
 		exchangeHistoryTab.click();
@@ -1235,8 +1236,14 @@ public void voidTransaction(String branchId) throws InterruptedException {
 //		tableData_FirstRow.click();
 
 		alcDriver.get("https://"+BaseClass.actual+"/#/admin/collectionpoint/"+branchId);
+
 		alcDriver.navigate().refresh();
-		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		}catch (Exception e){
+			alcDriver.navigate().refresh();
+			wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		}
 		exchangeHistoryTab.click();
 
 		wait.until(ExpectedConditions.elementToBeClickable(calenderIcon));

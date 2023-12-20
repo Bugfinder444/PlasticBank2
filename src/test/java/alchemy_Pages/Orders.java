@@ -1223,7 +1223,7 @@ public class Orders extends BaseClass{
         String cleanedString = kgDelTop.replace(",", "");
         int kgDelTopIntValue = Integer.parseInt(cleanedString);
         System.out.println(kgDelTopIntValue);
-
+        Thread.sleep(1000);
         action.scrollToElement(total).build().perform();
 
         String t= total.getText();
@@ -1240,6 +1240,7 @@ public class Orders extends BaseClass{
         System.out.println(intpendingKg);
 
         assertTrue(intTotal==intTotalCollectedKg+intpendingKg);
+        Thread.sleep(1000);
         assertTrue(intTotalCollectedKg==kgDelTopIntValue+kgCollectedByProcessor);
 
         Thread.sleep(1000);
