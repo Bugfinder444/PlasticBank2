@@ -25,7 +25,7 @@ public class ALC_666 extends BaseClass {
     public void createOrder() throws InterruptedException {
 
         AlchemyLoginPage login=new AlchemyLoginPage(alcDriver);
-        login.alc_adminlogin(adminphoneNumber,adminpassword);
+        login.alc_adminlogin("+17783844311","778899");
 
         Orders o1= new Orders(alcDriver);
         o1.createOrder666(Data.processor_Name666);
@@ -50,7 +50,7 @@ public class ALC_666 extends BaseClass {
     public void verifyAuditTrailsReport() throws InterruptedException {
 
         FileSearch fs= new FileSearch(alcDriver);
-        fs.run();
+        fs.run(Data.processor_Name666);
 
     }
     @Test(priority=5,description = "Verify Audit trail in SP order is updated with transactions based on the added Bonus order")

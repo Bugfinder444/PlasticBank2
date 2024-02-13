@@ -1,0 +1,1 @@
+{"buyerId":"{{b5id}}","buyerEntityId":"{{b5branchid}}","sellerId":"{{m3id}}","sellerEntityId":"{{m3id}}","items":[{"id":"{{b5item1Id}}","amount":150,"tokenType":"DONATION","customPrice":0}],"isOffApp":false,"totalCash":0,"totalToken":0,"dateCreated":null,"postLocation":{"lat":"","lng":""}}

@@ -310,14 +310,16 @@ public void m1toB1(String m1number) throws InterruptedException {
 	search.sendKeys(m1number);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchOutline)));
 	searchOutline.click();
-	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchResult)));
-	searchResult.click();
+    tap(500,1000);
+//	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(searchResult)));
+//	searchResult.click();
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(0))));
     checkmark.get(0).click();
     
     
     wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(hdpe)));
 	hdpe.click();
+    Thread.sleep(2000);
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(requiredQuantity)));
 	requiredQuantity.sendKeys("10");
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(checkmark.get(1))));

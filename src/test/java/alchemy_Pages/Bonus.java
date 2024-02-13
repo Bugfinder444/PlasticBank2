@@ -7,7 +7,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -152,13 +154,72 @@ WebElement buyTransactionTag;
 WebElement selectEquivalentCheckBox;
 @FindBy(xpath="//button[text()='Approved']")
 public List<WebElement> approvedTextInBonusApproval ;
+@FindBy(xpath = "//div[text()='Exchange History ']")
+WebElement exchangeHistoryTab;
+@FindBy(xpath = "//button[text()='Data Transfer']")
+WebElement dataTransferButton;
+@FindBy(xpath="//span[@class='checkmark']")
+public List<WebElement> checkMark ;
 
-public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
+@FindBy(xpath="//div[text()='PET-Clean-Clear / 50.00 kg']/preceding::input[@type='checkbox'][1]/following::span[1]")
+public WebElement checkMark50 ;
+@FindBy(xpath="//div[text()='PET-Clean-Clear / 33.80 kg']/preceding::input[@type='checkbox'][1]/following::span[1]")
+public WebElement checkMark33 ;
+@FindBy(xpath = "//div[text()=' Bonus Progress ']/following-sibling::div[1]")
+WebElement bonusProgress;
+@FindBy(xpath = "//button[text()='Confirm Data Transfer']")
+WebElement confirmDataTransferButton;
+@FindBy(xpath = "//button[text()='Confirm Data Transfer']")
+WebElement yesCheckBox;
+@FindBy(xpath = "//span[text()='No']")
+WebElement noCheckBox;
+@FindBy(xpath = "//input[@placeholder=\"Offset search\"]")
+WebElement searchOffsetFeild;
+@FindBy(xpath = "//input[@placeholder=\"Offset Name\"]")
+WebElement searchOffsetNameFeild;
+@FindBy(xpath = "//div[@class=\"search-icon\"]")
+WebElement searchButton;
+@FindBy(xpath = "//div[contains(@class,\"offset-result \")]")
+WebElement offsetResult;
+@FindBy(xpath = "//div[text()='Summary']")
+WebElement summaryTab;
+@FindBy(xpath = "//span[contains(text(),\"Exclude Members' Pending Bonuses\")]/following::span")
+WebElement excludeMemPenBonus;
+@FindBy(xpath = "//label[text()='Include Processor']/following-sibling::input")
+WebElement includeProcessorTextField;
+@FindBy(xpath = "//div[text()='Total Weight: 40.00 KG']")
+WebElement totalWeight40;
+@FindBy(xpath = "//li[contains(@class,'page-item')]")
+WebElement lastItemOnPage;
+@FindBy(xpath = "//div[contains(text(),' Total Bonus')]/following-sibling::div[2]/div/span")
+public List<WebElement> totalKgCollectedAndSold;
+@FindBy(xpath="//a[text()='Exchange History']")
+public WebElement exchangeHistoryTabInBranches;
+@FindBy(xpath = "//div[@class='card-header']/div/button")
+List<WebElement> transactions;
+@FindBy(xpath="//label[text()='ASSOCIATED BONUS']/following::label")
+public WebElement associatedBonus;
+@FindBy(xpath = "//div[text()='Total Weight: 22.60 KG']")
+WebElement totalWeight22;
+@FindBy(xpath = "//div[text()='Total Weight: 33.80 KG']")
+WebElement totalWeight33;
+@FindBy(xpath = "//div[text()='Total Weight: 50.00 KG']")
+WebElement totalWeight50;
+@FindBy(xpath = "//div[text()='Total Weight: 70.00 KG']")
+WebElement totalWeight70;
+@FindBy(xpath = "//div[text()=' Dashboard ']")
+WebElement dashBoard;
+@FindBy(xpath = "//div[text()='Members by Country']/following::span[@class='total-price'][1]")
+WebElement membersByCountry;
+
+	public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
 public static String expectedexcHisPetKG="PET-Raw-Transparent / 9.00 kg";
 public static String expectedexcHisHdpeBonus="Bonus 70";
 public static String expectedexcHisPetBonus="Bonus 63";
 public static String expectedexcHisTotalKg="Total Weight: 19.00 KG";
 public static String expectedexcHisTotalBonus="133";
+public static String bonusName1134="RandomBonus_"+ RandomStringUtils.randomAlphabetic(5);
+
 
 
 private void clickOrdersTab() throws InterruptedException {
@@ -169,6 +230,8 @@ private void clickOrdersTab() throws InterruptedException {
 }
 private void clickBounsTab() throws InterruptedException {
     Thread.sleep(2000);
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
+	wait.until(ExpectedConditions.elementToBeClickable(ordersTab_bonus));
     ordersTab_bonus.click();
 }
 private void search_byName(String name) throws InterruptedException {
@@ -1183,6 +1246,405 @@ public void payBonus1711() throws InterruptedException {
 
 	
 }
-	
+
+public void verifyBonusApprovalData(int n,String kgCollected, String kgSold) throws InterruptedException {
+
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(30));
+	wait.until(ExpectedConditions.elementToBeClickable(branchButton.get(n)));
+	branchButton.get(n).click();
+	Thread.sleep(3000);
+	wait.until(ExpectedConditions.visibilityOf(totalBonusTitle));
+
+	ArrayList<String>expectedKgCollectedAndSold =new ArrayList<>();
+
+	expectedKgCollectedAndSold.add(kgCollected);
+	expectedKgCollectedAndSold.add(kgSold);
+
+
+	ArrayList<String> actualKgCollectedAndSold = new ArrayList<>(); // branch one all 6 bonus values
+
+	for (WebElement element1 :totalKgCollectedAndSold) {
+		actualKgCollectedAndSold.add(element1.getText());
+	}
+	Assert.assertEquals(actualKgCollectedAndSold, expectedKgCollectedAndSold);
+
+	Thread.sleep(2000);
+
+	Actions action =new Actions(alcDriver);
+	action.scrollToElement(viewAuditTrail).build().perform();
+	Thread.sleep(1000);
+	TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	Allure.addAttachment("Bonus In Bonus Approval", new ByteArrayInputStream(screenshot1));
+	Thread.sleep(2000);
+
+	wait.until(ExpectedConditions.elementToBeClickable(branchButton.get(n)));
+	branchButton.get(n).click();
+	Thread.sleep(3000);
+
+
+
+}
+
+
+public void bonusTransfer(String bonusId,String transferBonusName,String processorName) throws InterruptedException {
+
+	alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+bonusId);
+	alcDriver.navigate().refresh();
+
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+	wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+	Thread.sleep(3000);
+	String bonusProgressText1=bonusProgress.getText();
+	Thread.sleep(2000);
+
+	TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	Allure.addAttachment("Bonus In Summary Before Data Transfer ", new ByteArrayInputStream(screenshot1));
+	Thread.sleep(2000);
+
+	String[] numericValue1 = bonusProgressText1.split(" ");
+	int bonusProgressInSummary1 = Integer.parseInt(numericValue1[0]);
+	System.out.println(bonusProgressInSummary1);
+
+
+	bonusApprovalButton.click();
+	verifyBonusApprovalData(0,"40 KG","40 KG");
+	verifyBonusApprovalData(1,"40 KG","40 KG");
+
+
+	wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+	exchangeHistoryTab.click();
+	wait.until(ExpectedConditions.elementToBeClickable(dataTransferButton));
+	dataTransferButton.click();
+	Thread.sleep(3000);
+	Actions action= new Actions(alcDriver);
+	action.moveToElement(excludeMemPenBonus).click().build().perform();
+	Thread.sleep(2000);
+	includeProcessorTextField.sendKeys(processorName);
+	Thread.sleep(2000);
+	//Actions action= new Actions(alcDriver);
+	action.moveToElement(checkMark.get(0)).click().build().perform();
+	//checkMark.get(1).click();
+	Thread.sleep(2000);
+	confirmDataTransferButton.click();
+	Thread.sleep(2000);
+	wait.until(ExpectedConditions.elementToBeClickable(noCheckBox));
+	Actions action1= new Actions(alcDriver);
+	action1.moveToElement(noCheckBox).click().build().perform();
+	//noCheckBox.click();
+	searchOffsetFeild.sendKeys(transferBonusName);
+	searchButton.click();
+	wait.until(ExpectedConditions.elementToBeClickable(offsetResult));
+	offsetResult.click();
+	confirmButton.click();
+	wait.until(ExpectedConditions.elementToBeClickable(okButton));
+	okButton.click();
+	Thread.sleep(2000);
+	wait.until(ExpectedConditions.visibilityOf(closeButton));
+	closeButton.click();
+
+	Thread.sleep(3000);
+
+	action.moveToElement(excludeMemPenBonus).click().build().perform();
+
+	//action.scrollToElement(lastItemOnPage).build().perform();
+
+	try{
+		alcDriver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+
+		totalWeight40.isDisplayed();
+
+	}catch (Exception e){
+		System.out.println("Transfered transaction is not Present ");
+		alcDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	}
+
+
+	summaryTab.click();
+
+	wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+	Thread.sleep(3000);
+	String bonusProgressText2=bonusProgress.getText();
+	Thread.sleep(2000);
+
+	TakesScreenshot ts2 = (TakesScreenshot) alcDriver;
+	byte[] screenshot2 = ts2.getScreenshotAs(OutputType.BYTES);
+	Allure.addAttachment("Bonus In Summary After Data Transfer ", new ByteArrayInputStream(screenshot2));
+	Thread.sleep(2000);
+
+	String[] numericValue2 = bonusProgressText2.split(" ");
+	int bonusProgressInSummary2 = Integer.parseInt(numericValue2[0]);
+
+	System.out.println(bonusProgressInSummary2);
+
+	alcDriver.navigate().refresh();
+	bonusApprovalButton.click();
+
+	verifyBonusApprovalData(0,"0 KG","0 KG");
+	verifyBonusApprovalData(1,"0 KG","0 KG");
+
+
+}
+public void bonusTransferVerify(String bonusId) throws InterruptedException {
+
+	alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+bonusId);
+	alcDriver.navigate().refresh();
+
+	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+	wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+	Thread.sleep(3000);
+	String bonusProgressText1=bonusProgress.getText();
+	Thread.sleep(2000);
+
+	TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	Allure.addAttachment("Bonus In Summary", new ByteArrayInputStream(screenshot1));
+	Thread.sleep(2000);
+
+	String[] numericValue1 = bonusProgressText1.split(" ");
+	int bonusProgressInSummary1 = Integer.parseInt(numericValue1[0]);
+	System.out.println(bonusProgressInSummary1);
+
+	wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+	exchangeHistoryTab.click();
+
+	try{
+		WebDriverWait wait2 = new WebDriverWait(alcDriver, Duration.ofSeconds(10));
+		wait2.until(ExpectedConditions.visibilityOf(totalWeight40));
+		System.out.println("Transfered transaction is Present ");
+
+	}catch (Exception e){
+		System.out.println("Transfered transaction is not Present ");
+	}
+
+	bonusApprovalButton.click();
+	verifyBonusApprovalData(0,"40 KG","40 KG");
+	verifyBonusApprovalData(1,"40 KG","40 KG");
+
+
+}
+
+public void branchExchangeBonusTransfer(String branchId,int transactionNumber,String expectedBonus) throws InterruptedException {
+
+	alcDriver.get("https://" + actual + "/#/admin/collectionpoint/" + branchId);
+	alcDriver.navigate().refresh();
+
+	exchangeHistoryTabInBranches.click();
+	Thread.sleep(3000);
+
+	Actions action = new Actions(alcDriver);
+	action.scrollToElement(lastItemOnPage).build().perform();
+
+	TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+	byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+	Allure.addAttachment("ScreenShot of Transactions in Branch Exchange History", new ByteArrayInputStream(screenshot1));
+	Thread.sleep(2000);
+
+	for (int i = transactionNumber; i <= transactionNumber + 1; i++) {
+
+		transactions.get(i).click();
+		Thread.sleep(3000);
+		String actualBonus = associatedBonus.getText();
+		Thread.sleep(2000);
+
+		Assert.assertEquals(actualBonus, expectedBonus);
+
+		transactions.get(transactionNumber).click();
+	}
+}
+
+	public void processorExchangeBonusTransfer(String processorId,int transactionNumber,String expectedBonus) throws InterruptedException {
+
+		alcDriver.get("https://" + actual + "/#/admin/recyclingcenter/" + processorId);
+
+		alcDriver.navigate().refresh();
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.visibilityOf(exchangeHistoryTabInBranches));
+
+		exchangeHistoryTabInBranches.click();
+
+		Thread.sleep(3000);
+
+		Actions action = new Actions(alcDriver);
+		action.scrollToElement(lastItemOnPage).build().perform();
+		Thread.sleep(2000);
+
+		TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+		byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Transactions In Processor Exchange History", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+
+
+
+		for (int i = 0; i < 1; i++) {
+
+			transactions.get(i).click();
+			Thread.sleep(3000);
+			String actualBonus = associatedBonus.getText();
+
+			Thread.sleep(2000);
+
+			Assert.assertEquals(actualBonus, expectedBonus);
+
+			transactions.get(i).click();
+		}
+	}
+
+	public void bonusTransfer2(String bonusId, String processorName) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+//		wait.until(ExpectedConditions.visibilityOf(dashBoard));
+//		dashBoard.click();
+//		wait.until(ExpectedConditions.visibilityOf(membersByCountry));
+
+		alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+bonusId);
+		alcDriver.navigate().refresh();
+
+		wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+		Thread.sleep(3000);
+		String bonusProgressText1=bonusProgress.getText();
+		Thread.sleep(2000);
+
+		String[] numericValue1 = bonusProgressText1.split(" ");
+		int bonusProgressInSummary1 = Integer.parseInt(numericValue1[0]);
+		System.out.println(bonusProgressInSummary1);
+
+
+		bonusApprovalButton.click();
+
+		verifyBonusApprovalData(0,"176.4 KG","176.4 KG");
+		verifyBonusApprovalData(1,"176.4 KG","110.7 KG");
+
+
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+		wait.until(ExpectedConditions.elementToBeClickable(dataTransferButton));
+		dataTransferButton.click();
+		Thread.sleep(3000);
+		Actions action= new Actions(alcDriver);
+		//action.moveToElement(excludeMemPenBonus).click().build().perform();
+		//Thread.sleep(3000);
+		//includeProcessorTextField.sendKeys(processorName);
+		Thread.sleep(2000);
+
+		//wait.until(ExpectedConditions.elementToBeClickable(checkMark50));
+
+		action.moveToElement(checkMark50).click().build().perform();
+		Thread.sleep(3000);
+		action.moveToElement(checkMark33).click().build().perform();
+
+
+		Thread.sleep(4000);
+		confirmDataTransferButton.click();
+		Thread.sleep(3000);
+		wait.until(ExpectedConditions.elementToBeClickable(searchOffsetNameFeild));
+		System.out.println(bonusName1134);
+		System.out.println(bonusName1134);
+		searchOffsetNameFeild.sendKeys(bonusName1134);
+		Thread.sleep(3000);
+		confirmButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButton));
+		okButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(closeButton));
+		closeButton.click();
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		alcDriver.navigate().refresh();
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+
+		Thread.sleep(3000);
+
+		action.moveToElement(excludeMemPenBonus).click().build().perform();
+
+		//action.scrollToElement(lastItemOnPage).build().perform();
+
+		try{
+			alcDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+			totalWeight50.isDisplayed();
+			totalWeight33.isDisplayed();
+
+		}catch (Exception e){
+
+			totalWeight22.isDisplayed();
+			totalWeight70.isDisplayed();
+			System.out.println("Non Transfered transaction are Present ");
+			System.out.println("Transfered transaction is not Present ");
+			alcDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		}
+
+
+		summaryTab.click();
+
+		wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+		Thread.sleep(3000);
+		String bonusProgressText2=bonusProgress.getText();
+		Thread.sleep(2000);
+
+		String[] numericValue2 = bonusProgressText2.split(" ");
+		int bonusProgressInSummary2 = Integer.parseInt(numericValue2[0]);
+
+		System.out.println(bonusProgressInSummary2);
+
+		bonusApprovalButton.click();
+		verifyBonusApprovalData(0,"92.6 KG","92.6 KG");
+		verifyBonusApprovalData(1,"92.6 KG","60.7 KG");
+
+
+	}
+
+	public void bonusTransferVerify2() throws InterruptedException {
+
+
+		clickOrdersTab();
+		clickBounsTab();
+		search_byName(bonusName1134);
+		clickSpecificOrdersBonus();
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+		Thread.sleep(3000);
+		String bonusProgressText1=bonusProgress.getText();
+		Thread.sleep(2000);
+
+
+		TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+		byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Bonus Summary ", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+
+		String[] numericValue1 = bonusProgressText1.split(" ");
+		int bonusProgressInSummary1 = Integer.parseInt(numericValue1[0]);
+		System.out.println(bonusProgressInSummary1);
+
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+
+		try{
+			WebDriverWait wait2 = new WebDriverWait(alcDriver, Duration.ofSeconds(10));
+			totalWeight50.isDisplayed();
+			totalWeight33.isDisplayed();
+			System.out.println("Transfered transaction is Present ");
+
+		}catch (Exception e){
+			System.out.println("Transfered transaction is not Present ");
+		}
+
+		bonusApprovalButton.click();
+		verifyBonusApprovalData(0,"83.8 KG","83.8 KG");
+		verifyBonusApprovalData(1,"83.8 KG","50 KG");
+
+
+	}
+
+
+
 }
 

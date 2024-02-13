@@ -131,6 +131,7 @@ public static String password ="123456a";
 		alcDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 		try {
+			//alcDriver.get("https://staging-admin.plasticbank.com/#/login");
 			alcDriver.get("https://qa-admin.cognitionfoundry.io/#/login");
 		} catch (org.openqa.selenium.TimeoutException e) {
 			// Handle the timeout exception here

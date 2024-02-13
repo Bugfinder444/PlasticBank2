@@ -39,7 +39,7 @@ public class Dashboard extends BaseClass{
 	 @FindBy(xpath = "//div[text()='Tokens by Country in USD']/following::span[@class='total-price'][1]")
 	    private WebElement activeLocations;
 	 @FindBy(xpath = "//div[text()='Members by Country']/following::span[@class='total-price'][1]")
-	    private WebElement membersByCountry;
+	 private WebElement membersByCountry;
 	@FindBy(xpath = "(//div[text()=' Philippines '])[4]/following::div")
 	public static WebElement kgByPhilippines;
 	public static int kgByCountryValue;

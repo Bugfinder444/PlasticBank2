@@ -82,7 +82,7 @@ public class FileSearch extends BaseClass {
         }
     }
 
-    public static void findAndOpenSearch() {
+    public static void findAndOpenSearch(String searchString) {
 
         while (true) {
             String downloadPath1 = "C:\\Users\\Fleek\\Downloads";
@@ -92,7 +92,7 @@ public class FileSearch extends BaseClass {
             if (files1 != null && files1.length > 0) {
                 // Open the first file that matches the criteria
                // openFile(files1[0]);
-                isNamePresent(files1[0],searchName);
+                isNamePresent(files1[0],searchString);
                 break; // Exit the loop once a file is found and opened
             }
 
@@ -171,10 +171,10 @@ public class FileSearch extends BaseClass {
             }
 
         }
-        public void run() throws InterruptedException {
+        public void run(String searchString) throws InterruptedException {
 
         downloadFile(url);
-        findAndOpenSearch();
+        findAndOpenSearch(searchString);
         deleteFile();
 
     }
