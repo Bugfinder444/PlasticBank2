@@ -155,7 +155,7 @@ public WebElement bonusMemberVerify;
     public WebElement delayed_bonus;
     @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"pb-logo-bonus\")")
     public WebElement pb_logo_bonus;
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").instance(0)")
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").instance(8)")
     public WebElement memberbonustext;
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").instance(2)")
     public WebElement bonustextbranch;

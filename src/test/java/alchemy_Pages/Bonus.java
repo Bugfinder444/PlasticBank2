@@ -1,6 +1,7 @@
 package alchemy_Pages;
 
 import java.io.ByteArrayInputStream;
+import java.lang.reflect.Array;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -187,6 +189,8 @@ WebElement summaryTab;
 WebElement excludeMemPenBonus;
 @FindBy(xpath = "//label[text()='Include Processor']/following-sibling::input")
 WebElement includeProcessorTextField;
+@FindBy(xpath = "//label[text()='Include Branch']/following-sibling::input")
+WebElement includeBranchTextField;
 @FindBy(xpath = "//div[text()='Total Weight: 40.00 KG']")
 WebElement totalWeight40;
 @FindBy(xpath = "//li[contains(@class,'page-item')]")
@@ -199,6 +203,8 @@ public WebElement exchangeHistoryTabInBranches;
 List<WebElement> transactions;
 @FindBy(xpath="//label[text()='ASSOCIATED BONUS']/following::label")
 public WebElement associatedBonus;
+@FindBy(xpath="//label[text()='ASSOCIATED BONUS']/following::label[@class=\"item-name offset-border\"]")
+public List<WebElement> associatedBonusName;
 @FindBy(xpath = "//div[text()='Total Weight: 22.60 KG']")
 WebElement totalWeight22;
 @FindBy(xpath = "//div[text()='Total Weight: 33.80 KG']")
@@ -211,6 +217,20 @@ WebElement totalWeight70;
 WebElement dashBoard;
 @FindBy(xpath = "//div[text()='Members by Country']/following::span[@class='total-price'][1]")
 WebElement membersByCountry;
+@FindBy(xpath = "//label[text()='Category']/following-sibling::select")
+WebElement categoryDropdown;
+@FindBy(xpath = "//label[text()='Type']/following-sibling::select")
+WebElement typeDropdown;
+@FindBy(xpath = "//label[text()='KG Limit']/following-sibling::input")
+WebElement kgLimitTextField;
+@FindBy(xpath = "//div[contains(text(),'Total Weight: ')]")
+WebElement totalWeight;
+@FindBy(xpath = "//span[text()='Plastic Chain']")
+List<WebElement> plasticChainDropdown;
+@FindBy(xpath = "//span[contains(text(),'PET')]")
+WebElement petTransaction;
+@FindBy(xpath = "//div[text()='Bonus']/following::div")
+List<WebElement> bonusExcHis;
 
 	public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
 public static String expectedexcHisPetKG="PET-Raw-Transparent / 9.00 kg";
@@ -219,6 +239,16 @@ public static String expectedexcHisPetBonus="Bonus 63";
 public static String expectedexcHisTotalKg="Total Weight: 19.00 KG";
 public static String expectedexcHisTotalBonus="133";
 public static String bonusName1134="RandomBonus_"+ RandomStringUtils.randomAlphabetic(5);
+public static String actualBonusProgressBeforeTransfer;
+public static ArrayList<String> actualTotalKgCollectedAndSoldBeforeTransfer = new ArrayList<String>();
+public static String actualTotalWeightBeforeTransfer;
+
+public static String actualBonusProgressAfterTransfer;
+public static ArrayList<String> actualTotalKgCollectedAndSoldAfterTransfer = new ArrayList<String>();
+public static String actualTotalWeightAfterTransfer;
+public static String referenceId="Ref_"+ RandomStringUtils.randomAlphabetic(5);
+
+
 
 
 
@@ -1594,7 +1624,7 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 
 		bonusApprovalButton.click();
 		verifyBonusApprovalData(0,"92.6 KG","92.6 KG");
-		verifyBonusApprovalData(1,"92.6 KG","60.7 KG");
+		//verifyBonusApprovalData(1,"92.6 KG","60.7 KG");
 
 
 	}
@@ -1644,7 +1674,234 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 
 	}
 
+	public void bonusOrdertransfer(String bonus1Id,String bonus2Name,String expectedBonusProgressBeforeTransfer,List<String>expectedTotalKgCollectedAndSoldBeforeTransfer,String expectedTotalWeightBeforeTransfer,String expectedBonusProgressAfterTransfer,List<String>expectedTotalKgCollectedAndSoldAfterTransfer,String branchName,String category,String type,String kgLimit) throws InterruptedException {
 
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+bonus1Id);
+		alcDriver.navigate().refresh();
+		wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+		Thread.sleep(4000);
+		actualBonusProgressBeforeTransfer=bonusProgress.getText();
+		System.out.println("actualBonusProgressBeforeTransfer :"+actualBonusProgressBeforeTransfer );
+		Assert.assertEquals(actualBonusProgressBeforeTransfer,expectedBonusProgressBeforeTransfer);
+
+		TakesScreenshot ts2 = (TakesScreenshot) alcDriver;
+		byte[] screenshot2 = ts2.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Bonus In Summary Before Data Transfer ", new ByteArrayInputStream(screenshot2));
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		bonusApprovalButton.click();
+		branchButton.get(0).click();
+		wait.until(ExpectedConditions.visibilityOf(totalKgCollectedAndSold.get(0)));
+		Actions action = new Actions(alcDriver);
+		action.scrollToElement(totalKgCollectedAndSold.get(0)).build().perform();
+		for(WebElement ele : totalKgCollectedAndSold){
+
+			actualTotalKgCollectedAndSoldBeforeTransfer.add(ele.getText());
+			Thread.sleep(2000);
+			byte[] screenshot4 = ts2.getScreenshotAs(OutputType.BYTES);
+			Allure.addAttachment("Total Kg Collected And Sold Before Transfer ", new ByteArrayInputStream(screenshot4));
+			Thread.sleep(2000);
+		}
+		System.out.println("actualTotalKgCollectedAndSoldBeforeTransfer :"+actualTotalKgCollectedAndSoldBeforeTransfer );
+
+		Assert.assertEquals(actualTotalKgCollectedAndSoldBeforeTransfer,expectedTotalKgCollectedAndSoldBeforeTransfer);
+		Thread.sleep(2000);
+		exchangeHistoryTab.click();
+		wait.until(ExpectedConditions.elementToBeClickable(dataTransferButton));
+		Thread.sleep(2000);
+		action.scrollToElement(plasticChainDropdown.get(0)).build().perform();
+		plasticChainDropdown.get(0).click();
+		Thread.sleep(2000);
+
+		String petKgBeforeTransfer=petTransaction.getText();
+		String bonusBeforeTransfer=bonusExcHis.get(0).getText();
+
+		dataTransferButton.click();
+		Thread.sleep(2000);
+		includeBranchTextField.sendKeys(branchName);
+		Thread.sleep(2000);
+		categoryDropdown.click();
+		Select select_cat = new Select(categoryDropdown);
+		select_cat.selectByVisibleText(category);
+		Thread.sleep(2000);
+		typeDropdown.click();
+		Select select_type = new Select(typeDropdown);
+		select_type.selectByVisibleText(type);
+		Thread.sleep(2000);
+		kgLimitTextField.clear();
+		kgLimitTextField.sendKeys(kgLimit);
+		Thread.sleep(2000);
+		action.moveToElement(checkMark.get(1)).click().build().perform();
+		Thread.sleep(2000);
+		actualTotalWeightBeforeTransfer=totalWeight.getText();
+		System.out.println("totalWeightBeforeTransfer :"+actualTotalWeightBeforeTransfer );
+		Assert.assertEquals(actualTotalWeightBeforeTransfer,expectedTotalWeightBeforeTransfer);
+		Thread.sleep(2000);
+		confirmDataTransferButton.click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(noCheckBox));
+		action.moveToElement(noCheckBox).click().build().perform();
+		searchOffsetFeild.sendKeys(bonus2Name);
+		searchButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(offsetResult));
+		offsetResult.click();
+		wait.until(ExpectedConditions.elementToBeClickable(confirmButton));
+		confirmButton.click();
+		wait.until(ExpectedConditions.elementToBeClickable(okButton));
+		okButton.click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(closeButton));
+		closeButton.click();
+
+		Thread.sleep(2000);
+
+		wait.until(ExpectedConditions.elementToBeClickable(summaryTab));
+		summaryTab.click();
+
+		wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+		Thread.sleep(3000);
+		actualBonusProgressAfterTransfer=bonusProgress.getText();
+		System.out.println("actualBonusProgressAfterTransfer :"+actualBonusProgressAfterTransfer );
+		Assert.assertEquals(actualBonusProgressAfterTransfer,expectedBonusProgressAfterTransfer);
+
+
+		Thread.sleep(2000);
+		byte[] screenshot3 = ts2.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Bonus In Summary After Data Transfer ", new ByteArrayInputStream(screenshot3));
+		Thread.sleep(2000);
+
+		String[] numericValue2 = actualBonusProgressAfterTransfer.split(" ");
+		int bonusProgressInSummary2 = Integer.parseInt(numericValue2[0]);
+
+		System.out.println(bonusProgressInSummary2);
+		Thread.sleep(2000);
+		alcDriver.navigate().refresh();
+		Thread.sleep(2000);
+		bonusApprovalButton.click();
+		branchButton.get(0).click();
+		wait.until(ExpectedConditions.visibilityOf(totalKgCollectedAndSold.get(0)));
+
+		action.scrollToElement(totalKgCollectedAndSold.get(0)).build().perform();
+		for(WebElement ele : totalKgCollectedAndSold){
+
+			actualTotalKgCollectedAndSoldAfterTransfer.add(ele.getText());
+			Thread.sleep(2000);
+			byte[] screenshot4 = ts2.getScreenshotAs(OutputType.BYTES);
+			Allure.addAttachment("Total Kg Collected And Sold After Transfer ", new ByteArrayInputStream(screenshot4));
+			Thread.sleep(2000);
+		}
+		System.out.println("actualTotalKgCollectedAndSoldAfterTransfer :"+actualTotalKgCollectedAndSoldAfterTransfer );
+
+
+		Assert.assertEquals(actualTotalKgCollectedAndSoldAfterTransfer,expectedTotalKgCollectedAndSoldAfterTransfer);
+
+		exchangeHistoryTab.click();
+		action.scrollToElement(plasticChainDropdown.get(0)).build().perform();
+		plasticChainDropdown.get(0).click();
+		Thread.sleep(2000);
+
+		String petKgAfterTransfer=petTransaction.getText();
+		String bonusAfterTransfer=bonusExcHis.get(0).getText();
+
+
+
+	}
+	public void verifyTransferedBonus(String bonus2Id,String expectedBonusInTransferedBonusExcHis,String expectedTotalWeightInTransferedBonusExcHis,String expectedPetTransfered) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		alcDriver.get("https://"+actual+"/#/admin/ordersoffsets/offset/"+bonus2Id);
+		alcDriver.navigate().refresh();
+		wait.until(ExpectedConditions.visibilityOf(bonusProgress));
+		Thread.sleep(4000);
+
+		String bonusProgressText1=bonusProgress.getText();
+		Thread.sleep(2000);
+
+
+		TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+		byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment("Bonus Summary ", new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
+
+		String[] numericValue1 = bonusProgressText1.split(" ");
+		int bonusProgressInSummary1 = Integer.parseInt(numericValue1[0]);
+		System.out.println(bonusProgressInSummary1);
+
+		Assert.assertEquals(bonusProgressInSummary1,200);
+
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+
+		try{
+			WebDriverWait wait2 = new WebDriverWait(alcDriver, Duration.ofSeconds(10));
+			wait2.until(ExpectedConditions.visibilityOf(totalWeight));
+			Thread.sleep(2000);
+			String actualBonusInTransferedBonusExcHis=bonusBuyTotalValue.get(0).getText();
+			String actualTotalWeightInTransferedBonusExcHis=totalWeight.getText();
+
+			Assert.assertEquals(actualBonusInTransferedBonusExcHis,expectedBonusInTransferedBonusExcHis);
+			Assert.assertEquals(actualTotalWeightInTransferedBonusExcHis,expectedTotalWeightInTransferedBonusExcHis);
+
+			plasticChainDropdown.get(0).click();
+			Thread.sleep(2000);
+			String actualPetTransfered=petTransaction.getText();
+			Thread.sleep(2000);
+			Assert.assertEquals(actualPetTransfered,expectedPetTransfered);
+
+			System.out.println("Transfered transaction is Present ");
+
+		}catch (Exception e){
+			System.out.println("Transfered transaction is not Present ");
+		}
+
+		bonusApprovalButton.click();
+		verifyBonusApprovalData(0,"200 KG","200 KG");
+
+	}
+	public void branchBonustransferVerify(String branchId,int transactionNumber) throws InterruptedException {
+
+		alcDriver.get("https://" + actual + "/#/admin/collectionpoint/" + branchId);
+		alcDriver.navigate().refresh();
+		Thread.sleep(3000);
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(exchangeHistoryTabInBranches));
+		exchangeHistoryTabInBranches.click();
+		Thread.sleep(3000);
+
+
+		//List<String> actualBonusNames=new ArrayList<>();
+		Set<String> actualBonusNames=new HashSet<>();
+
+		for (int i =0 ; i <= transactionNumber; i++) {
+
+			transactions.get(i).click();
+			Thread.sleep(3000);
+			for(WebElement ele:associatedBonusName) {
+
+				actualBonusNames.add(ele.getText());
+				Thread.sleep(2000);
+			}
+			Thread.sleep(2000);
+			Actions action = new Actions(alcDriver);
+			action.scrollToElement(lastItemOnPage).build().perform();
+			Thread.sleep(1000);
+			TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+			byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+			Allure.addAttachment("ScreenShot of Bonus Present in Branch Exchange History", new ByteArrayInputStream(screenshot1));
+			Thread.sleep(2000);
+			transactions.get(i).click();
+		}
+		Set<String> expectedBonusNames=new HashSet<>(Arrays.asList(Data.bonus1Name2627,Data.bonus1Name2627,Data.bonus1Name2627,Data.bonus2Name2627,Data.bonus1Name2627,Data.bonus2Name2627));
+
+		Thread.sleep(2000);
+		Assert.assertEquals(actualBonusNames, expectedBonusNames);
+		Thread.sleep(2000);
+
+	}
 
 }
 

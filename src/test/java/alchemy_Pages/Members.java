@@ -113,48 +113,43 @@ private WebElement memberAdded;
 @CacheLookup private WebElement edit;
 @FindBy(xpath="//div[text()=' Suspend Account ']/input")
 @CacheLookup private WebElement suspendAccount;
-
 @FindBy(xpath="//div[@class='pb-button green']") 
-@CacheLookup private WebElement saveButton;
+private WebElement saveButton;
 @FindBy(xpath="//div[@class='pb-button grey']")
-@CacheLookup private WebElement cancelButton;
+private WebElement cancelButton;
 @FindBy(xpath="//a[@id='ngb-nav-7']") 
-@CacheLookup private WebElement exchangeHistory;
+private WebElement exchangeHistory;
 @FindBy(xpath="//a[@id='ngb-nav-8']")
-@CacheLookup private WebElement tags;
-
+private WebElement tags;
 @FindBy(xpath = "//div[@role='document']/div")
 private WebElement popUp_alert;
 @FindBy(xpath="//button[normalize-space()='OK']")
-@CacheLookup private WebElement alertBoxOkButton;
+private WebElement alertBoxOkButton;
 @FindBy(xpath="//button[normalize-space()='Cancel']") 
-@CacheLookup private WebElement alertBoxCancelButton;
-
-	@FindBy(xpath = "//loader/div//table")
-	WebElement pageLoader;
-	@FindBy(xpath = "//h4") WebElement directTokenTransfer_PopUp;
-	@FindBy(xpath = "//input[@id='amount']") WebElement tokenAmount;
-	@FindBy(xpath = "//select[@id='type']") WebElement tokenType;
-	@FindBy(xpath = "//select[@id='type']/option[text()='EPR Rewards']") WebElement EPRRewards;
-	@FindBy(xpath= "//button[text()='Send']") WebElement sendTokenBtn;
-	@FindBy(xpath = "//input[@id='smsCode']")
-	WebElement authCode;
-	@FindBy(xpath = "//button[@type='button' and text()='Submit']") WebElement authCodeSubmitBtn;
-	@FindBy(xpath = "//button[text()='Close']") WebElement closeBtnPopup;
-	@FindBy(xpath = "//input[@placeholder='Phone']")
-	WebElement phoneSearchBox;
-
-	@FindBy(xpath = "//*[text()='Bonus Eligible']")
-	WebElement bonusEligibleText;
-
-	@FindBy(xpath = "//a[text()='Exchange History']") 
-    WebElement exchangehistory;
-	@FindBy(xpath = "//div[text()='KG Recycled']/following-sibling::div/div/following-sibling::div/div")
-    WebElement kgrecycled;
-	@FindBy(xpath = "//div[contains(text(),'Total weight:')]")
-    WebElement excHisTotalWeight;
-	@FindBy(xpath = "//div[text()='Tokens in Wallet']/following::div[5]")
-    WebElement tokenInWalletText;
+private WebElement alertBoxCancelButton;
+@FindBy(xpath = "//loader/div//table")
+WebElement pageLoader;
+@FindBy(xpath = "//h4") WebElement directTokenTransfer_PopUp;
+@FindBy(xpath = "//input[@id='amount']") WebElement tokenAmount;
+@FindBy(xpath = "//select[@id='type']") WebElement tokenType;
+@FindBy(xpath = "//select[@id='type']/option[text()='EPR Rewards']") WebElement EPRRewards;
+@FindBy(xpath= "//button[text()='Send']") WebElement sendTokenBtn;
+@FindBy(xpath = "//input[@id='smsCode']")
+WebElement authCode;
+@FindBy(xpath = "//button[@type='button' and text()='Submit']") WebElement authCodeSubmitBtn;
+@FindBy(xpath = "//button[text()='Close']") WebElement closeBtnPopup;
+@FindBy(xpath = "//input[@placeholder='Phone']")
+WebElement phoneSearchBox;
+@FindBy(xpath = "//*[text()='Bonus Eligible']")
+WebElement bonusEligibleText;
+@FindBy(xpath = "//a[text()='Exchange History']")
+WebElement exchangehistory;
+@FindBy(xpath = "//div[text()='KG Recycled']/following-sibling::div/div/following-sibling::div/div")
+WebElement kgrecycled;
+@FindBy(xpath = "//div[contains(text(),'Total weight:')]")
+WebElement excHisTotalWeight;
+@FindBy(xpath = "//div[text()='Tokens in Wallet']/following::div[5]")
+WebElement tokenInWalletText;
 	
 WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(30));
 public void searchAddedMember(String memberName) {
@@ -318,6 +313,7 @@ public void refresh() {
 	}
 
 	public void tokenDirectTransfer(String phone, String TokenHeading, String amount, String code, String successMsg) throws InterruptedException {
+
 		clickMembersTab();
 		searchAddedMemberByPhone(phone);
 		clickSpecificMember();
@@ -335,9 +331,11 @@ public void refresh() {
 	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
 	    Thread.sleep(2000);
 		clickCloseBtnPopUp();
+
 	}
 	
 	public void editMemberUncheckBonus(String pNumber) throws InterruptedException {
+
 		Thread.sleep(2000);
 		members_TAB.click();
 		Thread.sleep(10000);
@@ -352,6 +350,7 @@ public void refresh() {
 		edit.click();
 		clickBonusEligible();
 		saveButton.click();
+
 	}
 	
 	 public void memberExcHisBeforeVoid_1711() throws InterruptedException {
@@ -362,9 +361,9 @@ public void refresh() {
 	    	kgrecycled.isDisplayed();
 	    	System.out.println("-----"+kgrecycled.getText()+"-----");
 	    	wait.until(ExpectedConditions.textToBePresentInElement(kgrecycled, "19"));
-         assertEquals(kgrecycled.getText(), "19");
+            assertEquals(kgrecycled.getText(), "19");
 	    	Thread.sleep(2000);
-	    	 TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+			TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
 	    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
 	    	    Allure.addAttachment("Token in Member Exchange History Before Void Screenshot", new ByteArrayInputStream(screenshot1));
 	    		Thread.sleep(2000);
@@ -392,15 +391,16 @@ public void refresh() {
 	    	
 	    	alcDriver.get("https://"+temp+"/#/admin/finder/"+Data.member_Id1711);
 	    	Thread.sleep(2000);
-	 
 	    	exchangehistory.click();
 	    	assertTrue(excHisTotalWeight.isDisplayed());
 	    	
-	    	 TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+			TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
 	    	    byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
 	    	    Allure.addAttachment("Screenshot1", new ByteArrayInputStream(screenshot1));
 	    		Thread.sleep(2000);
 	    	
 	    	
-	    }
+		}
+
+
 }

@@ -2,16 +2,13 @@ package smoke_Suite;
 
 import java.io.IOException;
 
-import alchemy_Pages.Processors;
+import alchemy_Pages.*;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Utilities.BaseClass;
 import Utilities.Data;
 import Utilities.ScreenshotListener;
-import alchemy_Pages.AlchemyLoginPage;
-import alchemy_Pages.Branches;
-import alchemy_Pages.Orders;
 import io.qameta.allure.testng.AllureTestNg;
 import plastic_Bank_Pages.PB_LoginPage;
 import plastic_Bank_Pages.PB_Transaction;
@@ -73,6 +70,15 @@ public class ALC_4360 extends BaseClass{
 		Orders o= new Orders(alcDriver);
 		o.verifyBonusOrderSummaryAndApprovalSteps();
 	}
+
+//	@Test(priority=6,description="verify Buy Sell Transaction removed from BonusOrder Approval Screen |Verify after disabling, Bonus progress value in the Bonus order Summary screen is showing zero as value with 0% fulfilled status ")
+//	public void delayedBonusRemovedInAlchemy() throws InterruptedException {
+//
+//		Bonus b= new Bonus(alcDriver);
+//		b.branchBonustransferVerify();
+//	}
+
+
 	@Test(priority=6,description="Delayed Bonus Is removed in App for Member and Branch1 and Branch2 profile screen")
 	public void delayedBonusRemovedInApp() throws InterruptedException {
 		

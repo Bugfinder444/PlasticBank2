@@ -55,8 +55,10 @@ public WebElement logInButton ;
 private WebElement branches_TAB;
 
 public void enterDetails(String adminphoneNumber, String adminpassword) {
-	
+
+	email_PhoneTextFeild.clear();
 	email_PhoneTextFeild.sendKeys(adminphoneNumber);
+	passwordTextFeild.clear();
 	passwordTextFeild.sendKeys(adminpassword);
 	logInButton.click();
 	}
@@ -78,4 +80,9 @@ public void alc_adminlogin(String adminphoneNumber, String adminpassword) throws
 	twoFactorAuth();
 	
 }
+	public void alc_adminloginNoOtp(String adminphoneNumber, String adminpassword) throws InterruptedException {
+		enterDetails(adminphoneNumber, adminpassword);
+		Thread.sleep(2000);
+
+	}
 }

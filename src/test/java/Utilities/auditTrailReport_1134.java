@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
         @FindBy(xpath = "//div[text()='Exchange History ']")
         public static WebElement exchangeHistory;
 
-        public static String url = "https://qa-admin.cognitionfoundry.io/#/admin/ordersoffsets/offset/"+Data.bonus2Id1134;
+        public static String url= "https://qa-admin.cognitionfoundry.io/#/admin/ordersoffsets/offset/"+Data.bonus2Id1134;
         // public static String fileName;
         //
         public static String searchName = "40";

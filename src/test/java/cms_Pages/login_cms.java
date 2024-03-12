@@ -41,14 +41,19 @@ public class login_cms extends BaseClass {
         passwordTextField.sendKeys(password);
         loginButton.click();
 
-        wait.until(ExpectedConditions.elementToBeClickable(digitVerification.get(0)));
-        digitVerification.get(0).sendKeys("7");
-        digitVerification.get(1).sendKeys("7");
-        digitVerification.get(2).sendKeys("8");
-        digitVerification.get(3).sendKeys("8");
-        digitVerification.get(4).sendKeys("9");
-        digitVerification.get(5).sendKeys("9");
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(digitVerification.get(0)));
+            digitVerification.get(0).sendKeys("7");
+            digitVerification.get(1).sendKeys("7");
+            digitVerification.get(2).sendKeys("8");
+            digitVerification.get(3).sendKeys("8");
+            digitVerification.get(4).sendKeys("9");
+            digitVerification.get(5).sendKeys("9");
+        }
+        catch (Exception e){
 
+            System.out.println("OTP is Not Required");
+        }
         verifyButton.click();
 
     }

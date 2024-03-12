@@ -74,6 +74,8 @@ public class Data extends BaseClass {
 	public static ArrayList<String> values1134_1 = new ArrayList<String>();
 	public static ArrayList<String> values1134_2 = new ArrayList<String>();
 	public static ArrayList<String> values687_2 = new ArrayList<String>();
+	public static ArrayList<String> variable_2627 = new ArrayList<String>();
+
 
 
 
@@ -189,6 +191,21 @@ public class Data extends BaseClass {
 
 	public static String processor_Name687_2;
 	public static String bonusName687_2;
+
+	//
+
+	public static String member1_Name2627;
+	public static String member1_Number2627;
+	public static String branch1_Name2627;
+	public static String branch1_Number2627;
+	public static String branch1Id_2627;
+	public static String processor1_Number2627;
+	public static String processor1_Name2627;
+	public static String processor1Id_2627;
+	public static String bonus1Name2627;
+	public static String bonus1Id2627;
+	public static String bonus2Name2627;
+	public static String bonus2Id2627;
 
 
 	public void runNewman() throws IOException {
@@ -1062,7 +1079,7 @@ public class Data extends BaseClass {
 			int exitCode = process.waitFor();
 			System.out.println("Process completed with exit code: " + exitCode);
 			if(count==0) {
-				runNewman_ALC687_4();
+				runNewman_ALC_1134_1();
 			}
 			count=0;
 		} catch (IOException | InterruptedException e) {
@@ -1151,7 +1168,7 @@ public class Data extends BaseClass {
 			int exitCode = process.waitFor();
 			System.out.println("Process completed with exit code: " + exitCode);
 			if(count==0) {
-				runNewman_ALC666();
+				runNewman_ALC_1134_2();
 			}
 			count=0;
 		} catch (IOException | InterruptedException e) {
@@ -1352,6 +1369,89 @@ public class Data extends BaseClass {
 		processor_Name687_2=values687_2.get(0);
 		bonusName687_2=values687_2.get(1);
 
+
+	}
+
+	public void runNewman_ALC_2627() throws IOException {
+
+
+
+		try {
+			// Start the command prompt window
+			ProcessBuilder builder = new ProcessBuilder("cmd.exe");
+			builder.redirectErrorStream(true);
+			Process process = builder.start();
+
+			// Send commands to the window
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+			writer.write("newman run ALC_2627_QA.postman_collection.json --export-environment variable_2627.json\n");
+			writer.flush();
+			writer.close(); // Close the writer to signal the end of input
+
+			// Read the output of the window
+			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+
+				// Check if the line contains the target string
+				if (line.contains("assertions") && line.contains(" 0 ")) {
+					count = 1; // Set count to 1 as soon as the line is found
+				}
+				else {
+
+				}
+
+			}
+
+			// Wait for the process to complete
+			int exitCode = process.waitFor();
+			System.out.println("Process completed with exit code: " + exitCode);
+			if(count==0) {
+				runNewman_ALC_2627();
+			}
+			count=0;
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		String jsonFilePath = ".\\variable_2627.json"; // Replace with the actual path
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		try {
+			// Read the JSON file
+			JsonNode rootNode = objectMapper.readTree(new File(jsonFilePath));
+
+			// Extract values of specific keys
+			JsonNode valuesNode = rootNode.get("values");
+			if (valuesNode != null && valuesNode.isArray()) {
+				for (JsonNode valueEntry : valuesNode) {
+					String key = valueEntry.get("key").asText();
+					String value = valueEntry.get("value").asText();
+
+					if ("m1randomUsername".equals(key) || "m1randomNumber".equals(key) || "b1randomBranchName".equals(key) || "b1randomNumber".equals(key) || "b1branchid".equals(key) || "p1randomProcessorName".equals(key) || "p1randomNumber".equals(key) || "bonusOrderName".equals(key) || "bonusOrderId".equals(key) || "bonusOrderName2".equals(key) || "bonusOrderId2".equals(key) ||"p1processorid".equals(key)) {
+						System.out.println(key + ": " + value);
+						variable_2627.add(value);
+
+					}
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+		member1_Name2627 = variable_2627.get(0);
+		member1_Number2627=variable_2627.get(1);
+		branch1_Name2627=variable_2627.get(3);
+		branch1_Number2627=variable_2627.get(2);
+		branch1Id_2627=variable_2627.get(4);
+		processor1_Number2627=variable_2627.get(5);
+		processor1_Name2627=variable_2627.get(6);
+		processor1Id_2627=variable_2627.get(7);
+		bonus1Name2627=variable_2627.get(8);
+		bonus1Id2627=variable_2627.get(9);
+		bonus2Name2627=variable_2627.get(10);
+		bonus2Id2627=variable_2627.get(11);
 
 	}
 	

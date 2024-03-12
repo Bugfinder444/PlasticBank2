@@ -196,10 +196,14 @@ public class Orders extends BaseClass{
 
     @FindBy(xpath="//input[@id='shippingDate']")
     public WebElement shippingDate;
+    @FindBy(xpath="//input[@name=\"orderDate\"]")
+    public WebElement orderDate;
     @FindBy(xpath="//input[@id='productionDate']")
     public WebElement productionDate;
     @FindBy(xpath="//input[@id='subBrand']")
     public WebElement subBrand;
+    @FindBy(xpath="//input[@name=\"referenceID\"]")
+    public WebElement referenceIdTextField;
     @FindBy(xpath="//label[text()='Total Revenue (USD)']/following::input")
     public WebElement totalRevenueUSDTextField;
     @FindBy(xpath="//label[text()='Category']/following::select[1]")
@@ -329,6 +333,7 @@ public class Orders extends BaseClass{
     public static String expectedexcHisTotalBonus="133";
     public static String order_Name;
     public static String order_NameUpdated;
+    public static String refId;
 
     public void clickOrdersTab() throws InterruptedException {
 		/*
@@ -1391,13 +1396,25 @@ public class Orders extends BaseClass{
         startDate.click();
         Select select_Year = new Select(selectYear);
         // Select the option by its visible text (option name)
-        select_Year.selectByVisibleText("2024");
+        select_Year.selectByVisibleText("2022");
         selectDate.click();
 
         shippingDate.click();
         // Select the option by its visible text (option name)
         select_Year.selectByVisibleText("2025");
         selectDate.click();
+
+        orderDate.click();
+
+        // Select the option by its visible text (option name)
+        select_Year.selectByVisibleText("2025");
+        selectDate.click();
+
+        String randomRefId = RandomStringUtils.randomAlphabetic(5);
+        refId="RefId_"+randomOrderName;
+        referenceIdTextField.sendKeys(refId);
+
+        Thread.sleep(2000);
 
         Select selectType = new Select(typeDropdown);
         // Select the option by its visible text (option name)
@@ -1423,14 +1440,11 @@ public class Orders extends BaseClass{
 
         closeBtnPopup.click();
 
-
-
         wait.until(ExpectedConditions.elementToBeClickable(nameSearchField));
         Thread.sleep(3000);
         nameSearchField.sendKeys(order_Name);
         Thread.sleep(5000);
         tableData_FirstRow.click();
-
 
 
         wait.until(ExpectedConditions.elementToBeClickable(addFromExchangeHistoryButton));
@@ -1669,6 +1683,16 @@ public class Orders extends BaseClass{
         select_Year.selectByVisibleText("2025");
         selectDate.click();
 
+        orderDate.click();
+
+        // Select the option by its visible text (option name)
+        select_Year.selectByVisibleText("2025");
+        selectDate.click();
+
+        String randomRefId = RandomStringUtils.randomAlphabetic(5);
+        refId="RefId_"+randomOrderName;
+        referenceIdTextField.sendKeys(refId);
+
         Thread.sleep(2000);
         weightTextField.sendKeys("50000");
 
@@ -1799,6 +1823,15 @@ public class Orders extends BaseClass{
         // Select the option by its visible text (option name)
         select_Year.selectByVisibleText("2025");
         selectDate.click();
+
+        orderDate.click();
+        // Select the option by its visible text (option name)
+        select_Year.selectByVisibleText("2025");
+        selectDate.click();
+
+        String randomRefId = RandomStringUtils.randomAlphabetic(5);
+        refId="RefId_"+randomOrderName;
+        referenceIdTextField.sendKeys(refId);
 
         Thread.sleep(2000);
         weightTextField.sendKeys("50000");
