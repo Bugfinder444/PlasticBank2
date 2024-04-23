@@ -86,7 +86,7 @@ public class cms_Dashboard extends BaseClass {
     public WebElement selectClient;
     @FindBy(xpath = "//span[@class='MuiChip-label MuiChip-labelMedium css-14vsv3w']")
     public WebElement qa_forPostProdOnlyPresent;
-    @FindBy(xpath = "//li[contains(text(),'QA_ForPostProduction')]")
+    @FindBy(xpath = "//li[contains(text(),'QA_ForPostProductionOnly Branches')]")
     public WebElement qa_forPostProdOnly;
     @FindBy(xpath = "//input[@name=\"status\"]")
     public WebElement publishToggle;

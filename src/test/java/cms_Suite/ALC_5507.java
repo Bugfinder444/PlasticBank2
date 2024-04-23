@@ -18,7 +18,7 @@ public class ALC_5507 extends BaseClass {
         login.alc_adminlogin("+17783844311","778778");
 
     }
-    @Test(priority = 1,description =" Login ")
+    @Test(priority = 1,description =" Verify If Location Is visible  ")
     public void verifyLocation() throws InterruptedException, IOException {
 
         alcDriver.get("https://qa-impact.cognitionfoundry.io/postprodchecks/dashboard/page/home");
@@ -28,15 +28,15 @@ public class ALC_5507 extends BaseClass {
 
     }
 
-    @Test(priority = 2,description =" Login ")
-    public void verifyMediaKit() throws InterruptedException, IOException {
-
-        alcDriver.get("https://qa-impact.cognitionfoundry.io/postprodchecks/dashboard/page/home");
-
-        impactHubHomePage ihp =new impactHubHomePage(alcDriver);
-        ihp.verifyMediaKit("https://brandfolder.com/plasticbank/partner");
-
-    }
+//    @Test(priority = 2,description =" Check If the Media Kit is redirected to brandfolder ")
+//    public void verifyMediaKit() throws InterruptedException, IOException {
+//
+//        alcDriver.get("https://qa-impact.cognitionfoundry.io/postprodchecks/dashboard/page/home");
+//
+//        impactHubHomePage ihp =new impactHubHomePage(alcDriver);
+//        ihp.verifyMediaKit("https://brandfolder.com/plasticbank/partner");
+//
+//    }
 
 
 

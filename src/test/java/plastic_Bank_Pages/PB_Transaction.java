@@ -155,9 +155,9 @@ public WebElement bonusMemberVerify;
     public WebElement delayed_bonus;
     @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"pb-logo-bonus\")")
     public WebElement pb_logo_bonus;
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").instance(8)")
+    @AndroidFindBy(xpath = "//android.widget.Image[@text='pb-logo-bonus']/following-sibling::android.widget.TextView")
     public WebElement memberbonustext;
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").instance(2)")
+    @AndroidFindBy(xpath = "//android.widget.Image[@text='pb-logo-bonus']/following-sibling::android.widget.TextView")
     public WebElement bonustextbranch;
 	@AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"133 = \")")
 	public WebElement tokenInApp;

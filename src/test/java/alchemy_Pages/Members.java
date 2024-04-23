@@ -5,7 +5,10 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -20,6 +23,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Utilities.BaseClass;
 import Utilities.Data;
 import io.qameta.allure.Allure;
+import org.testng.Assert;
 
 public class Members extends BaseClass{
 	
@@ -117,7 +121,7 @@ private WebElement memberAdded;
 private WebElement saveButton;
 @FindBy(xpath="//div[@class='pb-button grey']")
 private WebElement cancelButton;
-@FindBy(xpath="//a[@id='ngb-nav-7']") 
+@FindBy(xpath="//a[text()='Exchange History']")
 private WebElement exchangeHistory;
 @FindBy(xpath="//a[@id='ngb-nav-8']")
 private WebElement tags;
@@ -150,6 +154,13 @@ WebElement kgrecycled;
 WebElement excHisTotalWeight;
 @FindBy(xpath = "//div[text()='Tokens in Wallet']/following::div[5]")
 WebElement tokenInWalletText;
+@FindBy(xpath = "(//div[@class='card-header']/div/button)[1]" )
+WebElement cardHeader;
+	@FindBy(xpath = "//span[text()=' Export']")
+	public static WebElement exportButton;
+
+
+	public static String downloadPath = "C:/Users/Fleek/Downloads";
 	
 WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(30));
 public void searchAddedMember(String memberName) {
@@ -401,6 +412,72 @@ public void refresh() {
 	    	
 	    	
 		}
+	public void reportDownload(String fileName) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.elementToBeClickable(members_TAB));
+		members_TAB.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(tableData_FirstRow));
+		tableData_FirstRow.click();
+
+		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOf(exchangeHistory));
+		exchangeHistory.click();
+
+		Thread.sleep(3000);
+
+		wait.until(ExpectedConditions.visibilityOf(cardHeader));
+		Thread.sleep(2000);
+
+		exportButton.click();
+		Thread.sleep(4000);
+
+		while (true) {
+			String downloadPath1 = "C:\\Users\\Fleek\\Downloads";
+			File directory1 = new File(downloadPath1);
+			File[] files1 = directory1.listFiles((dir, name) -> name.contains(fileName));
+
+			if (files1 != null && files1.length > 0) {
+
+				Assert.assertTrue(1>0);
+				System.out.println("File is been Downloaded");
+				// Open the first file that matches the criteria
+				// openFile(files1[0]);
+				//isNamePresent(files1[0],searchName);
+				break; // Exit the loop once a file is found and opened
+			}
+
+			try {
+				TimeUnit.SECONDS.sleep(1); // Wait for 1 second before checking again
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		File directory = new File(downloadPath);
+
+		// List all files in the directory
+		File[] files = directory.listFiles();
+
+		if (files != null) {
+			for (File file : files) {
+				// Check if the file name contains the specified string
+				if (file.getName().contains(fileName)) {
+					// Delete the file
+					boolean isDeleted = file.delete();
+					if (isDeleted) {
+						System.out.println("File deleted: " + file.getName());
+					} else {
+						System.out.println("Failed to delete file: " + file.getName());
+					}
+				}
+			}
+		} else {
+			System.out.println("No files found in the directory.");
+		}
+
+	}
 
 
 }

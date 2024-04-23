@@ -1,6 +1,9 @@
 package alchemy_Pages;
 
 import Utilities.BaseClass;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -10,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.ByteArrayInputStream;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -84,6 +88,12 @@ public class Users extends BaseClass {
             readOnly.click();
 
         }
+
+        Thread.sleep(2000);
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Read Only is Verified ", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(2000);
     }
 
     public void verifyReadOnlyDisabled() throws InterruptedException {
@@ -101,12 +111,14 @@ public class Users extends BaseClass {
         readOnly.click();
         String readonlyStatusAfter=checkReadOnly.getAttribute("class");
 
+        Thread.sleep(2000);
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Read Only is Verified", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(2000);
+
         Assert.assertEquals(readonlyStatusAfter,readonlyStatusBefore);
-//        if (readonlyStatusAfter.equals(readonlyStatusBefore)) {
-//            System.out.println("The ReadOnly is disabled.");
-//        } else {
-//            System.out.println("The ReadOnly is enabled.");
-//        }
+
         System.out.println(" ReadOnly is disabled.");
 
     }

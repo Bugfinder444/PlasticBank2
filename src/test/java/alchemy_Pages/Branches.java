@@ -1,6 +1,7 @@
 package alchemy_Pages;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -247,6 +248,11 @@ WebElement success;
 	WebElement totalKg;
 	@FindBy(xpath = "(//div[@class='card-header']/div/button)[1]" )
 	WebElement cardHeader;
+	@FindBy(xpath = "//div[@class=\"loader circle-loader\"]")
+	public static WebElement loader;
+
+	@FindBy(xpath = "//span[text()='Export']")
+	public static WebElement exportButton;
 
 
 	WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(50));
@@ -254,6 +260,9 @@ WebElement success;
 	public static String totalKgMaryGraceBranch;
 	public static String totalKgRiezaBranch;
 	public static String totalKgBranch;
+
+	public static String downloadPath = "C:/Users/Fleek/Downloads";
+
 public void verifybranchDetailsTagTexts() {
 	
 }
@@ -1260,6 +1269,74 @@ public void voidTransaction(String branchId) throws InterruptedException {
 		return totalKgBranch;
 
 	}
+
+	public void reportDownload(String fileName) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.elementToBeClickable(branches_TAB));
+		branches_TAB.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(tableData_FirstRow));
+		tableData_FirstRow.click();
+
+		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOf(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+
+		Thread.sleep(3000);
+
+		wait.until(ExpectedConditions.visibilityOf(cardHeader));
+		Thread.sleep(2000);
+
+		exportButton.click();
+		Thread.sleep(4000);
+
+		while (true) {
+			String downloadPath1 = "C:\\Users\\Fleek\\Downloads";
+			File directory1 = new File(downloadPath1);
+			File[] files1 = directory1.listFiles((dir, name) -> name.contains(fileName));
+
+			if (files1 != null && files1.length > 0) {
+
+				Assert.assertTrue(1>0);
+				System.out.println("File is been Downloaded");
+				// Open the first file that matches the criteria
+				// openFile(files1[0]);
+				//isNamePresent(files1[0],searchName);
+				break; // Exit the loop once a file is found and opened
+			}
+
+			try {
+				TimeUnit.SECONDS.sleep(1); // Wait for 1 second before checking again
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		File directory = new File(downloadPath);
+
+		// List all files in the directory
+		File[] files = directory.listFiles();
+
+		if (files != null) {
+			for (File file : files) {
+				// Check if the file name contains the specified string
+				if (file.getName().contains(fileName)) {
+					// Delete the file
+					boolean isDeleted = file.delete();
+					if (isDeleted) {
+						System.out.println("File deleted: " + file.getName());
+					} else {
+						System.out.println("Failed to delete file: " + file.getName());
+					}
+				}
+			}
+		} else {
+			System.out.println("No files found in the directory.");
+		}
+
+	}
+
 
 }
 

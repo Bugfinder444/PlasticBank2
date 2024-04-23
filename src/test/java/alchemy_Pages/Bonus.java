@@ -1,6 +1,7 @@
 package alchemy_Pages;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.lang.reflect.Array;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -231,6 +232,18 @@ List<WebElement> plasticChainDropdown;
 WebElement petTransaction;
 @FindBy(xpath = "//div[text()='Bonus']/following::div")
 List<WebElement> bonusExcHis;
+@FindBy(xpath = "//div[text()='Export ']")
+public static WebElement exportButton;
+@FindBy(xpath = "//a[text()='Bonus']")
+public static WebElement bonus_Tab;
+@FindBy(xpath = "//span[text()='Impact Claim Report']")
+public static WebElement impactClaimReport;
+	@FindBy(xpath = "//a[text()='Transfers']")
+	public static WebElement transfersTab;
+
+
+
+	public static String downloadPath = "C:/Users/Fleek/Downloads";
 
 	public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
 public static String expectedexcHisPetKG="PET-Raw-Transparent / 9.00 kg";
@@ -1872,7 +1885,6 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 		exchangeHistoryTabInBranches.click();
 		Thread.sleep(3000);
 
-
 		//List<String> actualBonusNames=new ArrayList<>();
 		Set<String> actualBonusNames=new HashSet<>();
 
@@ -1902,6 +1914,194 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 		Thread.sleep(2000);
 
 	}
+	public void reportDownload(String fileName) throws InterruptedException {
 
-}
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
+		orders_tab.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(bonus_Tab));
+		bonus_Tab.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(tableData_FirstRow));
+		tableData_FirstRow.click();
+
+		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOf(exchangeHistoryTab));
+		exchangeHistoryTab.click();
+
+		Thread.sleep(3000);
+
+		impactClaimReport.click();
+
+		Thread.sleep(4000);
+
+		while (true) {
+			String downloadPath1 = "C:\\Users\\Fleek\\Downloads";
+			File directory1 = new File(downloadPath1);
+			File[] files1 = directory1.listFiles((dir, name) -> name.contains(fileName));
+
+			if (files1 != null && files1.length > 0) {
+
+				Assert.assertTrue(1>0);
+				System.out.println("File is been Downloaded");
+				// Open the first file that matches the criteria
+				// openFile(files1[0]);
+				//isNamePresent(files1[0],searchName);
+				break; // Exit the loop once a file is found and opened
+			}
+
+			try {
+				TimeUnit.SECONDS.sleep(1); // Wait for 1 second before checking again
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		File directory = new File(downloadPath);
+
+		// List all files in the directory
+		File[] files = directory.listFiles();
+
+		if (files != null) {
+			for (File file : files) {
+				// Check if the file name contains the specified string
+				if (file.getName().contains(fileName)) {
+					// Delete the file
+					boolean isDeleted = file.delete();
+					if (isDeleted) {
+						System.out.println("File deleted: " + file.getName());
+					} else {
+						System.out.println("Failed to delete file: " + file.getName());
+					}
+				}
+			}
+		} else {
+			System.out.println("No files found in the directory.");
+		}
+
+	}
+	public void offsetsReportDownload(String fileName) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
+		orders_tab.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(bonus_Tab));
+		bonus_Tab.click();
+
+		Thread.sleep(3000);
+
+		wait.until(ExpectedConditions.elementToBeClickable(exportButton));
+		exportButton.click();
+
+		Thread.sleep(4000);
+
+		while (true) {
+			String downloadPath1 = "C:\\Users\\Fleek\\Downloads";
+			File directory1 = new File(downloadPath1);
+			File[] files1 = directory1.listFiles((dir, name) -> name.contains(fileName));
+
+			if (files1 != null && files1.length > 0) {
+
+				Assert.assertTrue(1>0);
+				System.out.println("File is been Downloaded");
+				// Open the first file that matches the criteria
+				// openFile(files1[0]);
+				//isNamePresent(files1[0],searchName);
+				break; // Exit the loop once a file is found and opened
+			}
+
+			try {
+				TimeUnit.SECONDS.sleep(1); // Wait for 1 second before checking again
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		File directory = new File(downloadPath);
+
+		// List all files in the directory
+		File[] files = directory.listFiles();
+
+		if (files != null) {
+			for (File file : files) {
+				// Check if the file name contains the specified string
+				if (file.getName().contains(fileName)) {
+					// Delete the file
+					boolean isDeleted = file.delete();
+					if (isDeleted) {
+						System.out.println("File deleted: " + file.getName());
+					} else {
+						System.out.println("Failed to delete file: " + file.getName());
+					}
+				}
+			}
+		} else {
+			System.out.println("No files found in the directory.");
+		}
+
+	}
+	public void transferReportDownload(String fileName) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
+		orders_tab.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(transfersTab));
+		transfersTab.click();
+
+		Thread.sleep(4000);
+
+		exportButton.click();
+
+		Thread.sleep(4000);
+
+		while (true) {
+			String downloadPath1 = "C:\\Users\\Fleek\\Downloads";
+			File directory1 = new File(downloadPath1);
+			File[] files1 = directory1.listFiles((dir, name) -> name.contains(fileName));
+
+			if (files1 != null && files1.length > 0) {
+
+				Assert.assertTrue(1 > 0);
+				System.out.println("File is been Downloaded");
+				// Open the first file that matches the criteria
+				// openFile(files1[0]);
+				//isNamePresent(files1[0],searchName);
+				break; // Exit the loop once a file is found and opened
+			}
+
+			try {
+				TimeUnit.SECONDS.sleep(1); // Wait for 1 second before checking again
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		File directory = new File(downloadPath);
+
+		// List all files in the directory
+		File[] files = directory.listFiles();
+
+		if (files != null) {
+			for (File file : files) {
+				// Check if the file name contains the specified string
+				if (file.getName().contains(fileName)) {
+					// Delete the file
+					boolean isDeleted = file.delete();
+					if (isDeleted) {
+						System.out.println("File deleted: " + file.getName());
+					} else {
+						System.out.println("Failed to delete file: " + file.getName());
+					}
+				}
+			}
+		} else {
+			System.out.println("No files found in the directory.");
+		}
+	}
+
+
+	}
 

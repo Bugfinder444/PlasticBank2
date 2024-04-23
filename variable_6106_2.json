@@ -1,0 +1,244 @@
+{
+  "id": "c9cd5897-784f-49ce-b1dd-e3bbf0be9a83",
+  "values": [
+    {
+      "type": "any",
+      "value": "Fleekp66PWj",
+      "key": "m2randomUsername"
+    },
+    {
+      "type": "any",
+      "value": "+633504608271",
+      "key": "m2randomNumber"
+    },
+    {
+      "type": "any",
+      "value": "50013853-02D9-5F80-13B6-7D8F366ED1C8",
+      "key": "m2deviceID"
+    },
+    {
+      "type": "any",
+      "value": "081cb925-5fd5-4c02-abe4-c623e4e07961",
+      "key": "m2id"
+    },
+    {
+      "type": "any",
+      "value": "081cb925-5fd5-4c02-abe4-c623e4e07961",
+      "key": "m2entityId"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDQwODU2NDksInN1YiI6IjA4MWNiOTI1LTVmZDUtNGMwMi1hYmU0LWM2MjNlNGUwNzk2MSJ9.c_HGFPIZzspb2hS6E765-fMubYxyTmJWzlostkjZuz6617pF2yD3VxuShW5QfdfYeQsNgZbi_GIANA4jb1bePw",
+      "key": "m2accessToken"
+    },
+    {
+      "type": "any",
+      "value": "FleekZSHhax",
+      "key": "b2randomUsername"
+    },
+    {
+      "type": "any",
+      "value": "+635423504002",
+      "key": "b2randomNumber"
+    },
+    {
+      "type": "any",
+      "value": "21B77D16-28C7-493C-8CCD-5E1E2A6E54A1",
+      "key": "b2deviceID"
+    },
+    {
+      "type": "any",
+      "value": "21a7175c-01ac-494e-864b-ec0828ff119d",
+      "key": "b2id"
+    },
+    {
+      "type": "any",
+      "value": "21a7175c-01ac-494e-864b-ec0828ff119d",
+      "key": "b2entityId"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDQwODU2NTIsInN1YiI6IjIxYTcxNzVjLTAxYWMtNDk0ZS04NjRiLWVjMDgyOGZmMTE5ZCJ9.hhJc5zHjVw7ropjVKyGJLePaL8BGKYkBEJLCsTe4wzNyMqW2rlfBlOVpoezhLr4n7Ffcaiob55yHwHyfC_HfWA",
+      "key": "b2accessToken"
+    },
+    {
+      "type": "any",
+      "value": "branchb_rEga6e1b",
+      "key": "b2randomBranchName"
+    },
+    {
+      "type": "any",
+      "value": "804b78f8-7541-43d8-9a3d-2b46262a976b",
+      "key": "b2branchid"
+    },
+    {
+      "type": "any",
+      "value": "a071c358-878a-4adb-beaf-a99e4fde8b1a",
+      "key": "b2item1Id"
+    },
+    {
+      "type": "any",
+      "value": "ad5642e9-baea-4f85-8712-1931454f6f72",
+      "key": "b2item2Id"
+    },
+    {
+      "type": "any",
+      "value": "Fleek9W6pzD",
+      "key": "b3randomUsername"
+    },
+    {
+      "type": "any",
+      "value": "+636826037728",
+      "key": "b3randomNumber"
+    },
+    {
+      "type": "any",
+      "value": "C11FB493-7C26-96E3-02D8-49A2A25F685F",
+      "key": "b3deviceID"
+    },
+    {
+      "type": "any",
+      "value": "8de6aea5-4786-4da6-880b-c354df415c89",
+      "key": "b3id"
+    },
+    {
+      "type": "any",
+      "value": "8de6aea5-4786-4da6-880b-c354df415c89",
+      "key": "b3entityId"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDQwODU2NTksInN1YiI6IjhkZTZhZWE1LTQ3ODYtNGRhNi04ODBiLWMzNTRkZjQxNWM4OSJ9.EjkbJyUZNHByGgH7lTo5glb8AqwTyjOv0tj6xOqwhVdQKIh3mOqqBAV3yYyGnYKpr6J8CcSEMp19krDVjIyiXw",
+      "key": "b3accessToken"
+    },
+    {
+      "type": "any",
+      "value": "branchc_LQBCATNC",
+      "key": "b3randomBranchName"
+    },
+    {
+      "type": "any",
+      "value": "27c58127-1dd7-4c11-b94f-e6e733e69fc0",
+      "key": "b3branchid"
+    },
+    {
+      "type": "any",
+      "value": "6b14e3b1-d91e-48d5-a2d3-e5166ff65cab",
+      "key": "b3item1Id"
+    },
+    {
+      "type": "any",
+      "value": "391b2738-9253-40f1-b426-74aa34480828",
+      "key": "b3item2Id"
+    },
+    {
+      "type": "any",
+      "value": "Fleek3PcIiu",
+      "key": "p2randomUsername"
+    },
+    {
+      "type": "any",
+      "value": "+638617731900",
+      "key": "p2randomNumber"
+    },
+    {
+      "type": "any",
+      "value": "25102A9F-C14D-ABA3-BBB9-99AC0EE4A68E",
+      "key": "p2deviceID"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDQwODU2NjYsInN1YiI6ImU3YWMxOTAxLWUzYzUtNDBiNC1hZDM2LWEyOTljMWU0OWUyNCJ9.lINaLd_0a-FCydisQ-ojE4jXT55OsCP2fVJoDurEQb2dR5stnbarfXiRXXX3pJJiEqenoAcjO3rFoYi7iP5hoQ",
+      "key": "p2accessToken"
+    },
+    {
+      "type": "any",
+      "value": "e7ac1901-e3c5-40b4-ad36-a299c1e49e24",
+      "key": "p2userId"
+    },
+    {
+      "type": "any",
+      "value": "process_LzJxJGST",
+      "key": "p2randomProcessorName"
+    },
+    {
+      "type": "any",
+      "value": "78159256-45f9-4c67-afce-ff876197b812",
+      "key": "p2processorid"
+    },
+    {
+      "type": "any",
+      "value": "4e1b04b4-b9b0-421a-822e-0aa4cce54162",
+      "key": "p2item1Id"
+    },
+    {
+      "type": "any",
+      "value": "3121c8ca-2739-43a3-ab67-480a87911841",
+      "key": "p2item2Id"
+    },
+    {
+      "type": "any",
+      "value": "b873e344c89d41d1a325c3a1352e3e98",
+      "key": "sessionCode"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTI1ODc0NzMsInN1YiI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMSJ9.MPegBQlYybWfZkz_sOFfE6CV1hDct4UIMuS7IFC8t5OqnHqENaa7nkp6cAc_99Lypcwp3kQ4SS1PKOVAIqgueQ",
+      "key": "alchemytoken"
+    },
+    {
+      "type": "any",
+      "value": "RXK-NMvsEG_6NT6liI2yZ4cNwWA=",
+      "key": "bonusordersessionCode1"
+    },
+    {
+      "type": "any",
+      "value": "2024-04-08T14:14:52.628Z",
+      "key": "formattedDateTime"
+    },
+    {
+      "type": "any",
+      "value": "FleekuuthYV",
+      "key": "bonusOrderName1"
+    },
+    {
+      "type": "any",
+      "value": "66aac986-0c48-4c06-a3a6-483ee3d87e63",
+      "key": "bonusOrderId"
+    },
+    {
+      "type": "any",
+      "value": "L1a-3bM6Gm8vO51ssscMKT5gchc=",
+      "key": "addprosessionCode"
+    },
+    {
+      "type": "any",
+      "value": "1604aa36-adbe-46e5-bb63-335757812260",
+      "key": "t1Id"
+    },
+    {
+      "type": "any",
+      "value": "93377cba-4a20-4934-9c48-9d1f4bd6cf3f",
+      "key": "t2Id"
+    },
+    {
+      "type": "any",
+      "value": "72128953-c05c-4bcc-9bae-875750b3ccb2",
+      "key": "t3Id"
+    },
+    {
+      "type": "any",
+      "value": "Fleek3HTqkt",
+      "key": "spOrderName1"
+    },
+    {
+      "type": "any",
+      "value": "4715659f-60e6-4059-bc6b-6ffbc6b56cf1",
+      "key": "spbonusOrderId1"
+    }
+  ],
+  "name": "environment",
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2024-04-08T14:14:54.248Z",
+  "_postman_exported_using": "Newman/6.0.0"
+}

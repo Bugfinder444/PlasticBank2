@@ -80,10 +80,10 @@ public class impactHubHomePage extends BaseClass {
     public WebElement socialBenifits;
     @FindBy(xpath = "//h4[text()=' Partnership Engagement ']")
     public WebElement partnershipEngagement;
-
-
     @FindBy(xpath = "//h4[text()=' Partnership Engagement ']")
     public WebElement partnershipEng;
+
+
     @FindBy(xpath = "//input[@placeholder=\"Search\"]")
     public WebElement searchTextField;
     @FindBy(xpath = "//div[@class=\"search-icon\"]")
@@ -99,6 +99,7 @@ public class impactHubHomePage extends BaseClass {
     @FindBy(xpath = "//button[text()='Close']")
     public WebElement closeButton;
 
+
     @FindBy(xpath = "//div[@class=\"calendar-component\"]/div/p")
     public List<WebElement> titleMarketingCalender;
     @FindBy(xpath = "(//div[@class=\"calendar-component\"])[1]/img")
@@ -113,13 +114,30 @@ public class impactHubHomePage extends BaseClass {
     public WebElement programDetailsMC;
     @FindBy(xpath = "//h4[text()=' Social Benefits ']/following::button[text()=' Program Details ']")
     public WebElement programDetailsSB;
-
     @FindBy(xpath = "(//div[contains(@class,\"navbar-item\")])[11]")
     public WebElement locationButton;
     @FindBy(xpath = "//img")
     public WebElement img;
     @FindBy(xpath = "(//div[contains(@class,\"navbar-item\")])[15]")
     public WebElement mediaKit;
+
+    @FindBy(xpath = "//div[@class='navbar-item bottom-item-selected']//*[name()='svg']")
+    public WebElement auditTrailTab;
+    //div[@class='navbar-item bottom-item-selected']
+    //div[@class='navbar-item bottom-item-selected']//*[name()='svg']
+    @FindBy(xpath = "//button[normalize-space()='Social Benefits']")
+    public WebElement socialBenefitTab;
+    @FindBy(xpath = "//div[@class='thead']/div/div/div/div[contains(@class,'thead-top-label')]")
+    public List<WebElement> tableHeaderName;
+
+    @FindBy(xpath = "//button[text()=' Collections ']")
+    public WebElement collectionsButtons;
+
+
+
+
+
+
 
     public static String actualUrl;
 
@@ -777,6 +795,14 @@ public class impactHubHomePage extends BaseClass {
 
         Assert.assertTrue(img.isDisplayed());
 
+        Thread.sleep(2000);
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Location is available ", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(2000);
+
+
+
     }
     public void verifyMediaKit(String expectedUrl) throws InterruptedException {
 
@@ -803,11 +829,153 @@ public class impactHubHomePage extends BaseClass {
 
         Thread.sleep(2000);
 
-        Assert.assertEquals(redirectedTab,expectedUrl);
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Redirected to Brand Folder ", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(2000);
 
+        Assert.assertEquals(redirectedTab,expectedUrl);
 
         // Switch back to the initial tab
         alcDriver.switchTo().window(initialTab);
+
+
+    }
+
+    public void verifyImpactHubAuditTrailSB() throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(120));
+        wait.until(ExpectedConditions.elementToBeClickable(auditTrailTab));
+        auditTrailTab.click();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(socialBenefitTab));
+        socialBenefitTab.click();
+
+        wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
+
+        Set<String> actualTableContents = new HashSet<>();
+
+        Thread.sleep(2000);
+
+        Set<String>expectedTableContents = new HashSet<>(Arrays.asList("Benefit Name","Benefit Category","Benefit Type","Date Received","Beneficiary Name","Beneficiary Id","Country","Total value","Dependents","Unique Claim ID"));
+
+        for(WebElement ele : tableHeaderName){
+
+            actualTableContents.add(ele.getText());
+        }
+
+        Thread.sleep(3000);
+
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Columns Present In Social Benefit Audit Trail", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(3000);
+
+        Assert.assertEquals(actualTableContents,expectedTableContents);
+
+
+    }
+
+    public void verifyImpactHubAuditTrail() throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(120));
+        wait.until(ExpectedConditions.elementToBeClickable(auditTrailTab));
+        auditTrailTab.click();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(socialBenefitTab));
+        socialBenefitTab.click();
+
+        wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
+
+        Set<String> actualTableContents = new HashSet<>();
+
+        Thread.sleep(2000);
+
+        Set<String>expectedTableContents = new HashSet<>(Arrays.asList("Benefit Name","Benefit Category","Benefit Type","Date Received","Beneficiary Name","Beneficiary Id","Country","Total value","Dependents","Unique Claim ID"));
+
+        for(WebElement ele : tableHeaderName){
+
+            actualTableContents.add(ele.getText());
+        }
+
+        Thread.sleep(3000);
+
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Columns Present In Social Benefit Audit Trail", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(3000);
+
+        Assert.assertEquals(actualTableContents,expectedTableContents);
+
+
+    }
+    public void verifyImpactHubAuditTrail5198() throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(120));
+        wait.until(ExpectedConditions.elementToBeClickable(auditTrailTab));
+        auditTrailTab.click();
+        Thread.sleep(5000);
+        wait.until(ExpectedConditions.elementToBeClickable(socialBenefitTab));
+        socialBenefitTab.click();
+
+        wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
+
+        Set<String> actualTableContents = new HashSet<>();
+
+        Thread.sleep(2000);
+
+        Set<String>expectedTableContents = new HashSet<>(Arrays.asList("Benefit Name","Benefit Category","Benefit Type","Date Received","Beneficiary Name","Beneficiary Id","Country","Total value","Dependents","Unique Claim ID"));
+
+        for(WebElement ele : tableHeaderName){
+
+            actualTableContents.add(ele.getText());
+        }
+
+        Thread.sleep(3000);
+
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Columns Present In Social Benefit Audit Trail", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(3000);
+
+        Assert.assertEquals(actualTableContents,expectedTableContents);
+
+        Thread.sleep(2000);
+
+
+
+    }
+    public void verifyImpactHubAuditTrailCollections() throws InterruptedException {
+
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.elementToBeClickable(collectionsButtons));
+        collectionsButtons.click();
+        Thread.sleep(2000);
+
+        wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
+
+        Set<String> actualTableContents = new HashSet<>();
+
+        Thread.sleep(2000);
+
+        Set<String>expectedTableContents = new HashSet<>(Arrays.asList("Transaction type","Seller Name","Buyer Name","Collection Date","Order Date","Country","Material","Color","Weight","Total Value","Material Value","Bonus Value","Output"));
+
+        for(WebElement ele : tableHeaderName){
+
+            actualTableContents.add(ele.getText());
+        }
+
+        Thread.sleep(3000);
+
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Columns Present In Social Benefit Audit Trail", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(3000);
+
+        Assert.assertEquals(actualTableContents,expectedTableContents);
+
+        Thread.sleep(2000);
+
 
 
     }

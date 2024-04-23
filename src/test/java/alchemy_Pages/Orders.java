@@ -17,6 +17,7 @@ import Utilities.Data;
 import io.qameta.allure.Allure;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -31,7 +32,8 @@ public class Orders extends BaseClass{
         PageFactory.initElements(alcDriver, this);
     }
 
-    @FindBy(xpath = "//div[@class='body']/div/div/div[text()=' Orders ']") WebElement orders_tab;
+    @FindBy(xpath = "//div[@class='body']/div/div/div[text()=' Orders ']")
+    WebElement orders_tab;
     @FindBy(xpath = "//a[@role='tab' and text()='Bonus']") WebElement ordersTab_bonus;
     @FindBy(xpath = "//a[@role='tab' and text()='Transfers']") WebElement ordersTab_transfer;
     @FindBy(xpath = "//datatable//input[@placeholder='Name']") WebElement name_SearchBox;
@@ -244,7 +246,7 @@ public class Orders extends BaseClass{
     public List<WebElement> bonusOrderVerify;
     @FindBy(xpath="//tbody/tr/td[4]/div[1]/div[1]")
     public List<WebElement> totalKg;
-    @FindBy(xpath="//span[contains(text(),'Total Collected: ')]")
+    @FindBy(xpath="//span[contains(text(),'Collected: ')]")
     public WebElement totalCollectedKg;
     @FindBy(xpath="//span[contains(text(),'Pending')]")
     public WebElement pendingKg;
@@ -323,6 +325,32 @@ public class Orders extends BaseClass{
     @FindBy(xpath = "(//span[text()=\"Plastic Chain\"])[1]")
     WebElement plasticChain1;
 
+    @FindBy(xpath = "//div[text()=\"Plastik-PET-Clean-Green / 50.50 kg\"]")
+    WebElement pet50;
+    @FindBy(xpath = "//div[text()=\"Plastik-MALUTONG-None-None / 10.40 kg\"]")
+    WebElement malutong10;
+    @FindBy(xpath = "(//div[text()=\"Plastik-PET-Clean-Green / 50.50 kg\"]/preceding::label/input[@type=\"checkbox\"])[last()]")
+    WebElement pet50CheckBox;
+    @FindBy(xpath = "(//div[text()=\"Plastik-MALUTONG-None-None / 10.40 kg\"]/preceding::label/input[@type=\"checkbox\"])[last()]")
+    WebElement malutong10CheckBox;
+
+    @FindBy(xpath = "//div[contains(text(),\"Plastik-MONOBLOCK-None-Colored\")]")
+    WebElement monoblock150Kg;
+    @FindBy(xpath = "//div[contains(text(),\"Plastik-HDPE-None-Blue\")]")
+    WebElement hdpe100Kg;
+    @FindBy(xpath = "(//div[contains(text(),\"Plastik-MONOBLOCK-None-Colored\")]/preceding::label/input[@type=\"checkbox\"])[last()]")
+    WebElement monoblock150KgCheckBox;
+    @FindBy(xpath = "(//div[contains(text(),\"Plastik-HDPE-None-Blue\")]/preceding::label/input[@type=\"checkbox\"])[last()]")
+    WebElement hdpe100KgCheckBox;
+
+    @FindBy(xpath = "//div[text()=\"Plastik-MONOBLOCK-None-Colored / 70.00 kg\"]")
+    WebElement monoblock70Kg;
+    @FindBy(xpath = "//div[text()=\"Plastik-HDPE-None-Blue / 60.00 kg\"]")
+    WebElement hdpe60Kg;
+    @FindBy(xpath = "(//div[text()=\"Plastik-MONOBLOCK-None-Colored / 70.00 kg\"]/preceding::label/input[@type=\"checkbox\"])[last()]")
+    WebElement monoblock70KgCheckBox;
+    @FindBy(xpath = "(//div[text()=\"Plastik-HDPE-None-Blue / 60.00 kg\"]/preceding::label/input[@type=\"checkbox\"])[last()]")
+    WebElement hdpe60KgCheckBox;
 
 
     public static String expectedexcHisHdpeKG="HDPE-Clean-Clear / 10.00 kg";
@@ -1702,6 +1730,7 @@ public class Orders extends BaseClass{
         Thread.sleep(8000);
         checkBoxInProcessorAssign.click();
         confirmBtn.click();
+        Thread.sleep(2000);
         createButton.click();
         confirmBtn.click();
 
@@ -1938,6 +1967,119 @@ public class Orders extends BaseClass{
         Assert.assertEquals(actualTotakWeightInAuditTrail,expectedTotakWeightInAuditTrail);
 
     }
+    public void verifyBonusPresentInSPOrder1(String spOrderId,int expectedTotalKg) throws InterruptedException {
+
+        alcDriver.get("https://" + actual + "/#/admin/ordersoffsets/order/" + spOrderId);
+
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.elementToBeClickable(addFromExchangeHistoryButton));
+        Thread.sleep(2000);
+        addFromExchangeHistoryButton.click();
+
+        wait.until(ExpectedConditions.visibilityOf(monoblock150Kg));
+
+        wait.until(ExpectedConditions.visibilityOf(sp_EPR_EligibleDropdown));
+        sp_EPR_EligibleDropdown.click();
+
+        Thread.sleep(1000);
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Disable Bonus Transaction Present", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(3000);
+
+//
+//        Thread.sleep(3000);
+//        Select selectOrder = new Select(sp_EPR_EligibleDropdown);
+//        selectOrder.selectByVisibleText("Show All");
+//        Thread.sleep(5000);
+
+        Actions action =new Actions(alcDriver);
+//        action.moveToElement(monoblock150KgCheckBox).click().build().perform();
+//        action.moveToElement(hdpe100KgCheckBox).click().build().perform();
+        monoblock150KgCheckBox.click();
+        Thread.sleep(2000);
+        hdpe100KgCheckBox.click();
+
+        Thread.sleep(2000);
+
+        confirmBtn.click();
+
+        Thread.sleep(3000);
+        wait.until(ExpectedConditions.visibilityOf(totalCollectedKg));
+
+        action.scrollToElement(totalCollectedKg).build().perform();
+
+        String intActualTotalKg=totalCollectedKg.getText();
+
+        int actualTotalKg=stringToInt(intActualTotalKg);
+        System.out.println(actualTotalKg);
+
+        Thread.sleep(1000);
+
+        byte[] screenshot2 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Total kgDelivered in Donught Graph", new ByteArrayInputStream(screenshot2));
+        Thread.sleep(1000);
+
+
+        Assert.assertEquals(actualTotalKg,expectedTotalKg);
+
+    }
+
+    public void verifyBonusPresentInSPOrder2(String spOrderId,int expectedTotalKg) throws InterruptedException {
+
+        alcDriver.get("https://" + actual + "/#/admin/ordersoffsets/order/" + spOrderId);
+        alcDriver.navigate().refresh();
+
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.elementToBeClickable(addFromExchangeHistoryButton));
+        Thread.sleep(2000);
+        addFromExchangeHistoryButton.click();
+
+        wait.until(ExpectedConditions.visibilityOf(pet50));
+
+        wait.until(ExpectedConditions.visibilityOf(sp_EPR_EligibleDropdown));
+        sp_EPR_EligibleDropdown.click();
+
+        Thread.sleep(1000);
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Disable Bonus Transaction Present", new ByteArrayInputStream(screenshot1));
+
+        Thread.sleep(3000);
+//        Select selectOrder = new Select(sp_EPR_EligibleDropdown);
+//        selectOrder.selectByVisibleText("Show All");
+//        Thread.sleep(5000);
+
+        Actions action =new Actions(alcDriver);
+//        action.moveToElement(monoblock150KgCheckBox).click().build().perform();
+//        action.moveToElement(hdpe100KgCheckBox).click().build().perform();
+        pet50CheckBox.click();
+        Thread.sleep(2000);
+        malutong10CheckBox.click();
+
+        Thread.sleep(2000);
+
+        confirmBtn.click();
+
+        Thread.sleep(3000);
+        wait.until(ExpectedConditions.visibilityOf(totalCollectedKg));
+
+        action.scrollToElement(totalCollectedKg).build().perform();
+
+        String intActualTotalKg=totalCollectedKg.getText();
+
+        int actualTotalKg=stringToInt(intActualTotalKg);
+        System.out.println(actualTotalKg);
+
+        byte[] screenshot2 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Total kgDelivered in Donught Graph", new ByteArrayInputStream(screenshot2));
+        Thread.sleep(1000);
+
+        Assert.assertEquals(actualTotalKg,expectedTotalKg);
+
+    }
+
+
 
 
 }
