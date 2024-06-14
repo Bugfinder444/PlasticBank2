@@ -1921,6 +1921,8 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 		wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
 		orders_tab.click();
 
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.invisibilityOf(pageLoader));
 		wait.until(ExpectedConditions.elementToBeClickable(bonus_Tab));
 		bonus_Tab.click();
 
@@ -1958,27 +1960,27 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 				e.printStackTrace();
 			}
 		}
-		File directory = new File(downloadPath);
-
-		// List all files in the directory
-		File[] files = directory.listFiles();
-
-		if (files != null) {
-			for (File file : files) {
-				// Check if the file name contains the specified string
-				if (file.getName().contains(fileName)) {
-					// Delete the file
-					boolean isDeleted = file.delete();
-					if (isDeleted) {
-						System.out.println("File deleted: " + file.getName());
-					} else {
-						System.out.println("Failed to delete file: " + file.getName());
-					}
-				}
-			}
-		} else {
-			System.out.println("No files found in the directory.");
-		}
+//		File directory = new File(downloadPath);
+//
+//		// List all files in the directory
+//		File[] files = directory.listFiles();
+//
+//		if (files != null) {
+//			for (File file : files) {
+//				// Check if the file name contains the specified string
+//				if (file.getName().contains(fileName)) {
+//					// Delete the file
+//					boolean isDeleted = file.delete();
+//					if (isDeleted) {
+//						System.out.println("File deleted: " + file.getName());
+//					} else {
+//						System.out.println("Failed to delete file: " + file.getName());
+//					}
+//				}
+//			}
+//		} else {
+//			System.out.println("No files found in the directory.");
+//		}
 
 	}
 	public void offsetsReportDownload(String fileName) throws InterruptedException {
@@ -1988,11 +1990,13 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 		wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
 		orders_tab.click();
 
+		Thread.sleep(4000);
 		wait.until(ExpectedConditions.elementToBeClickable(bonus_Tab));
 		bonus_Tab.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
+		wait.until(ExpectedConditions.invisibilityOf(pageLoader));
 		wait.until(ExpectedConditions.elementToBeClickable(exportButton));
 		exportButton.click();
 
@@ -2019,27 +2023,27 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 				e.printStackTrace();
 			}
 		}
-		File directory = new File(downloadPath);
-
-		// List all files in the directory
-		File[] files = directory.listFiles();
-
-		if (files != null) {
-			for (File file : files) {
-				// Check if the file name contains the specified string
-				if (file.getName().contains(fileName)) {
-					// Delete the file
-					boolean isDeleted = file.delete();
-					if (isDeleted) {
-						System.out.println("File deleted: " + file.getName());
-					} else {
-						System.out.println("Failed to delete file: " + file.getName());
-					}
-				}
-			}
-		} else {
-			System.out.println("No files found in the directory.");
-		}
+//		File directory = new File(downloadPath);
+//
+//		// List all files in the directory
+//		File[] files = directory.listFiles();
+//
+//		if (files != null) {
+//			for (File file : files) {
+//				// Check if the file name contains the specified string
+//				if (file.getName().contains(fileName)) {
+//					// Delete the file
+//					boolean isDeleted = file.delete();
+//					if (isDeleted) {
+//						System.out.println("File deleted: " + file.getName());
+//					} else {
+//						System.out.println("Failed to delete file: " + file.getName());
+//					}
+//				}
+//			}
+//		} else {
+//			System.out.println("No files found in the directory.");
+//		}
 
 	}
 	public void transferReportDownload(String fileName) throws InterruptedException {
@@ -2049,10 +2053,11 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 		wait.until(ExpectedConditions.elementToBeClickable(orders_tab));
 		orders_tab.click();
 
-		wait.until(ExpectedConditions.elementToBeClickable(transfersTab));
+		wait.until(ExpectedConditions.invisibilityOf(pageLoader));
+
 		transfersTab.click();
 
-		Thread.sleep(4000);
+		wait.until(ExpectedConditions.visibilityOf(tableData_FirstRow));
 
 		exportButton.click();
 
@@ -2079,27 +2084,27 @@ public void branchExchangeBonusTransfer(String branchId,int transactionNumber,St
 				e.printStackTrace();
 			}
 		}
-		File directory = new File(downloadPath);
-
-		// List all files in the directory
-		File[] files = directory.listFiles();
-
-		if (files != null) {
-			for (File file : files) {
-				// Check if the file name contains the specified string
-				if (file.getName().contains(fileName)) {
-					// Delete the file
-					boolean isDeleted = file.delete();
-					if (isDeleted) {
-						System.out.println("File deleted: " + file.getName());
-					} else {
-						System.out.println("Failed to delete file: " + file.getName());
-					}
-				}
-			}
-		} else {
-			System.out.println("No files found in the directory.");
-		}
+//		File directory = new File(downloadPath);
+//
+//		// List all files in the directory
+//		File[] files = directory.listFiles();
+//
+//		if (files != null) {
+//			for (File file : files) {
+//				// Check if the file name contains the specified string
+//				if (file.getName().contains(fileName)) {
+//					// Delete the file
+//					boolean isDeleted = file.delete();
+//					if (isDeleted) {
+//						System.out.println("File deleted: " + file.getName());
+//					} else {
+//						System.out.println("Failed to delete file: " + file.getName());
+//					}
+//				}
+//			}
+//		} else {
+//			System.out.println("No files found in the directory.");
+//		}
 	}
 
 

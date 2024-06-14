@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Jun 13 16:57:46 IST 2024","Thu Jun 13 16:58:47 IST 2024","60346","Surefire suite","Surefire test","smoke_Suite.ALC_5952","smoke_Suite.ALC_5952","createClientDashboard"," Create Client Dashboard ",""
+"passed","Thu Jun 13 16:57:38 IST 2024","Thu Jun 13 16:57:45 IST 2024","7724","Surefire suite","Surefire test","smoke_Suite.ALC_5952","smoke_Suite.ALC_5952","Login"," Login ",""
+"broken","Thu Jun 13 16:58:47 IST 2024","Thu Jun 13 16:59:54 IST 2024","67452","Surefire suite","Surefire test","smoke_Suite.ALC_5952","smoke_Suite.ALC_5952","checkImpactHub"," Check Impact Hub for all the Audit Trail-Social Benefits Columns present ",""
+"broken","Thu Jun 13 16:57:59 IST 2024","Thu Jun 13 16:57:59 IST 2024","7","Surefire suite","Surefire test","smoke_Suite.ALC_5198","smoke_Suite.ALC_5198","afterMethod","afterMethod",""
+"broken","Thu Jun 13 16:55:48 IST 2024","Thu Jun 13 16:57:59 IST 2024","131100","Surefire suite","Surefire test","smoke_Suite.ALC_5198","smoke_Suite.ALC_5198","checkAuditTrailExportFile"," Check Impact Hub for all the Audit Trail-Social Benefits Columns present and Audit Trail - Plastic ",""

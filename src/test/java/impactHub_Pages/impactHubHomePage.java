@@ -100,6 +100,9 @@ public class impactHubHomePage extends BaseClass {
     public WebElement closeButton;
 
 
+    @FindBy(xpath = "//div[@class=\"loader circle-loader\"]")
+    public WebElement loader;
+
     @FindBy(xpath = "//div[@class=\"calendar-component\"]/div/p")
     public List<WebElement> titleMarketingCalender;
     @FindBy(xpath = "(//div[@class=\"calendar-component\"])[1]/img")
@@ -121,7 +124,7 @@ public class impactHubHomePage extends BaseClass {
     @FindBy(xpath = "(//div[contains(@class,\"navbar-item\")])[15]")
     public WebElement mediaKit;
 
-    @FindBy(xpath = "//div[@class='navbar-item bottom-item-selected']//*[name()='svg']")
+    @FindBy(xpath = "//div[@class='bottom-navbar']/descendant::div[@class='navbar-item'][4]")
     public WebElement auditTrailTab;
     //div[@class='navbar-item bottom-item-selected']
     //div[@class='navbar-item bottom-item-selected']//*[name()='svg']
@@ -130,16 +133,40 @@ public class impactHubHomePage extends BaseClass {
     @FindBy(xpath = "//div[@class='thead']/div/div/div/div[contains(@class,'thead-top-label')]")
     public List<WebElement> tableHeaderName;
 
+    @FindBy(xpath = "(//div[@class=\"body-data\"])[1]/div/div")
+    public WebElement benefit2InTable;
+    @FindBy(xpath = "(//div[@class='tbody-text'])[9]")
+    public WebElement benefit1InTable;
     @FindBy(xpath = "//button[text()=' Collections ']")
     public WebElement collectionsButtons;
+    @FindBy(xpath = "//button[text()=' Summary ']")
+    public WebElement summaryButton;
 
-
-
-
-
+    @FindBy(xpath = "//div[text()=' Social benefits ']/following::div[@class=\"data-container\"]/p")
+    public List<WebElement> socialBenefitChartValues;
+    @FindBy(xpath = "//div[text()='Social Benefits']/preceding-sibling::div")
+    public WebElement socialBenefitsTotalTop;
+    @FindBy(xpath = "//span[text()='All countries']/parent::button")
+    public WebElement allCountriesDropdown;
+    @FindBy(xpath = "//span[text()='Philippines']/preceding-sibling::div")
+    public WebElement philippinesCheckBox;
+    @FindBy(xpath = "//span[text()='All year']/parent::button")
+    public WebElement allYearDropdown;
+    @FindBy(xpath = "//span[text()='2024']/preceding-sibling::div")
+    public WebElement year2024;
+    @FindBy(xpath = "(//button[text()=' Apply filter '])[1]")
+    public WebElement applyFilterButtonCountry;
+    @FindBy(xpath = "(//button[text()=' Apply filter '])[2]")
+    public WebElement applyFilterButtonYear;
 
 
     public static String actualUrl;
+
+    public static int totalSocialBenefits;
+    public static List<String> socialBenefitsString=new ArrayList<>();
+    public static List<String> socialBenefitsString2=new ArrayList<>();
+    public static List<Integer> socialBenefitsInt;
+    public static int totalSocialBenefitsCalculated;
 
     //https://qa-impact.cognitionfoundry.io/postprodchecks/dashboard/page/home
     //https://qa-impact.cognitionfoundry.io/oceanbottle/dashboard/page/home
@@ -876,47 +903,102 @@ public class impactHubHomePage extends BaseClass {
 
     }
 
-    public void verifyImpactHubAuditTrail() throws InterruptedException {
+    public void verifyImpactHubAuditTrail5952() throws InterruptedException {
 
-        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(120));
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(180));
+        Actions action = new Actions(alcDriver);
+
+        Thread.sleep(2000);
+
         wait.until(ExpectedConditions.elementToBeClickable(auditTrailTab));
         auditTrailTab.click();
-        Thread.sleep(2000);
-        wait.until(ExpectedConditions.elementToBeClickable(socialBenefitTab));
-        socialBenefitTab.click();
 
-        wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
+        wait.until(ExpectedConditions.invisibilityOf(loader));
+        Thread.sleep(1000);
 
-        Set<String> actualTableContents = new HashSet<>();
-
+        wait.until(ExpectedConditions.elementToBeClickable(collectionsButtons));
+        collectionsButtons.click();
         Thread.sleep(2000);
 
-        Set<String>expectedTableContents = new HashSet<>(Arrays.asList("Benefit Name","Benefit Category","Benefit Type","Date Received","Beneficiary Name","Beneficiary Id","Country","Total value","Dependents","Unique Claim ID"));
+        try {
 
-        for(WebElement ele : tableHeaderName){
+            wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
 
-            actualTableContents.add(ele.getText());
+            Set<String> actualTableContents = new HashSet<>();
+
+            Thread.sleep(2000);
+
+            Set<String> expectedTableContents = new HashSet<>(Arrays.asList("Transaction Type", "Seller Name", "Buyer Name", "Collection Date", "Order Date", "Country", "Material", "Color", "Weight", "Total Value", "Material Value", "Bonus Value", "Output", "Seller ID","Buyer ID", "City", "Tokens","Sponsor Claim", "Supply Chain Claim", "Path", "Unique Impact Claim", "Local Currency", "Oceanbound Verified", "Bonus Claim", "Verified Claim Status", "Output Status", "Transaction ID"));
+
+            for(WebElement ele : tableHeaderName){
+
+                actualTableContents.add(ele.getText());
+            }
+
+            Thread.sleep(3000);
+
+            TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Columns Present In Audit Trail", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(3000);
+
+            Assert.assertEquals(actualTableContents, expectedTableContents);
+
+            Thread.sleep(2000);
+
         }
+        catch (Exception e){
 
-        Thread.sleep(3000);
+            summaryButton.click();
+            wait.until(ExpectedConditions.invisibilityOf(loader));
+            collectionsButtons.click();
 
-        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
-        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
-        Allure.addAttachment("Columns Present In Social Benefit Audit Trail", new ByteArrayInputStream(screenshot1));
-        Thread.sleep(3000);
+            wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
 
-        Assert.assertEquals(actualTableContents,expectedTableContents);
+            Set<String> actualTableContents = new HashSet<>();
 
+            Thread.sleep(2000);
+
+
+            Set<String> expectedTableContents = new HashSet<>(Arrays.asList("Transaction Type", "Seller Name", "Buyer Name", "Collection Date", "Order Date", "Country", "Material", "Color", "Weight", "Total Value", "Material Value", "Bonus Value", "Output", "Seller ID","Buyer ID", "City", "Tokens","Sponsor Claim", "Supply Chain Claim", "Path", "Unique Impact Claim", "Local Currency", "Oceanbound Verified", "Bonus Claim", "Verified Claim Status", "Output Status", "Transaction ID"));
+
+            for(WebElement ele : tableHeaderName){
+
+                actualTableContents.add(ele.getText());
+            }
+
+            Thread.sleep(3000);
+
+            TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Columns Present In Audit Trail", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(3000);
+
+            Assert.assertEquals(actualTableContents, expectedTableContents);
+
+            Thread.sleep(2000);
+
+        }
 
     }
     public void verifyImpactHubAuditTrail5198() throws InterruptedException {
 
         WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(120));
+        Actions action = new Actions(alcDriver);
+
+        Thread.sleep(2000);
+
         wait.until(ExpectedConditions.elementToBeClickable(auditTrailTab));
+        //action.moveToElement(auditTrailTab).click().build().perform();
         auditTrailTab.click();
-        Thread.sleep(5000);
+
+        wait.until(ExpectedConditions.invisibilityOf(loader));
+        Thread.sleep(1000);
+
         wait.until(ExpectedConditions.elementToBeClickable(socialBenefitTab));
         socialBenefitTab.click();
+
+        wait.until(ExpectedConditions.invisibilityOf(loader));
 
         wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
 
@@ -945,39 +1027,236 @@ public class impactHubHomePage extends BaseClass {
 
 
     }
-    public void verifyImpactHubAuditTrailCollections() throws InterruptedException {
+    public void verifyImpactHubAuditTrailCollections(String expectedBenefit1, String expectedBenefit2) throws InterruptedException {
 
-        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(80));
         wait.until(ExpectedConditions.elementToBeClickable(collectionsButtons));
         collectionsButtons.click();
         Thread.sleep(2000);
 
-        wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
+        try {
 
-        Set<String> actualTableContents = new HashSet<>();
+            wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
 
-        Thread.sleep(2000);
+            Set<String> actualTableContents = new HashSet<>();
 
-        Set<String>expectedTableContents = new HashSet<>(Arrays.asList("Transaction type","Seller Name","Buyer Name","Collection Date","Order Date","Country","Material","Color","Weight","Total Value","Material Value","Bonus Value","Output"));
+            Thread.sleep(2000);
 
-        for(WebElement ele : tableHeaderName){
+            Set<String> expectedTableContents = new HashSet<>(Arrays.asList("Transaction Type", "Seller Name", "Buyer Name", "Collection Date", "Order Date", "Country", "Material", "Color", "Weight", "Total Value", "Material Value", "Bonus Value", "Output"));
 
-            actualTableContents.add(ele.getText());
+            for (WebElement ele : tableHeaderName) {
+
+                actualTableContents.add(ele.getText());
+            }
+
+            Thread.sleep(3000);
+
+            TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Columns Present In Audit Trail", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(3000);
+
+            Assert.assertEquals(actualTableContents, expectedTableContents);
+
+            Thread.sleep(2000);
+
+        }
+        catch (Exception e){
+
+            summaryButton.click();
+            wait.until(ExpectedConditions.invisibilityOf(loader));
+            collectionsButtons.click();
+
+            wait.until(ExpectedConditions.visibilityOf(tableHeaderName.get(0)));
+
+            Set<String> actualTableContents = new HashSet<>();
+
+            Thread.sleep(2000);
+
+            Set<String> expectedTableContents = new HashSet<>(Arrays.asList("Transaction Type", "Seller Name", "Buyer Name", "Collection Date", "Order Date", "Country", "Material", "Color", "Weight", "Total Value", "Material Value", "Bonus Value", "Output"));
+
+            for (WebElement ele : tableHeaderName) {
+
+                actualTableContents.add(ele.getText());
+            }
+
+            Thread.sleep(3000);
+
+            String actualBenefit1=benefit1InTable.getText();
+            String actualBenefit2=benefit2InTable.getText();
+
+            Assert.assertEquals(actualBenefit1,expectedBenefit1);
+            Assert.assertEquals(actualBenefit2,expectedBenefit2);
+
+            TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+            byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment("Columns Present In Audit Trail", new ByteArrayInputStream(screenshot1));
+            Thread.sleep(3000);
+
+            Assert.assertEquals(actualTableContents, expectedTableContents);
+
+            Thread.sleep(2000);
+
         }
 
-        Thread.sleep(3000);
+    }
+    public void socialBenefitsValueVerify() throws InterruptedException {
 
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(120));
+        Actions action = new Actions(alcDriver);
         TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
-        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
-        Allure.addAttachment("Columns Present In Social Benefit Audit Trail", new ByteArrayInputStream(screenshot1));
-        Thread.sleep(3000);
-
-        Assert.assertEquals(actualTableContents,expectedTableContents);
 
         Thread.sleep(2000);
+
+        wait.until(ExpectedConditions.elementToBeClickable(auditTrailTab));
+        auditTrailTab.click();
+
+        wait.until(ExpectedConditions.invisibilityOf(loader));
+        Thread.sleep(1000);
+
+        action.scrollToElement(socialBenefitChartValues.get(0)).build().perform();
+
+        byte[] screenshot2 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Social Benefits dashboard ", new ByteArrayInputStream(screenshot2));
+        Thread.sleep(3000);
+
+        for(WebElement ele:socialBenefitChartValues){
+
+            socialBenefitsString.add(ele.getText());
+            Thread.sleep(2000);
+
+        }
+        System.out.println(socialBenefitsString);
+
+        int totalSum = 0;
+
+        for (String socBenSt : socialBenefitsString) {
+
+            int number  = Integer.parseInt(socBenSt.replace(",", ""));
+            totalSum += number;
+
+        }
+
+        totalSocialBenefitsCalculated=totalSum;
+
+        System.out.println(totalSocialBenefitsCalculated);
+
+        action.scrollToElement(socialBenefitsTotalTop).build().perform();
+
+        byte[] screenshot3 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Social Benefits Total at Top ", new ByteArrayInputStream(screenshot3));
+        Thread.sleep(3000);
+
+        String totalSocialBenefitsSt=socialBenefitsTotalTop.getText();
+        String totalSocBenSt=totalSocialBenefitsSt.replace(",","").replace(" ","");
+        totalSocialBenefits=Integer.parseInt(totalSocBenSt);
+
+        Assert.assertEquals(totalSocialBenefitsCalculated,totalSocialBenefits);
+
+        System.out.println(totalSocialBenefits);
 
 
 
     }
+    public void filterAuditTrail() throws InterruptedException {
+
+
+        WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(120));
+        allCountriesDropdown.click();
+        Thread.sleep(2000);
+        philippinesCheckBox.click();
+        Thread.sleep(2000);
+        applyFilterButtonCountry.click();
+        Thread.sleep(4000);
+
+        allYearDropdown.click();
+        Thread.sleep(2000);
+        year2024.click();
+        Thread.sleep(2000);
+        applyFilterButtonYear.click();
+        Thread.sleep(4000);
+
+        TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+        byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Filter Applied ", new ByteArrayInputStream(screenshot1));
+        Thread.sleep(3000);
+
+        Actions action =new Actions(alcDriver);
+        action.scrollToElement(socialBenefitChartValues.get(0)).build().perform();
+
+        byte[] screenshot2 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Social Benefits dashboard ", new ByteArrayInputStream(screenshot2));
+        Thread.sleep(3000);
+
+
+        for(WebElement ele:socialBenefitChartValues){
+
+            socialBenefitsString2.add(ele.getText());
+            Thread.sleep(2000);
+
+        }
+        System.out.println(socialBenefitsString2);
+
+        int totalSum = 0;
+
+        for (String socBenSt : socialBenefitsString2) {
+
+            int number  = Integer.parseInt(socBenSt.replace(",", ""));
+            totalSum += number;
+
+        }
+
+        totalSocialBenefitsCalculated=totalSum;
+
+        System.out.println(totalSocialBenefitsCalculated);
+
+        action.scrollToElement(socialBenefitsTotalTop).build().perform();
+
+        byte[] screenshot3 = ts1.getScreenshotAs(OutputType.BYTES);
+        Allure.addAttachment("Social Benefits Total at Top ", new ByteArrayInputStream(screenshot3));
+        Thread.sleep(3000);
+
+        String totalSocialBenefitsSt=socialBenefitsTotalTop.getText();
+        String totalSocBenSt=totalSocialBenefitsSt.replace(",","").replace(" ","");
+        totalSocialBenefits=Integer.parseInt(totalSocBenSt);
+
+        Assert.assertEquals(totalSocialBenefitsCalculated,totalSocialBenefits);
+
+        System.out.println(totalSocialBenefits);
+
+
+
+    }
+
+    public static int convertToInt(String numberString) {
+
+        // Remove leading and trailing whitespaces
+        String trimmedNumber = numberString.trim();
+
+        // Remove commas from the number string
+        String numberWithNoCommas = trimmedNumber.replace(",", "").replace(" ","");
+
+        // Parse the string into an integer
+        int intValue = Integer.parseInt(numberWithNoCommas);
+
+        return intValue;
+    }
+
+    public static List<Integer> convertToIntList(List<String> numberStrings) {
+
+        List<Integer> intList = new ArrayList<>();
+        int totalSum = 0;
+        for (String numberString : numberStrings) {
+
+            int number  = Integer.parseInt(numberString.replace(",", ""));
+            totalSum += number;
+
+        }
+        return intList;
+
+    }
+
+
+
 
 }

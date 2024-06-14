@@ -54,6 +54,9 @@ public WebElement logInButton ;
 @FindBy(xpath="//div[@class='body']/div/div/div[text()=' Branches ']")
 private WebElement branches_TAB;
 
+	@FindBy(xpath="//div[@class='body']/div/div/div[text()=' Branches ']")
+	public WebElement emailTextField;
+
 public void enterDetails(String adminphoneNumber, String adminpassword) {
 
 	email_PhoneTextFeild.clear();
@@ -83,6 +86,10 @@ public void alc_adminlogin(String adminphoneNumber, String adminpassword) throws
 	public void alc_adminloginNoOtp(String adminphoneNumber, String adminpassword) throws InterruptedException {
 		enterDetails(adminphoneNumber, adminpassword);
 		Thread.sleep(2000);
+
+	}
+	public void loginImpactHub(){
+
 
 	}
 }

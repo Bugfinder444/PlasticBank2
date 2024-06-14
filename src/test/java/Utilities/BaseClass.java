@@ -1,21 +1,28 @@
 package Utilities;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.qameta.allure.Allure;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.NoSuchSessionException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -28,62 +35,19 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import javax.mail.Session;
+
 @SuppressWarnings("deprecation")
 public class BaseClass {
 		
 
 public static String password ="123456a"; 
 
-	public String memberBonus = "7";
-	public String branchBonus = "2";
 
-	public String hdpe_M_B1 = "10";
-	public String pet_M_B1 = "9";
 	public String kgdelivered = "19";///////// 76 -19
 	public String kgpromised = "50,000";
 	public String kgpending = "19";//////////// 76-19-0
-
-	public String hdpe_B1_B2 = "8";
-	public String pet_B1_B2 = "7";
-
-	public String hdpe_B1_B3 = "6";
-	public String pet_B1_B3 = "5";
-
-	public String hdpe_B2_P = "4";
-	public String pet_B2_P = "3";
-
-	public String hdpe_B3_P = "1";
-	public String pet_B3_P = "1";
-
 	public String total_bonus_M_B1 = "133";
-	public String hdpe_bonus_M_B1 = "70";
-	public String pet_bonus_M_B1 = "63";
-	public String hdpe_KG_M_B1 = "10";
-	public String pet_KG_M_B1 = "9";
-
-	public String total_bonus_B1_B2 = "30";
-	public String hdpe_bonus_B1_B2 = "16";
-	public String pet_bonus_B1_B2 = "14";
-	public String hdpe_KG_B1_B2 = "8";
-	public String pet_KG_B1_B2 = "7";
-
-	public String total_bonus_B1_B3 = "8";
-	public String hdpe_bonus_B1_B3 = "4";
-	public String pet_bonus_B1_B3 = "4";
-	public String hdpe_KG_B1_B3 = "6";
-	public String pet_KG_B1_B3 = "5";
-
-	public String total_bonus_B2_P = "14";
-	public String hdpe_bonus_B2_P = "8";
-	public String pet_bonus_B2_P = "6";
-	public String hdpe_KG_B2_P = "4";
-	public String pet_KG_B2_P = "3";
-
-	public String total_bonus_B3_P = "4";
-	public String hdpe_bonus_B3_P = "2";
-	public String pet_bonus_B3_P = "2";
-	public String hdpe_KG_B3_P = "1";
-	public String pet_KG_B3_P = "1";
 
 	public String alc_B1_ExngHisBonusVerify[] = { "8", "30", "133" };// B1-B3,B1-B2,M-B1
 	public String alc_B2_ExngHisBonusVerify[] = { "14", "30" };// B2-P,B2-B1
@@ -142,6 +106,8 @@ public static String password ="123456a";
 		
 		//alcDriver.get("https://qa-admin.cognitionfoundry.io/#/login");
 		//https://qa-admin.cognitionfoundry.io/#/login
+
+
 		DesiredCapabilities caps = new DesiredCapabilities();
 
 		caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
@@ -167,6 +133,20 @@ public static String password ="123456a";
 		  adminpassword = "123456a"; 
 		  branchName = randomBusinessName;
 		 
+	}
+
+	public void takescreenshotofandroid(String Scrnsht_message) throws InterruptedException {
+		TakesScreenshot ts1 = (TakesScreenshot) pbDriver; byte[] screenshot1 =
+				ts1.getScreenshotAs(OutputType.BYTES); Allure.addAttachment(Scrnsht_message,
+				new ByteArrayInputStream(screenshot1)); Thread.sleep(2000); }
+
+	public void takescreenshotof(WebElement element, String Scrnsht_message) throws InterruptedException {
+		Actions action = new Actions(alcDriver);
+		action.moveToElement(element).build().perform();
+		TakesScreenshot ts1 = (TakesScreenshot) alcDriver;
+		byte[] screenshot1 = ts1.getScreenshotAs(OutputType.BYTES);
+		Allure.addAttachment(Scrnsht_message, new ByteArrayInputStream(screenshot1));
+		Thread.sleep(2000);
 	}
 
 	public static int stringToInt(String input){
@@ -209,6 +189,46 @@ public static String password ="123456a";
 		  scrollt.addAction(fingert.createPointerUp(0));
 		  pbDriver.perform(Arrays.asList(scrollt));
 	}
+
+
+	public boolean validateElementsAgainstCSV(List<String> elements, BufferedReader br) {
+		Set<String> csvElements = new HashSet<>();
+
+		// Read the CSV file and populate the set
+		try {
+			String line;
+			while ((line = br.readLine()) != null) {
+				// Assuming CSV file is simple and each line contains a single value
+				csvElements.add(line.trim());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;  // In case of an error, return false
+		}
+
+		// Validate elements
+		for (String element : elements) {
+			if (!csvElements.contains(element)) {
+				return false;  // If any element is not found in the CSV, return false
+			}
+		}
+
+		return true;  // All elements are found in the CSV, return true
+
+	}
+	public void csvValidate(List<String> elementsToValidate, BufferedReader br){
+
+		try {
+			boolean result = validateElementsAgainstCSV(elementsToValidate, br);
+
+			System.out.println("Validation Result: " + result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
 	
 	  @BeforeSuite 
 	  public void generateRandomNumber() { 
@@ -284,6 +304,5 @@ public static String password ="123456a";
 		}
 
 	}
-
 
 }

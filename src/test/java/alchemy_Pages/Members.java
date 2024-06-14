@@ -156,8 +156,19 @@ WebElement excHisTotalWeight;
 WebElement tokenInWalletText;
 @FindBy(xpath = "(//div[@class='card-header']/div/button)[1]" )
 WebElement cardHeader;
-	@FindBy(xpath = "//span[text()=' Export']")
-	public static WebElement exportButton;
+
+@FindBy(xpath = "//i[@class=\"calendar-icon\"]")
+WebElement calenderIcon;
+	@FindBy(xpath = "//div[@class=\"ngb-dp-day ngb-dp-today ng-star-inserted\"]/span")
+	WebElement todayDate;
+	@FindBy(xpath = "//div[@class=\"ngb-dp-day ngb-dp-today ng-star-inserted\"]/preceding-sibling::div/span")
+	WebElement previousdate;
+@FindBy(xpath = "//span[text()=' Export']")
+public static WebElement exportButton;
+	@FindBy(xpath = "//div[text()='Export ']")
+	public static WebElement exportButtonMem;
+	@FindBy(xpath = "//div[text()='Loading... ']")
+	public static WebElement loading;
 
 
 	public static String downloadPath = "C:/Users/Fleek/Downloads";
@@ -414,24 +425,30 @@ public void refresh() {
 		}
 	public void reportDownload(String fileName) throws InterruptedException {
 
-		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(90));
 
 		wait.until(ExpectedConditions.elementToBeClickable(members_TAB));
 		members_TAB.click();
-
-		wait.until(ExpectedConditions.elementToBeClickable(tableData_FirstRow));
-		tableData_FirstRow.click();
-
 		Thread.sleep(4000);
-		wait.until(ExpectedConditions.visibilityOf(exchangeHistory));
-		exchangeHistory.click();
 
-		Thread.sleep(3000);
-
-		wait.until(ExpectedConditions.visibilityOf(cardHeader));
+		wait.until(ExpectedConditions.visibilityOf(tableData_FirstRow));
 		Thread.sleep(2000);
 
-		exportButton.click();
+		calenderIcon.click();
+		wait.until(ExpectedConditions.visibilityOf(todayDate));
+		previousdate.click();
+		Thread.sleep(2000);
+		todayDate.click();
+
+		Thread.sleep(2000);
+
+		wait.until(ExpectedConditions.invisibilityOf(pageLoader));
+		Thread.sleep(2000);
+
+		exportButtonMem.click();
+		Thread.sleep(4000);
+		wait.until(ExpectedConditions.invisibilityOf(loading));
+
 		Thread.sleep(4000);
 
 		while (true) {
@@ -455,28 +472,28 @@ public void refresh() {
 				e.printStackTrace();
 			}
 		}
-		File directory = new File(downloadPath);
-
-		// List all files in the directory
-		File[] files = directory.listFiles();
-
-		if (files != null) {
-			for (File file : files) {
-				// Check if the file name contains the specified string
-				if (file.getName().contains(fileName)) {
-					// Delete the file
-					boolean isDeleted = file.delete();
-					if (isDeleted) {
-						System.out.println("File deleted: " + file.getName());
-					} else {
-						System.out.println("Failed to delete file: " + file.getName());
-					}
-				}
-			}
-		} else {
-			System.out.println("No files found in the directory.");
-		}
-
+//		File directory = new File(downloadPath);
+//
+//		// List all files in the directory
+//		File[] files = directory.listFiles();
+//
+//		if (files != null) {
+//			for (File file : files) {
+//				// Check if the file name contains the specified string
+//				if (file.getName().contains(fileName)) {
+//					// Delete the file
+//					boolean isDeleted = file.delete();
+//					if (isDeleted) {
+//						System.out.println("File deleted: " + file.getName());
+//					} else {
+//						System.out.println("Failed to delete file: " + file.getName());
+//					}
+//				}
+//			}
+//		} else {
+//			System.out.println("No files found in the directory.");
+//		}
+//
 	}
 
 

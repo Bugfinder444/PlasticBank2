@@ -22,7 +22,7 @@ public class ALC_5952 extends BaseClass {
     public void createClientDashboard() throws InterruptedException, IOException {
 
         Client_Dashboards cd =new Client_Dashboards(alcDriver);
-        cd.auditTrailDashBoard();
+        cd.createClientDashboard5952();
     }
 
     @Test(priority = 2,description =" Check Impact Hub for all the Audit Trail-Social Benefits Columns present ")
@@ -30,12 +30,11 @@ public class ALC_5952 extends BaseClass {
 
         alcDriver.get("https://qa-impact.cognitionfoundry.io/"+Client_Dashboards.dashBoardPath+"/dashboard/page/home");
 
-
         AlchemyLoginPage login = new AlchemyLoginPage(alcDriver);
         login.alc_adminloginNoOtp("+919560071590", password);
 
         impactHubHomePage ihp = new impactHubHomePage(alcDriver);
-        ihp.verifyImpactHubAuditTrail();
+        ihp.verifyImpactHubAuditTrail5952();
 
     }
 

@@ -41,6 +41,13 @@ public class Reports extends BaseClass {
     @FindBy(xpath = "//div[text()='Token Exchange History']/following-sibling::div[text()=' EXPORT ']")
     public static WebElement tokenExchangeHistoryExport;
 
+    @FindBy(xpath = "//div[text()='Branches Transaction History']")
+    public static WebElement branchesTranHis;
+    @FindBy(xpath = "//div[text()='Branches Transaction History']/following-sibling::div[text()=' EXPORT ']")
+    public static WebElement branchesTranHisExport;
+    @FindBy(xpath = "//div[text()='Loading... ']")
+    public static WebElement loading;
+
 
 
 
@@ -66,7 +73,7 @@ public class Reports extends BaseClass {
         Thread.sleep(2000);
         wait.until(ExpectedConditions.invisibilityOf(loader));
         export.click();
-        Thread.sleep(4000);
+        Thread.sleep(10000);
 
         while (true) {
             String downloadPath1 = "C:\\Users\\Fleek\\Downloads";
@@ -89,28 +96,28 @@ public class Reports extends BaseClass {
                 e.printStackTrace();
             }
         }
-        File directory = new File(downloadPath);
-
-        // List all files in the directory
-        File[] files = directory.listFiles();
-
-        if (files != null) {
-            for (File file : files) {
-                // Check if the file name contains the specified string
-                if (file.getName().contains(fileName)) {
-                    // Delete the file
-                    boolean isDeleted = file.delete();
-                    if (isDeleted) {
-                        System.out.println("File deleted: " + file.getName());
-                    } else {
-                        System.out.println("Failed to delete file: " + file.getName());
-                    }
-                }
-            }
-        } else {
-            System.out.println("No files found in the directory.");
-        }
-
+//        File directory = new File(downloadPath);
+//
+//        // List all files in the directory
+//        File[] files = directory.listFiles();
+//
+//        if (files != null) {
+//            for (File file : files) {
+//                // Check if the file name contains the specified string
+//                if (file.getName().contains(fileName)) {
+//                    // Delete the file
+//                    boolean isDeleted = file.delete();
+//                    if (isDeleted) {
+//                        System.out.println("File deleted: " + file.getName());
+//                    } else {
+//                        System.out.println("Failed to delete file: " + file.getName());
+//                    }
+//                }
+//            }
+//        } else {
+//            System.out.println("No files found in the directory.");
+//        }
+//
     }
 
 

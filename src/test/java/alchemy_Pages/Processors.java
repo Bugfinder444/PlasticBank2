@@ -80,6 +80,10 @@ public class Processors  extends BaseClass{
 
 	@FindBy(xpath = "//span[text()='Export']")
 	public static WebElement exportButton;
+	@FindBy(xpath = "//div[text()='Export ']")
+	public static WebElement exportButtonList;
+	@FindBy(xpath = "//div[text()='Loading... ']")
+	public static WebElement loading;
 
 
 	public static String downloadPath = "C:/Users/Fleek/Downloads";
@@ -182,6 +186,8 @@ public void clickExchangeHistoryButton() {
 		wait.until(ExpectedConditions.elementToBeClickable(processors_TAB));
 		processors_TAB.click();
 
+		Thread.sleep(2000);
+
 		wait.until(ExpectedConditions.elementToBeClickable(tableData_FirstRow));
 		tableData_FirstRow.click();
 		Thread.sleep(4000);
@@ -216,26 +222,64 @@ public void clickExchangeHistoryButton() {
 				e.printStackTrace();
 			}
 		}
-		File directory = new File(downloadPath);
+//		File directory = new File(downloadPath);
+//
+//		// List all files in the directory
+//		File[] files = directory.listFiles();
+//
+//		if (files != null) {
+//			for (File file : files) {
+//				// Check if the file name contains the specified string
+//				if (file.getName().contains(fileName)) {
+//					// Delete the file
+//					boolean isDeleted = file.delete();
+//					if (isDeleted) {
+//						System.out.println("File deleted: " + file.getName());
+//					} else {
+//						System.out.println("Failed to delete file: " + file.getName());
+//					}
+//				}
+//			}
+//		} else {
+//			System.out.println("No files found in the directory.");
+//		}
 
-		// List all files in the directory
-		File[] files = directory.listFiles();
+	}
 
-		if (files != null) {
-			for (File file : files) {
-				// Check if the file name contains the specified string
-				if (file.getName().contains(fileName)) {
-					// Delete the file
-					boolean isDeleted = file.delete();
-					if (isDeleted) {
-						System.out.println("File deleted: " + file.getName());
-					} else {
-						System.out.println("Failed to delete file: " + file.getName());
-					}
-				}
+	public void reportDownloadList(String fileName) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(alcDriver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.elementToBeClickable(processors_TAB));
+		processors_TAB.click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(tableData_FirstRow));
+
+		Thread.sleep(4000);
+
+		exportButtonList.click();
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.invisibilityOf(loading));
+
+		Thread.sleep(3000);
+
+		while (true) {
+			String downloadPath1 = "C:\\Users\\Fleek\\Downloads";
+			File directory1 = new File(downloadPath1);
+			File[] files1 = directory1.listFiles((dir, name) -> name.contains(fileName));
+
+			if (files1 != null && files1.length > 0) {
+
+				Assert.assertTrue(1>0);
+				System.out.println("File is been Downloaded");
+				break; // Exit the loop once a file is found and opened
 			}
-		} else {
-			System.out.println("No files found in the directory.");
+
+			try {
+				TimeUnit.SECONDS.sleep(1); // Wait for 1 second before checking again
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

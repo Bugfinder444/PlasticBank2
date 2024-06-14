@@ -226,6 +226,9 @@ public class Data extends BaseClass {
 	public static String sporderId_2_6106;
 	public static String sporderId_3_6106;
 
+	public static String member_Name5198;
+	public static String ClientDashBoardid;
+
 
 	public void runNewman() throws IOException {
 		try {

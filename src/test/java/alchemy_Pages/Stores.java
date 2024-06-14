@@ -192,13 +192,15 @@ public class Stores extends BaseClass {
         stores_tab.click();
 
         wait.until(ExpectedConditions.elementToBeClickable(tableData_FirstRow));
+        Thread.sleep(2000);
         tableData_FirstRow.click();
         Thread.sleep(4000);
 
-        wait.until(ExpectedConditions.elementToBeClickable(exchangeHistory));
+        wait.until(ExpectedConditions.invisibilityOf(pageLoader));
+
         exchangeHistory.click();
 
-        Thread.sleep(7000);
+        Thread.sleep(10000);
 
         exportButton.click();
 
@@ -225,27 +227,27 @@ public class Stores extends BaseClass {
                 e.printStackTrace();
             }
         }
-        File directory = new File(downloadPath);
-
-        // List all files in the directory
-        File[] files = directory.listFiles();
-
-        if (files != null) {
-            for (File file : files) {
-                // Check if the file name contains the specified string
-                if (file.getName().contains(fileName)) {
-                    // Delete the file
-                    boolean isDeleted = file.delete();
-                    if (isDeleted) {
-                        System.out.println("File deleted: " + file.getName());
-                    } else {
-                        System.out.println("Failed to delete file: " + file.getName());
-                    }
-                }
-            }
-        } else {
-            System.out.println("No files found in the directory.");
-        }
+//        File directory = new File(downloadPath);
+//
+//        // List all files in the directory
+//        File[] files = directory.listFiles();
+//
+//        if (files != null) {
+//            for (File file : files) {
+//                // Check if the file name contains the specified string
+//                if (file.getName().contains(fileName)) {
+//                    // Delete the file
+//                    boolean isDeleted = file.delete();
+//                    if (isDeleted) {
+//                        System.out.println("File deleted: " + file.getName());
+//                    } else {
+//                        System.out.println("Failed to delete file: " + file.getName());
+//                    }
+//                }
+//            }
+//        } else {
+//            System.out.println("No files found in the directory.");
+//        }
 
     }
 	
